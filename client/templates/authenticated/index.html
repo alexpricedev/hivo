@@ -1,0 +1,35 @@
+<template name="index">
+
+    <h4 class="pull-left">Your Patients</h4>
+    <button type="button" class="btn btn-success btn-sm pull-right">Add Patient</button>
+
+    <hr style="clear: both;">
+
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Last logged in</th>
+          <th class="text-center">Online</th>
+        </tr>
+      </thead>
+      <tbody>
+          {{#each patients}}
+            <tr>
+                <td><a href="{{pathFor 'patientProfile' _id=_id}}" title="View profile">{{getFullName this}}</a></td>
+                <td>
+                    {{#if status.online}}
+                        Active now
+                    {{else}}
+                        {{formatDate status.lastLogin.date}}
+                    {{/if}}
+                </td>
+                <td class="text-center">
+                    <span class="glyphicon {{onlineStatus status.online}}" aria-hidden="true"></span>
+                </td>
+            </tr>
+          {{/each}}
+      </tbody>
+    </table>
+
+</template>
