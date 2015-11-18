@@ -1,19 +1,19 @@
+Template.registerHelper('isAdmin', function() {
+  return Meteor.user().profile.isAdmin;
+});
+
 Template.registerHelper('getFullName', function(user) {
   return user.profile.name.first + ' ' + user.profile.name.last;
 });
 
-Template.registerHelper('userEmail', function(user) {
+Template.registerHelper('getEmailAddress', function(user) {
   return user.emails[0].address;
 });
 
 Template.registerHelper('formatDate', function(date) {
   if (date) {
-      return moment(date).fromNow();
+      return Spacebars.SafeString('<span class="label label-info">' + moment(date).fromNow() + '</span>');
   } else {
-      return 'Never';
+      return Spacebars.SafeString('<span class="label label-danger">Never</span>');
   }
-});
-
-Template.registerHelper('onlineStatus', function(user) {
-  return status ? 'glyphicon-ok' : 'glyphicon-remove';
 });

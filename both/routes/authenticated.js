@@ -16,9 +16,23 @@ authenticatedRoutes.route( '/', {
   }
 });
 
-authenticatedRoutes.route( '/user/:_id', {
-  name: 'patientProfile',
+authenticatedRoutes.route( '/patient/:_id', {
+  name: 'adminPatientOverview',
   action(params) {
-    BlazeLayout.render( 'default', { yield: 'patientProfile' } );
+    BlazeLayout.render( 'default', { yield: 'adminPatientOverview' } );
+  }
+});
+
+authenticatedRoutes.route( '/depression', {
+  name: 'depression',
+  action() {
+    BlazeLayout.render( 'default', { yield: 'depression', footer:'footer' } );
+  }
+});
+
+authenticatedRoutes.route( '/depression/exercise-one', {
+  name: 'depressionExerciseOne',
+  action() {
+    BlazeLayout.render( 'default', { yield: 'depressionExerciseOne', footer:'footer' } );
   }
 });

@@ -1,0 +1,27 @@
+<template name="patientIndex">
+
+    <h4>Your Dashboard</h4>
+
+    <hr>
+
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Programs</th>
+          <th>Last Completed</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+              <a href="{{pathFor 'depression' }}"
+                 title="View program">
+                  Get Active, Feel Good Depression Program
+              </a>
+          </td>
+          <td><span class="label label-success">1 day ago</span></td>
+        </tr>
+      </tbody>
+    </table>
+
+</template>
