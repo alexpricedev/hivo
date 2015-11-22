@@ -9,11 +9,22 @@ const authenticatedRoutes = FlowRouter.group({
   triggersEnter: [authenticatedRedirect]
 });
 
+// Admin routes
+
 authenticatedRoutes.route('/', {
   name: 'index',
   action() {
     BlazeLayout.render('default', {
       yield: 'index'
+    });
+  }
+});
+
+authenticatedRoutes.route('/patient/new', {
+  name: 'adminAddPatient',
+  action() {
+    BlazeLayout.render('default', {
+      yield: 'adminAddPatient'
     });
   }
 });
@@ -26,6 +37,8 @@ authenticatedRoutes.route('/patient/:_id', {
     });
   }
 });
+
+// Patient routes
 
 authenticatedRoutes.route('/depression', {
   name: 'depression',
@@ -41,7 +54,7 @@ authenticatedRoutes.route('/depression/how-is-depression-affecting-you', {
   name: 'how-is-depression-affecting-you',
   action() {
     BlazeLayout.render('default', {
-      yield: 'depressionExerciseOne',
+      yield: 'howIsDepressionAffectingYou',
       footer: 'footer'
     });
   }

@@ -1,9 +1,16 @@
 <template name="adminIndex">
 
-    <h4 class="pull-left">Your Patients</h4>
-    <button type="button" class="btn btn-success btn-sm pull-right">Add Patient</button>
+    <div class="row">
+        <div class="col-xs-6">
+            <h4 class="pull-left">Your Patients</h4>
+        </div>
+        <div class="col-xs-6">
+            <a href="{{pathFor 'adminAddPatient'}}" class="btn btn-sm btn-success pull-right">Add Patient</a>
+        </div>
 
-    <hr style="clear: both;">
+    </div>
+
+    <hr style="margin-top: 10px;">
 
     <table class="table table-striped">
         <thead>

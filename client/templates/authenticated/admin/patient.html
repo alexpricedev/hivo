@@ -1,0 +1,59 @@
+<template name="adminPatientOverview">
+
+    {{#if isAdmin}}
+
+        <h4>{{getFullName patient}}</h4>
+        <h5>
+            <a href="mailto:{{getEmailAddress patient}}">
+                {{getEmailAddress patient}}
+            </a>
+        </h5>
+
+        <hr>
+
+        {{#if programs}}
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Programs</th>
+                        <th>Last Completed</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each programs}}
+                        <tr>
+                            <td>{{title}}</td>
+                            <td>{{formatDate lastCompleted}}</td>
+                        </tr>
+                    {{else}}
+                        <tr>
+                            <td colspan="2">
+                                They are not enrolled in any programs.
+                            </td>
+                        </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+        {{else}}
+            <div class="row">
+                <div class="col-sm-6 col-md-4">
+                    <div class="thumbnail">
+                        <div class="caption">
+                            <h3>Get Active, Feel Good</h3>
+                            <p>
+                                <span class="label label-info">Depression</span>
+                                <span class="label label-warning">Cognitive behaviour therapy</span>
+                            </p>
+                            <p>Help your patient to get on top of low mood and depression with this CBT program.</p>
+                            <p><a href="#enroll" class="btn btn-primary enroll" data-program="depression">Enroll patient</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {{/if}}
+
+    {{else}}
+        {{>notFound}}
+    {{/if}}
+
+</template>

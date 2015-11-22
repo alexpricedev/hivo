@@ -17,3 +17,15 @@ Template.registerHelper('formatDate', function(date) {
     return Spacebars.SafeString('<span class="label label-danger">Never</span>');
   }
 });
+
+// TODO: Make programs more general
+Template.registerHelper('isEnrolled', function(programPath) {
+	// TODO: not sure about this...
+  Template.instance().subscribe('programs', Meteor.userId());
+
+	var programs = GetActive.find({
+		userId: Meteor.userId()
+	}).fetch();
+
+	return programs.length > 0 ? true : false;
+});
