@@ -30,8 +30,8 @@ authenticatedRoutes.route( '/depression', {
   }
 });
 
-authenticatedRoutes.route( '/depression/exercise-one', {
-  name: 'depressionExerciseOne',
+authenticatedRoutes.route( '/depression/how-is-depression-affecting-you', {
+  name: 'how-is-depression-affecting-you',
   action() {
     BlazeLayout.render( 'default', { yield: 'depressionExerciseOne', footer:'footer' } );
   }

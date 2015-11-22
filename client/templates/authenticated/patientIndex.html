@@ -12,15 +12,23 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>
-              <a href="{{pathFor 'depression' }}"
-                 title="View program">
-                  Get Active, Feel Good Depression Program
-              </a>
-          </td>
-          <td><span class="label label-success">1 day ago</span></td>
-        </tr>
+          {{#each programs}}
+            <tr>
+              <td>
+                  <a href="{{pathFor path }}"
+                     title="View program">
+                      {{title}}
+                  </a>
+              </td>
+              <td>{{formatDate lastCompleted}}</td>
+            </tr>
+            {{else}}
+                <tr>
+                	<td colspan="2">
+                        You are not enrolled in any programs. Please speak with your counsellor about starting a new program.
+                    </td>
+                </tr>
+            {{/each}}
       </tbody>
     </table>
 

@@ -1,13 +1,13 @@
 Modals = new Meteor.Collection( 'modals' );
 
 Modals.allow({
-  insert: () => true,
+  insert: () => false,
   update: () => false,
   remove: () => false
 });
 
 Modals.deny({
-  insert: () => false,
+  insert: () => true,
   update: () => true,
   remove: () => true
 });

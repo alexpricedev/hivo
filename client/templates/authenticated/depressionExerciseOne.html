@@ -1,39 +1,42 @@
 <template name="depressionExerciseOne">
 
     <ol class="breadcrumb">
+        <li><a href="{{pathFor 'index' }}">Dashboard</a></li>
         <li><a href="{{pathFor 'depression' }}">Depression</a></li>
-        <li class="active">Exercise One</li>
+        <li class="active">How Is Depression Affecting You?</li>
     </ol>
 
     <h3>Get Active, Feel Good Depression Program</h3>
 
     <h4>
-        Exercise One
+        Exercise One - How Is Your Depression and Low Mood Affecting You?
         <small>
-            <a href="#" data-toggle="modal" data-target="#myModal">
+            <a href="#" data-toggle="modal" data-target="#modal">
                 <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
             </a>
         </small>
     </h4>
 
+    <hr>
+
     <form>
         <div class="row">
             <div class="col-md-4">
                 <label for="behavioural">Behavioural</label>
+                <textarea class="form-control" id="behavioural" rows="3" placeholder="Behavioural changes..." value="{{exercise.behavioural}}"></textarea>
                 <span class="help-block">Write in here the things you have stopped doing or now do differently</span>
-                <textarea class="form-control" id="behavioural" rows="3" placeholder="Behavioural changes..."></textarea>
             </div>
 
             <div class="col-md-4">
                 <label for="thoughts">Thoughts</label>
+                <textarea class="form-control" id="thoughts" rows="3" placeholder="Changes in thought..." value="{{exercise.thoughts}}"></textarea>
                 <span class="help-block">Write in here the specific types of unhelpful thoughts that go through your head</span>
-                <textarea class="form-control" id="behavioural" rows="3" placeholder="Changes in thought..."></textarea>
             </div>
 
             <div class="col-md-4">
                 <label for="physical">Physical</label>
+                <textarea class="form-control" id="physical" rows="3" placeholder="Physical changes..." value="{{exercise.physical}}"></textarea>
                 <span class="help-block">Write in here the physical changes you have noticed</span>
-                <textarea class="form-control" id="behavioural" rows="3" placeholder="Physical changes..."></textarea>
             </div>
 
             <div class="col-md-12">

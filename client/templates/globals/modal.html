@@ -1,16 +1,14 @@
 <template name="modal">
 
-    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="modalTitle">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title" id="myModalLabel">How Is Your Depression and Low Mood Affecting You?</h4>
+            <h4 class="modal-title" id="modalTitle">{{modalObject.title}}</h4>
           </div>
           <div class="modal-body">
-              <p>
-                  This exercise is about thinking about how your depression or low mood is affecting you. In each of the three boxes write in the type of things you have stopped doing or are doing differently, some of the unhelpful thoughts that commonly go through your head and the way you feel physically. Don’t worry if this seems difficult.
-              </p>
+              <p>{{modalObject.text}}</p>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

@@ -1,7 +1,48 @@
 <template name="adminPatientOverview">
 
-    <h4>Patient Profile: {{getFullName patient}}</h4>
+    <div class="row">
+        <div class="col-xs-6">
+            <h4>{{getFullName patient}}</h4>
+            <h5>
+                <a href="mailto:{{getEmailAddress patient}}">
+                    {{getEmailAddress patient}}
+                </a>
+            </h5>
+        </div>
+
+        {{#unless programs}}
+            <div class="col-xs-6">
+                <a href="#enroll" class="btn btn-primary pull-right enroll">Enroll in 'Get Active'</a>
+            </div>
+        {{/unless}}
+    </div>
 
     <hr>
+
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Programs</th>
+          <th>Last Completed</th>
+        </tr>
+      </thead>
+      <tbody>
+          {{#each programs}}
+            <tr>
+              <td>
+                  {{title}}
+              </td>
+              <td>{{formatDate lastCompleted}}</td>
+            </tr>
+            {{else}}
+                <tr>
+                	<td colspan="2">
+                        They are not enrolled in any programs.
+                    </td>
+                </tr>
+            {{/each}}
+      </tbody>
+    </table>
+
 
 </template>

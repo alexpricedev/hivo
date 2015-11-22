@@ -1,46 +1,26 @@
 <template name="depression">
 
+    <ol class="breadcrumb">
+        <li><a href="{{pathFor 'index' }}">Dashboard</a></li>
+        <li>Depression</li>
+    </ol>
+
     <h3>Get Active, Feel Good Depression Program</h3>
 
     <div class="row">
         <div class="col-md-6">
             <table class="table table-striped">
               <tbody>
+                  {{#each exercises}}
                     <tr>
                         <td>
-                            <a class="btn btn-block btn-primary" href="{{pathFor 'depressionExerciseOne' }}">
-                                Exercise One
+                            <a class="btn btn-block{{#if complete}} btn-success{{else}} btn-default{{/if}}"
+                               href="{{pathFor path}}">
+                                {{title}}
                             </a>
                         </td>
                     </tr>
-                    <tr>
-                        <td>
-                            <a class="btn btn-block btn-default" href="#">
-                                Exercise Two
-                            </a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <a class="btn btn-block btn-default" href="#">
-                                Exercise Three
-                            </a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <a class="btn btn-block btn-default" href="#">
-                                Exercise Four
-                            </a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <a class="btn btn-block btn-default" href="#">
-                                Exercise Five
-                            </a>
-                        </td>
-                    </tr>
+                    {{/each}}
               </tbody>
             </table>
         </div>

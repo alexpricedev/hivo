@@ -1,5 +1,4 @@
 Template.adminIndex.onCreated( () => {
-  Template.instance().subscribe( 'template' );
   Template.instance().subscribe( 'patients' );
 });
 

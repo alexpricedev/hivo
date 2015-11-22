@@ -1,3 +1,9 @@
 Template.patientIndex.onCreated( () => {
-  Template.instance().subscribe( 'template' );
+    Template.instance().subscribe( 'programs', Meteor.userId() );
+});
+
+Template.patientIndex.helpers({
+    programs: function() {
+        return GetActive.find({ userId: Meteor.userId() });
+    }
 });
