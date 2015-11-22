@@ -1,14 +1,14 @@
 Meteor.methods({
-  updateImpactOfDepression( _id, props ) {
-    check( _id, String );
-    check( props, ImpactOfDepression.simpleSchema() );
+  updateImpactOfDepression(_id, props) {
+    check(_id, String);
+    check(props, ImpactOfDepression.simpleSchema());
 
     try {
-      var exerciseId = ImpactOfDepression.update( _id, {
+      var exerciseId = ImpactOfDepression.update(_id, {
         $set: props
       });
       return exerciseId;
-    } catch( exception ) {
+    } catch (exception) {
       return exception;
     }
   }

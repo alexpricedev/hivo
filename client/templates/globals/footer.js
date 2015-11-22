@@ -1,5 +1,5 @@
 Template.footer.helpers({
-    footerProgress: function() {
-        return Session.get('footerProgress');
-    }
+	footerProgress: function() {
+		return Session.get('footerProgress');
+	}
 });

@@ -1,4 +1,4 @@
-GetActive = new Meteor.Collection( 'getActive' );
+GetActive = new Meteor.Collection('getActive');
 
 GetActive.allow({
   insert: () => true,
@@ -42,4 +42,4 @@ let GetActiveSchema = new SimpleSchema({
   }
 });
 
-GetActive.attachSchema( GetActiveSchema );
+GetActive.attachSchema(GetActiveSchema);

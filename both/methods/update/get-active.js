@@ -1,13 +1,15 @@
 Meteor.methods({
-  updateProgramLastCompleted( _id ) {
-    check( _id, String );
+  updateProgramLastCompleted(_id) {
+    check(_id, String);
 
     try {
-      var programId = GetActive.update( _id, {
-        $set: {lastCompleted: new Date()}
+      var programId = GetActive.update(_id, {
+        $set: {
+          lastCompleted: new Date()
+        }
       });
       return programId;
-    } catch( exception ) {
+    } catch (exception) {
       return exception;
     }
   }

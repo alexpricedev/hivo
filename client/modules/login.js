@@ -1,12 +1,12 @@
-let login = ( options ) => {
-  _validate( options.form, options.template );
+let login = (options) => {
+  _validate(options.form, options.template);
 };
 
-let _validate = ( form, template ) => {
-  $( form ).validate( _validation( template ) );
+let _validate = (form, template) => {
+  $(form).validate(_validation(template));
 };
 
-let _validation = ( template ) => {
+let _validation = (template) => {
   return {
     rules: {
       emailAddress: {
@@ -26,19 +26,21 @@ let _validation = ( template ) => {
         required: 'Need a password here.'
       }
     },
-    submitHandler() { _handleLogin( template ); }
+    submitHandler() {
+      _handleLogin(template);
+    }
   };
 };
 
-let _handleLogin = ( template ) => {
-  let email    = template.find( '[name="emailAddress"]' ).value,
-      password = template.find( '[name="password"]' ).value;
+let _handleLogin = (template) => {
+  let email = template.find('[name="emailAddress"]').value,
+    password = template.find('[name="password"]').value;
 
-  Meteor.loginWithPassword( email, password, ( error ) => {
-    if ( error ) {
-      Bert.alert( error.reason, 'warning' );
+  Meteor.loginWithPassword(email, password, (error) => {
+    if (error) {
+      Bert.alert(error.reason, 'warning');
     } else {
-      Bert.alert( 'Logged in!', 'success' );
+      Bert.alert('Logged in!', 'success');
     }
   });
 };

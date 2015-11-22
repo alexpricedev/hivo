@@ -1,4 +1,4 @@
-Modals = new Meteor.Collection( 'modals' );
+Modals = new Meteor.Collection('modals');
 
 Modals.allow({
   insert: () => false,
@@ -27,4 +27,4 @@ let ModalSchema = new SimpleSchema({
   }
 });
 
-Modals.attachSchema( ModalSchema );
+Modals.attachSchema(ModalSchema);

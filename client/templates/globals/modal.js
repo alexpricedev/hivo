@@ -1,9 +1,9 @@
-Template.modal.onCreated( () => {
-  Template.instance().subscribe( 'modals' );
+Template.modal.onCreated(() => {
+  Template.instance().subscribe('modals');
 });
 
 Template.modal.helpers({
   modalObject() {
-      return Modals.findOne('osXNmfxu27tM2v3B4');
+    return Modals.findOne('osXNmfxu27tM2v3B4');
   }
 });

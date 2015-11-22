@@ -5,31 +5,31 @@
     <hr>
 
     <table class="table table-striped">
-      <thead>
-        <tr>
-          <th>Programs</th>
-          <th>Last Completed</th>
-        </tr>
-      </thead>
-      <tbody>
-          {{#each programs}}
+        <thead>
             <tr>
-              <td>
-                  <a href="{{pathFor path }}"
-                     title="View program">
-                      {{title}}
-                  </a>
-              </td>
-              <td>{{formatDate lastCompleted}}</td>
+                <th>Programs</th>
+                <th>Last Completed</th>
             </tr>
+        </thead>
+        <tbody>
+            {{#each programs}}
+                <tr>
+                    <td>
+                        <a href="{{pathFor path }}" title="View program">
+                          {{title}}
+                      </a>
+                    </td>
+                    <td>{{formatDate lastCompleted}}</td>
+                </tr>
             {{else}}
                 <tr>
-                	<td colspan="2">
-                        You are not enrolled in any programs. Please speak with your counsellor about starting a new program.
+                    <td colspan="2">
+                        You are not enrolled in any programs. Please speak with your counsellor about starting
+                        a new program.
                     </td>
                 </tr>
             {{/each}}
-      </tbody>
+        </tbody>
     </table>
 
 </template>

@@ -12,8 +12,8 @@ Template.registerHelper('getEmailAddress', function(user) {
 
 Template.registerHelper('formatDate', function(date) {
   if (date) {
-      return Spacebars.SafeString('<span class="label label-info">' + moment(date).fromNow() + '</span>');
+    return Spacebars.SafeString('<span class="label label-info">' + moment(date).fromNow() + '</span>');
   } else {
-      return Spacebars.SafeString('<span class="label label-danger">Never</span>');
+    return Spacebars.SafeString('<span class="label label-danger">Never</span>');
   }
 });

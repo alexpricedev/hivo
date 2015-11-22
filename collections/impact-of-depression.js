@@ -1,4 +1,4 @@
-ImpactOfDepression = new Meteor.Collection( 'impactOfDepression' );
+ImpactOfDepression = new Meteor.Collection('impactOfDepression');
 
 ImpactOfDepression.allow({
   insert: () => true,
@@ -52,11 +52,11 @@ let ImpactOfDepressionSchema = new SimpleSchema({
     label: "Has the exercise been completed?",
     optional: true,
     autoValue: function() {
-        if (this.isUpdate ) {
-            return true;
-        }
+      if (this.isUpdate) {
+        return true;
+      }
     }
   }
 });
 
-ImpactOfDepression.attachSchema( ImpactOfDepressionSchema );
+ImpactOfDepression.attachSchema(ImpactOfDepressionSchema);

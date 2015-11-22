@@ -6,28 +6,27 @@
     <hr style="clear: both;">
 
     <table class="table table-striped">
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Email Address</th>
-          <th>Last Logged In</th>
-        </tr>
-      </thead>
-      <tbody>
-          {{#each patients}}
+        <thead>
             <tr>
-                <td><a href="{{pathFor 'adminPatientOverview' _id=_id}}" title="View profile">{{getFullName this}}</a></td>
-                <td>{{getEmailAddress this}}</td>
-                <td>
-                    {{#if status.online}}
-                        <span class="label label-success">Active now</span>
-                    {{else}}
-                        {{formatDate status.lastLogin.date}}
-                    {{/if}}
-                </td>
+                <th>Name</th>
+                <th>Email Address</th>
+                <th>Last Logged In</th>
             </tr>
-          {{/each}}
-      </tbody>
+        </thead>
+        <tbody>
+            {{#each patients}}
+                <tr>
+                    <td><a href="{{pathFor 'adminPatientOverview' _id=_id}}" title="View profile">{{getFullName this}}</a>
+                    </td>
+                    <td>{{getEmailAddress this}}</td>
+                    <td>
+                        {{#if status.online}}
+                        <span class="label label-success">Active now</span>
+                        {{else}} {{formatDate status.lastLogin.date}} {{/if}}
+                    </td>
+                </tr>
+            {{/each}}
+        </tbody>
     </table>
 
 </template>

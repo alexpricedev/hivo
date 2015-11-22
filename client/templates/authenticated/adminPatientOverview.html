@@ -20,29 +20,28 @@
     <hr>
 
     <table class="table table-striped">
-      <thead>
-        <tr>
-          <th>Programs</th>
-          <th>Last Completed</th>
-        </tr>
-      </thead>
-      <tbody>
-          {{#each programs}}
+        <thead>
             <tr>
-              <td>
-                  {{title}}
-              </td>
-              <td>{{formatDate lastCompleted}}</td>
+                <th>Programs</th>
+                <th>Last Completed</th>
             </tr>
+        </thead>
+        <tbody>
+            {{#each programs}}
+                <tr>
+                    <td>
+                        {{title}}
+                    </td>
+                    <td>{{formatDate lastCompleted}}</td>
+                </tr>
             {{else}}
                 <tr>
-                	<td colspan="2">
+                    <td colspan="2">
                         They are not enrolled in any programs.
                     </td>
                 </tr>
             {{/each}}
-      </tbody>
+        </tbody>
     </table>
-
 
 </template>
