@@ -1,6 +1,7 @@
 Template.adminPatientOverview.onCreated(() => {
   Template.instance().subscribe('patient', FlowRouter.current().params._id);
   Template.instance().subscribe('programs', FlowRouter.current().params._id);
+  Template.instance().subscribe('exercises', FlowRouter.current().params._id);
 });
 
 Template.adminPatientOverview.helpers({
@@ -10,7 +11,7 @@ Template.adminPatientOverview.helpers({
     });
   },
   programs: function() {
-    return GetActive.find({
+    return Programs.find({
       userId: FlowRouter.current().params._id
     }).fetch();
   }
@@ -20,7 +21,11 @@ Template.adminPatientOverview.events({
   'click .enroll': function(event) {
     event.preventDefault();
 
-    Meteor.call('enrollInGetActive', FlowRouter.current().params._id)
+    Meteor.call(
+			'enroll',
+			FlowRouter.current().params._id,
+			event.target.getAttribute('data-program')
+		);
 
     Bert.alert('Enroll successful', 'success', 'growl-top-right');
   }

@@ -1,4 +1,4 @@
-<template name="howIsDepressionAffectingYou">
+<template name="impactOfDepression">
 
     {{#if isEnrolled}}
 
@@ -26,21 +26,21 @@
                 <div class="col-md-4">
                     <label for="behavioural">Behavioural</label>
                     <textarea class="form-control" id="behavioural" rows="3" placeholder="Behavioural changes..."
-                              value="{{exercise.behavioural}}"></textarea>
+                              value="{{exercise.exerciseData.behavioural}}"></textarea>
                     <span class="help-block">Write in here the things you have stopped doing or now do differently</span>
                 </div>
 
                 <div class="col-md-4">
                     <label for="thoughts">Thoughts</label>
                     <textarea class="form-control" id="thoughts" rows="3" placeholder="Changes in thought..."
-                              value="{{exercise.thoughts}}"></textarea>
+                              value="{{exercise.exerciseData.thoughts}}"></textarea>
                     <span class="help-block">Write in here the specific types of unhelpful thoughts that go through your head</span>
                 </div>
 
                 <div class="col-md-4">
                     <label for="physical">Physical</label>
                     <textarea class="form-control" id="physical" rows="3" placeholder="Physical changes..."
-                              value="{{exercise.physical}}"></textarea>
+                              value="{{exercise.exerciseData.physical}}"></textarea>
                     <span class="help-block">Write in here the physical changes you have noticed</span>
                 </div>
 

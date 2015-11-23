@@ -1,13 +1,14 @@
 Template.depression.onCreated(() => {
-  Template.instance().subscribe('impactOfDepression', Meteor.userId());
+  Template.instance().subscribe('exercises', Meteor.userId(), 'depression');
 });
 
 Template.depression.onRendered(function() {});
 
 Template.depression.helpers({
   exercises: function() {
-    return ImpactOfDepression.find({
-      userId: Meteor.userId()
+    return Exercises.find({
+      userId: Meteor.userId(),
+			program: 'depression'
     });
   }
 });

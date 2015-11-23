@@ -50,11 +50,11 @@ authenticatedRoutes.route('/depression', {
   }
 });
 
-authenticatedRoutes.route('/depression/how-is-depression-affecting-you', {
-  name: 'how-is-depression-affecting-you',
+authenticatedRoutes.route('/depression/impact-of-depression', {
+  name: 'impact-of-depression',
   action() {
     BlazeLayout.render('default', {
-      yield: 'howIsDepressionAffectingYou',
+      yield: 'impactOfDepression',
       footer: 'footer'
     });
   }

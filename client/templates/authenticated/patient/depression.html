@@ -12,12 +12,22 @@
         <div class="row">
             <div class="col-md-6">
                 <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>
+                                Exercises
+                                <span class="label label-default label-square pull-right">Locked</span>
+                                <span class="label label-primary label-square pull-right">Next</span>
+                                <span class="label label-success label-square pull-right">Complete</span>
+                            </th>
+                        </tr>
+                    </thead>
                     <tbody>
                         {{#each exercises}}
                             <tr>
                                 <td>
                                     <a class="btn btn-block{{#if complete}} btn-success{{else}} btn-default{{/if}}"
-                                    href="{{pathFor path}}">
+                                    href="{{pathFor route}}">
                                         {{title}}
                                     </a>
                                 </td>

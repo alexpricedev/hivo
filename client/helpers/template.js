@@ -18,14 +18,16 @@ Template.registerHelper('formatDate', function(date) {
   }
 });
 
-// TODO: Make programs more general
-Template.registerHelper('isEnrolled', function(programPath) {
+Template.registerHelper('isEnrolled', () => {
+	let route = Modules.client.getRoute();
+
 	// TODO: not sure about this...
-  Template.instance().subscribe('programs', Meteor.userId());
+  Template.instance().subscribe('program', Meteor.userId(), route);
 
-	var programs = GetActive.find({
-		userId: Meteor.userId()
-	}).fetch();
+	var programs = Programs.findOne({
+		userId: Meteor.userId(),
+		route: route
+	});
 
-	return programs.length > 0 ? true : false;
+	return programs ? true : false;
 });

@@ -1,7 +1,7 @@
 Meteor.publish('programs', function(userId) {
   check(userId, String);
 
-  return GetActive.find({
+  return Programs.find({
     userId: userId
   });
 });
