@@ -19,12 +19,9 @@ Template.registerHelper('formatDate', function(date) {
 });
 
 Template.registerHelper('isEnrolled', () => {
-	let route = Modules.client.getRoute();
+	let route = Modules.client.getProgram();
 
-	// TODO: not sure about this...
-  Template.instance().subscribe('program', Meteor.userId(), route);
-
-	var programs = Programs.findOne({
+	let programs = Programs.findOne({
 		userId: Meteor.userId(),
 		route: route
 	});

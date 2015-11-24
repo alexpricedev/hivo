@@ -3,7 +3,7 @@ Template.patientIndex.onCreated(() => {
 });
 
 Template.patientIndex.helpers({
-  programs: function() {
+  programs() {
     return Programs.find({
       userId: Meteor.userId()
     });

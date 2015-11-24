@@ -1,12 +1,12 @@
 Template.adminAddPatient.onCreated(() => {
-  Template.instance().subscribe('patients');
+  Template.instance().subscribe('patients', Meteor.userId());
 });
 
 Template.adminAddPatient.events({
-  'submit form': function(event) {
+  'submit form': (event) => {
     event.preventDefault();
 
-		var props = {
+		let props = {
 			email: event.target.email.value,
 			first: event.target.first.value,
 			last: event.target.last.value,

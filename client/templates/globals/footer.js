@@ -1,10 +1,10 @@
-Template.footer.onCreated( () => {
+Template.footer.onCreated(() => {
 	Template.instance().subscribe('programs', Meteor.userId());
 });
 
 Template.footer.helpers({
-	footerProgress: () => {
-		let route = Modules.client.getRoute();
+	footerProgress() {
+		let route = Modules.client.getProgram();
 
 		let program = Programs.findOne({
 			userId: Meteor.userId(),

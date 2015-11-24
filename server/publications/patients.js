@@ -1,6 +1,8 @@
-Meteor.publish('patients', function() {
+Meteor.publish('patients', (userId) => {
+	check(userId, String);
+
   return Meteor.users.find({
-    'profile.counsellor._id': this.userId
+    'profile.counsellor._id': userId
   }, {
     fields: {
       emails: 1,

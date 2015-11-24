@@ -3,7 +3,7 @@ Meteor.methods({
     check(modalProps, Object);
 
     try {
-      var modalId = Modals.update(modalProps._id, {
+      let modalId = Modals.update(modalProps._id, {
         $set: modalProps
       });
       return modalId;

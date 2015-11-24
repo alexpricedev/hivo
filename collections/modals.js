@@ -21,9 +21,9 @@ let ModalSchema = new SimpleSchema({
     type: String,
     label: "The text that will appear in the modal window."
   },
-  "userHasSeen": {
-    type: Boolean,
-    label: "Has the user seen this modal window?"
+  "slug": {
+    type: String,
+    label: "The slug used to find this document."
   }
 });
 

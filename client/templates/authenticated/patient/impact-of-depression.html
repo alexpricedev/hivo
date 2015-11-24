@@ -1,58 +1,71 @@
 <template name="impactOfDepression">
 
-    {{#if isEnrolled}}
+    {{#if Template.subscriptionsReady}}
 
-        <ol class="breadcrumb">
-            <li><a href="{{pathFor 'index' }}">Dashboard</a></li>
-            <li><a href="{{pathFor 'depression' }}">Depression</a></li>
-            <li class="active">How Is Depression Affecting You?</li>
-        </ol>
+        {{#if isEnrolled}}
 
-        <h3>Get Active, Feel Good Depression Program</h3>
+            <ol class="breadcrumb">
+                <li><a href="{{pathFor 'index' }}">Dashboard</a></li>
+                <li><a href="{{pathFor 'depression' }}">Depression</a></li>
+                <li class="active">How Is Depression Affecting You?</li>
+            </ol>
 
-        <h4>
-            Exercise One - How Is Your Depression and Low Mood Affecting You?
-            <small>
-                <a href="#" data-toggle="modal" data-target="#modal">
-                    <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
-                </a>
-            </small>
-        </h4>
+            <h3>Get Active, Feel Good Depression Program</h3>
 
-        <hr>
+            <h4>
+                Exercise One - How Is Your Depression and Low Mood Affecting You?
+                <small>
+                    <a href="#" data-toggle="modal" data-target="#modal">
+                        <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
+                    </a>
+                </small>
+            </h4>
 
-        <form>
-            <div class="row">
-                <div class="col-md-4">
-                    <label for="behavioural">Behavioural</label>
-                    <textarea class="form-control" id="behavioural" rows="3" placeholder="Behavioural changes..."
-                              value="{{exercise.exerciseData.behavioural}}"></textarea>
-                    <span class="help-block">Write in here the things you have stopped doing or now do differently</span>
+            <hr>
+
+            <form>
+                <div class="row">
+                    <div class="col-md-4">
+                        <label for="behavioural">Behavioural</label>
+                        <textarea class="form-control" id="behavioural" rows="3" placeholder="Behavioural changes..."
+                                  value="{{exercise.exerciseData.behavioural}}"></textarea>
+                        <span class="help-block">Write in here the things you have stopped doing or now do differently</span>
+                    </div>
+
+                    <div class="col-md-4">
+                        <label for="thoughts">Thoughts</label>
+                        <textarea class="form-control" id="thoughts" rows="3" placeholder="Changes in thought..."
+                                  value="{{exercise.exerciseData.thoughts}}"></textarea>
+                        <span class="help-block">Write in here the specific types of unhelpful thoughts that go through your head</span>
+                    </div>
+
+                    <div class="col-md-4">
+                        <label for="physical">Physical</label>
+                        <textarea class="form-control" id="physical" rows="3" placeholder="Physical changes..."
+                                  value="{{exercise.exerciseData.physical}}"></textarea>
+                        <span class="help-block">Write in here the physical changes you have noticed</span>
+                    </div>
+
+                    <div class="col-md-12">
+                        <hr>
+                        <button type="submit" class="btn btn-primary pull-right">Next <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                        </button>
+                        <br><br><br>
+                    </div>
                 </div>
+            </form>
 
-                <div class="col-md-4">
-                    <label for="thoughts">Thoughts</label>
-                    <textarea class="form-control" id="thoughts" rows="3" placeholder="Changes in thought..."
-                              value="{{exercise.exerciseData.thoughts}}"></textarea>
-                    <span class="help-block">Write in here the specific types of unhelpful thoughts that go through your head</span>
-                </div>
+            {{>modal modal=exerciseIntroduction}}
 
-                <div class="col-md-4">
-                    <label for="physical">Physical</label>
-                    <textarea class="form-control" id="physical" rows="3" placeholder="Physical changes..."
-                              value="{{exercise.exerciseData.physical}}"></textarea>
-                    <span class="help-block">Write in here the physical changes you have noticed</span>
-                </div>
+        {{else}}
 
-                <div class="col-md-12">
-                    <hr>
-                    <button type="submit" class="btn btn-primary pull-right">Next <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-                    </button>
-                </div>
-            </div>
-        </form>
+            {{>notFound}}
+
+        {{/if}}
 
     {{else}}
-        {{>notFound}}
+
+        {{>loading}}
+
     {{/if}}
 </template>

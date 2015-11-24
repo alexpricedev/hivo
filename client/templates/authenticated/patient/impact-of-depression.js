@@ -1,32 +1,38 @@
-Template.impactOfDepression.onCreated( () => {
+Template.impactOfDepression.onCreated(() => {
+	let userId = Meteor.userId();
+
 	Template.instance().subscribe(
 		'exercises',
-		Meteor.userId(),
-		Modules.client.getRoute()
+		userId,
+		Modules.client.getProgram()
 	);
-	Template.instance().subscribe('programs', Meteor.userId());
+	Template.instance().subscribe('programs', userId);
+	Template.instance().subscribe('modals', 'impact-of-depression');
 });
 
-// TODO: Remove this
-Template.impactOfDepression.onRendered(function() {
-	if (!Session.get('depressionExerciseOneModalSeen')) {
-		$('#modal').modal('show');
-		Session.set('depressionExerciseOneModalSeen', true);
-	}
+Template.impactOfDepression.onRendered(() => {
+		if (true) {
+			Meteor.setTimeout(function() {
+				$('#modal').modal('show');
+			}, 200)
+		}
 });
 
 Template.impactOfDepression.helpers({
-	exercise: function() {
-		var exercise = Exercises.findOne({ userId: Meteor.userId() });
+	exercise() {
+		let exercise = Exercises.findOne({ userId: Meteor.userId() });
 		return exercise ? exercise : null;
+	},
+	exerciseIntroduction() {
+		return Modals.findOne({ slug: 'impact-of-depression' });
 	}
 });
 
 Template.impactOfDepression.events({
-	'submit form': function(event) {
+	'submit form': (event) => {
 		event.preventDefault();
 
-		let exerciseProps= {
+		let exerciseProps = {
 			userId: Meteor.userId(),
 			exerciseData: {
 				behavioural: event.target.behavioural.value,
@@ -41,9 +47,9 @@ Template.impactOfDepression.events({
 		});
 
 		Meteor.call('updateImpactOfDepression', exercise._id, exerciseProps);
-		Bert.alert( 'Update successful', 'success', 'growl-top-right' );
+		Bert.alert('Update successful', 'success', 'growl-top-right');
 
-		let programRoute = Modules.client.getRoute();
+		let programRoute = Modules.client.getProgram();
 
 		// TODO: Look at storing the current program in a session var
 		// TODO: Look at calling these from an update callback

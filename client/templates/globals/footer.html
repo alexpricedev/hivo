@@ -3,9 +3,11 @@
     <footer class="footer">
         <div class="container">
             <div class="progress">
-                <div class="progress-bar progress-bar-striped progress-bar-success" style="width: {{footerProgress}}%">
-                    {{footerProgress}}%
-                </div>
+                {{#if Template.subscriptionsReady}}
+                    <div class="progress-bar progress-bar-striped progress-bar-success" style="width: {{footerProgress}}%">
+                        {{footerProgress}}%
+                    </div>
+                {{/if}}
             </div>
         </div>
     </footer>

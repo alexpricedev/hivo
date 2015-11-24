@@ -1,8 +1,8 @@
-Meteor.publish('patient', function(_id) {
-  check(_id, String);
+Meteor.publish('patient', (userId) => {
+  check(userId, String);
 
   return Meteor.users.find({
-    _id: _id
+    _id: userId
   }, {
     fields: {
       emails: 1,

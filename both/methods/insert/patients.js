@@ -1,5 +1,5 @@
 Meteor.methods({
-  insertPatient: function(props) {
+  insertPatient(props) {
 		check(props, Object);
 
 		let users = Meteor.users.find({
@@ -19,12 +19,12 @@ Meteor.methods({
 		if (userExists) {
 			Bert.alert('A user with that email address already exists.', 'danger', 'fixed-top', 'fa-envelope');
 		} else {
-			var name = {
+			let name = {
 				first: props.first,
 				last: props.last
 			};
 
-			var password = Random.secret([16]);
+			let password = Random.secret([16]);
 
 			// TODO: assign random password to user
 			Accounts.createUser({

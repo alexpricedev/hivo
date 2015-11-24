@@ -1,4 +1,4 @@
-Meteor.publish('program', function(userId, route) {
+Meteor.publish('program', (userId, route) => {
   check(userId, String);
   check(route, String);
 

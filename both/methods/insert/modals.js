@@ -1,5 +1,5 @@
 Meteor.methods({
-  insertModal: function(modal) {
+  insertModal(modal) {
     check(modal, ModalSchema);
 
     try {
