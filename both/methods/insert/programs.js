@@ -3,32 +3,29 @@ Meteor.methods({
     check(userId, String);
     check(route, String);
 
-		// TODO: check route is in programTitles
-		// TODO: rename programTitles to something better
-
-    let emptyExercise = { userId: userId };
-
-		let exerciseOneId = Meteor.call(
-			'insertImpactOfDepression',
-			emptyExercise,
-			route
+		let index = lodash.findIndex(
+			Modules.both.availiblePrograms,
+			{route: route}
 		);
 
-		let programTitles= {
-			depression: 'Get Active, Feel Good - Depression'
+		if (index >= 0) {
+			let emptyExercise = { userId: userId };
+
+			let exerciseOneId = Meteor.call(
+				'insertImpactOfDepression',
+				emptyExercise,
+				route
+			);
+
+			let program = lodash.clone(Modules.both.availiblePrograms[index]);
+			program.userId = userId;
+			program.exercises =[exerciseOneId];
+
+			try {
+				return Programs.insert(program);
+			} catch (exception) {
+				return exception;
+			}
 		}
-
-    let program = {
-      userId: userId,
-			title: programTitles[route],
-			route: route,
-      exercises: [exerciseOneId]
-    }
-
-    try {
-      return Programs.insert(program);
-    } catch (exception) {
-      return exception;
-    }
   }
 });

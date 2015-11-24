@@ -1,14 +1,14 @@
 Programs = new Meteor.Collection('programs');
 
 Programs.allow({
-  insert: () => true,
-  update: () => true,
+  insert: () => false,
+  update: () => false,
   remove: () => false
 });
 
 Programs.deny({
-  insert: () => false,
-  update: () => false,
+  insert: () => true,
+  update: () => true,
   remove: () => true
 });
 
@@ -20,6 +20,16 @@ let ProgramsSchema = new SimpleSchema({
   "title": {
     type: String,
     label: "The title of the program.",
+    optional: true
+  },
+  "description": {
+    type: String,
+    label: "The description of this program that will be displayed to the councillor.",
+    optional: true
+  },
+  "tags": {
+    type: [String],
+    label: "A list of tags related to this program.",
     optional: true
   },
   "route": {

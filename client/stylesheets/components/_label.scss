@@ -1,0 +1,15 @@
+// ==============================================
+// Bootstrap label extension
+// ==============================================
+
+$program-tags:
+    anxiety       #27ae60,
+    depression    #f39c12,
+    cognitive     #e74c3c
+;
+
+@each $tag in $program-tags {
+    .label-#{nth($tag, 1)} {
+        background-color : nth($tag, 2);
+    }
+}

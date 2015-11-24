@@ -1,14 +1,14 @@
 Exercises = new Meteor.Collection('exercises');
 
 Exercises.allow({
-  insert: () => true,
-  update: () => true,
+  insert: () => false,
+  update: () => false,
   remove: () => false
 });
 
 Exercises.deny({
-  insert: () => false,
-  update: () => false,
+  insert: () => true,
+  update: () => true,
   remove: () => true
 });
 

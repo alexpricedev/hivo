@@ -21,11 +21,12 @@ Template.adminPatientOverview.helpers({
     }).fetch();
 
 		enrolledPrograms.forEach((enrolledProgram) => {
-			availiblePrograms.forEach((availibleProgram, n) => {
-				if (enrolledProgram.route === availibleProgram.route) {
-					delete availiblePrograms[n];
+			lodash.remove(
+				availiblePrograms,
+				function(availibleProgram) {
+					return enrolledProgram.route === availibleProgram.route;
 				}
-			});
+			);
 		});
 
 		return availiblePrograms;

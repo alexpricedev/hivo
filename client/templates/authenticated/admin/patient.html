@@ -1,6 +1,7 @@
 <template name="adminPatientOverview">
 
     {{#if Template.subscriptionsReady}}
+
         {{#if isAdmin}}
 
             <h4>{{getFullName patient}}</h4>
@@ -44,8 +45,9 @@
                             <div class="caption">
                                 <h3>{{title}}</h3>
                                 <p>
-                                    <span class="label label-info">Depression</span>
-                                    <span class="label label-warning">Cognitive behaviour therapy</span>
+                                    {{#each tags}}
+                                        <span class="label label-{{this}}">{{this}}</span>
+                                    {{/each}}
                                 </p>
                                 <p>{{description}}</p>
                                 <p><a href="#enroll" class="btn btn-primary enroll" data-program="{{route}}">Enroll patient</a></p>
