@@ -1,30 +1,36 @@
-Template.impactOfDepression.onCreated(() => {
-	let userId = Meteor.userId();
+Template.impactOfDepression.onCreated(function() {
+	this.userId = Meteor.userId();
+	this.program = Modules.client.getProgram();
+	this.exercise = Modules.client.getExercise();
 
-	Template.instance().subscribe(
-		'exercises',
-		userId,
-		Modules.client.getProgram()
-	);
-	Template.instance().subscribe('programs', userId);
-	Template.instance().subscribe('modals', 'impact-of-depression');
+	this.subscribe('programs', this.userId);
+	this.subscribe('modals', this.exercise);
+	this.subscribe('exercises', this.userId, this.program);
 });
 
-Template.impactOfDepression.onRendered(() => {
-		if (true) {
-			Meteor.setTimeout(function() {
-				$('#modal').modal('show');
-			}, 200)
+Template.impactOfDepression.onRendered(function() {
+	let wait = () => {
+		if (this.subscriptionsReady()){
+			Modules.client.showModalOnRender(this.exercise);
+		} else {
+			setTimeout(wait, 100);
 		}
+	};
+	wait();
 });
 
 Template.impactOfDepression.helpers({
 	exercise() {
-		let exercise = Exercises.findOne({ userId: Meteor.userId() });
+		let exercise = Exercises.findOne({
+			userId: Template.instance().userId,
+			route: Template.instance().exercise
+		});
 		return exercise ? exercise : null;
 	},
 	exerciseIntroduction() {
-		return Modals.findOne({ slug: 'impact-of-depression' });
+		return Modals.findOne({
+			slug: Template.instance().exercise
+		});
 	}
 });
 
@@ -32,8 +38,10 @@ Template.impactOfDepression.events({
 	'submit form': (event) => {
 		event.preventDefault();
 
+		let userId = Template.instance().userId;
+
 		let exerciseProps = {
-			userId: Meteor.userId(),
+			userId: userId,
 			exerciseData: {
 				behavioural: event.target.behavioural.value,
 				thoughts: event.target.thoughts.value,
@@ -42,24 +50,11 @@ Template.impactOfDepression.events({
 		};
 
 		let exercise = Exercises.findOne({
-			userId: Meteor.userId(),
-			route: 'impact-of-depression'
+			userId: userId,
+			route: Template.instance().exercise
 		});
 
-		Meteor.call('updateImpactOfDepression', exercise._id, exerciseProps);
-		Bert.alert('Update successful', 'success', 'growl-top-right');
-
-		let programRoute = Modules.client.getProgram();
-
-		// TODO: Look at storing the current program in a session var
-		// TODO: Look at calling these from an update callback
-		var program = Programs.findOne({
-			userId: Meteor.userId(),
-			route: programRoute
-		});
-		Meteor.call('updateProgramLastCompleted', program._id);
-		Meteor.call('updateProgramProgress', program._id, 10);
-
-		FlowRouter.go(programRoute);
+		// 10% complete
+		Modules.client.updateExercise(exercise, exerciseProps, 10);
 	}
 });

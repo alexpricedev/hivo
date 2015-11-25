@@ -1,5 +1,5 @@
-Template.adminAddPatient.onCreated(() => {
-  Template.instance().subscribe('patients', Meteor.userId());
+Template.adminAddPatient.onCreated(function() {
+  this.subscribe('patients', Meteor.userId());
 });
 
 Template.adminAddPatient.events({

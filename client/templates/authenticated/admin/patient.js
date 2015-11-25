@@ -1,6 +1,7 @@
-Template.adminPatientOverview.onCreated(() => {
-  Template.instance().subscribe('patient', FlowRouter.current().params._id);
-  Template.instance().subscribe('programs', FlowRouter.current().params._id);
+Template.adminPatientOverview.onCreated(function() {
+	let patientId = FlowRouter.current().params._id;
+  this.subscribe('patient', patientId);
+  this.subscribe('programs', patientId);
 });
 
 Template.adminPatientOverview.helpers({

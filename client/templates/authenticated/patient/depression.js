@@ -1,5 +1,5 @@
-Template.depression.onCreated(() => {
-  Template.instance().subscribe('exercises', Meteor.userId(), 'depression');
+Template.depression.onCreated(function() {
+  this.subscribe('exercises', Meteor.userId(), 'depression');
 });
 
 Template.depression.helpers({

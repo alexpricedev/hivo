@@ -1,5 +1,5 @@
 Meteor.methods({
-  updateImpactOfDepression(_id, exercise) {
+  updateExercise(_id, exercise) {
     check(_id, String);
     check(exercise, Exercises.simpleSchema());
 

@@ -18,6 +18,10 @@ Template.registerHelper('formatDate', function(date) {
   }
 });
 
+Template.registerHelper('formatDateString', function(date) {
+	return moment(date).format('Do MMMM YYYY');
+});
+
 Template.registerHelper('isEnrolled', () => {
 	let route = Modules.client.getProgram();
 

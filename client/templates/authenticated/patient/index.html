@@ -1,35 +1,42 @@
 <template name="patientIndex">
 
-    <h4>Your Dashboard</h4>
+    {{#if Template.subscriptionsReady}}
 
-    <hr>
+        <h4>Your Dashboard</h4>
 
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th>Programs</th>
-                <th>Last Completed</th>
-            </tr>
-        </thead>
-        <tbody>
-            {{#each programs}}
+        <hr>
+
+        <table class="table table-striped">
+            <thead>
                 <tr>
-                    <td>
-                        <a href="{{pathFor route}}" title="View program">
-                          {{title}}
-                      </a>
-                    </td>
-                    <td>{{formatDate lastCompleted}}</td>
+                    <th>Programs</th>
+                    <th>Last Completed</th>
                 </tr>
-            {{else}}
-                <tr>
-                    <td colspan="2">
-                        You are not enrolled in any programs. Please speak with your counsellor about starting
-                        a new program.
-                    </td>
-                </tr>
-            {{/each}}
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+                {{#each programs}}
+                    <tr>
+                        <td>
+                            <a href="{{pathFor route}}" title="View program">
+                              {{title}}
+                          </a>
+                        </td>
+                        <td>{{formatDate lastCompleted}}</td>
+                    </tr>
+                {{else}}
+                    <tr>
+                        <td colspan="2">
+                            You are not enrolled in any programs. Please speak with your counsellor about starting
+                            a new program.
+                        </td>
+                    </tr>
+                {{/each}}
+            </tbody>
+        </table>
 
+    {{else}}
+
+        {{>loading}}
+
+    {{/if}}
 </template>

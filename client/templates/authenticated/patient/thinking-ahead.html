@@ -1,0 +1,87 @@
+<template name="thinkingAhead">
+
+    {{#if Template.subscriptionsReady}}
+
+        {{#if isEnrolled}}
+
+            <ol class="breadcrumb">
+                <li><a href="{{pathFor 'index' }}">Dashboard</a></li>
+                <li><a href="{{pathFor 'depression' }}">Depression</a></li>
+                <li class="active">Thinking Ahead</li>
+            </ol>
+
+            <h3>Get Active, Feel Good Depression Program</h3>
+
+            <h4>
+                Exercise Two - Thinking ahead
+                <small>
+                    <a href="#" data-toggle="modal" data-target="#modal">
+                        <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
+                    </a>
+                </small>
+            </h4>
+
+            <hr>
+
+            <div class="alert alert-info" role="alert">Use this page to list what you want to achive from this program. Don't worry if you can't think of many, you can come back and add new goals in the future.</div>
+
+            <form>
+                <div class="row goals">
+                    {{#each exercise.exerciseData.goals}}
+                        <div class="col-md-6 goal">
+                            <div class="well well-sm clearfix">
+                                <div class="form-group">
+                                    <label for="date">Today's date</label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                                        <input class="form-control datepicker" id="date{{@index}}" type="text" placeholder="Please select today's date" value="{{formatDateString date}}"/>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="goal">Details about your goal</label>
+                                    <textarea class="form-control" id="goal{{@index}}" rows="4" placeholder="Write some details about the goal you want to achive and what you want to get out of the treatment."
+                                                        value="{{goal}}"></textarea>
+                                    <span class="help-block">Write in here the specific goals and achievements you wish to attain from these program.</span>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>I can do this now</label><br>
+                                    <select class="form-control" id="score{{@index}}">
+                                        {{#each scoreOptions score}}
+                                            <option value="{{@index}}" {{selected}}>
+                                                {{text}}
+                                            </option>
+                                        {{/each}}
+                                    </select>
+                                    <span class="help-block">Pick an option that represents how often you can achive this goal</span>
+                                </div>
+                            </div>
+                        </div>
+                    {{/each}}
+
+                    <div class="col-md-6 button-row">
+                        <a class="btn btn-block btn-lg btn-warning add-goal">Add another goal <span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>
+                    </div>
+                    <div class="col-md-12">
+                        <button type="submit" class="btn btn-primary pull-right">Next <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                        </button>
+                        <br><br><br>
+                    </div>
+                </div>
+            </form>
+
+            {{>modal modal=exerciseIntroduction}}
+
+        {{else}}
+
+            {{>notFound}}
+
+        {{/if}}
+
+    {{else}}
+
+        {{>loading}}
+
+    {{/if}}
+</template>

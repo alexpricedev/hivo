@@ -8,18 +8,26 @@ Meteor.methods({
 			{route: route}
 		);
 
+		// TODO: build program based on route
+
 		if (index >= 0) {
 			let emptyExercise = { userId: userId };
 
-			let exerciseOneId = Meteor.call(
+			let ex1 = Meteor.call(
 				'insertImpactOfDepression',
+				emptyExercise,
+				route
+			);
+
+			let ex2 = Meteor.call(
+				'insertThinkingAhead',
 				emptyExercise,
 				route
 			);
 
 			let program = lodash.clone(Modules.both.availiblePrograms[index]);
 			program.userId = userId;
-			program.exercises =[exerciseOneId];
+			program.exercises =[ex1, ex2];
 
 			try {
 				return Programs.insert(program);

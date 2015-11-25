@@ -59,3 +59,13 @@ authenticatedRoutes.route('/depression/impact-of-depression', {
     });
   }
 });
+
+authenticatedRoutes.route('/depression/thinking-ahead', {
+  name: 'thinking-ahead',
+  action() {
+    BlazeLayout.render('default', {
+      yield: 'thinkingAhead',
+      footer: 'footer'
+    });
+  }
+});
