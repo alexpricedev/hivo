@@ -1,52 +1,70 @@
 <template name="depression">
 
-    {{#if isEnrolled}}
+    {{#if Template.subscriptionsReady}}
 
-        <ol class="breadcrumb">
-            <li><a href="{{pathFor 'index'}}">Dashboard</a></li>
-            <li>Depression</li>
-        </ol>
+        {{#if isEnrolled}}
 
-        <h3>Get Active, Feel Good Depression Program</h3>
+            <ol class="breadcrumb">
+                <li><a href="{{pathFor 'index'}}">Dashboard</a></li>
+                <li>Depression</li>
+            </ol>
 
-        <div class="row">
-            <div class="col-md-6">
-                <table class="table table-striped">
-                    <thead>
-                        <tr>
-                            <th>
-                                Exercises
-                                <span class="label label-default label-square pull-right">Locked</span>
-                                <span class="label label-primary label-square pull-right">Next</span>
-                                <span class="label label-success label-square pull-right">Complete</span>
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {{#each exercises}}
+            <h3>Get Active, Feel Good Depression Program</h3>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <table class="table table-striped">
+                        <thead>
                             <tr>
-                                <td>
-                                    <a class="btn btn-block{{#if complete}} btn-success{{else}} btn-default{{/if}}"
-                                    href="{{pathFor route}}">
-                                        {{title}}
-                                    </a>
-                                </td>
+                                <th>
+                                    Exercises
+                                    <span class="label label-danger label-square pull-right">Locked</span>
+                                    <span class="label label-primary label-square pull-right">Next</span>
+                                    <span class="label label-success label-square pull-right">Complete</span>
+                                </th>
                             </tr>
-                        {{/each}}
-                    </tbody>
-                </table>
-            </div>
-            <div class="col-md-6">
-                <div class="jumbotron">
-                    <p>Sometimes the hardest steps are the first ones, and by getting
-                        this far you have already taken your first step to get on top
-                        of your low mood.</p>
+                        </thead>
+                        <tbody>
+                            {{#each exercises.unlocked}}
+                                <tr>
+                                    <td>
+                                        <a class="btn btn-block{{#if complete}} btn-success{{else}} btn-primary{{/if}}"
+                                        href="{{pathFor route}}">
+                                            {{title}}
+                                        </a>
+                                    </td>
+                                </tr>
+                            {{/each}}
+                            {{#each exercises.locked}}
+                                <tr>
+                                    <td>
+                                        <div class="alert alert-danger" style="text-align: center; padding-top: 6px; padding-bottom: 6px;">
+                                            <span class="glyphicon glyphicon-lock pull-left"></span>
+                                            {{title}}
+                                        </div>
+                                    </td>
+                                </tr>
+                            {{/each}}
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-md-6">
+                    <div class="jumbotron">
+                        <p>Sometimes the hardest steps are the first ones, and by getting this far you have already taken your first step to get on top of your low mood.</p>
+                    </div>
                 </div>
             </div>
-        </div>
+
+        {{else}}
+
+            {{>notFound}}
+
+        {{/if}}
 
     {{else}}
-        {{>notFound}}
+
+        {{>loading}}
+
     {{/if}}
 
 </template>

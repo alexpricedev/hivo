@@ -1,14 +1,8 @@
 Meteor.methods({
-  insertImpactOfDepression(exercise, program) {
+  insertExercise(exercise) {
     check(exercise, Exercises.simpleSchema());
-    check(program, String);
 
 		// TODO: Figure out how to validate exercise data
-
-		// Definition of 'optional' fields
-		exercise.title = 'How Is Your Depression and Low Mood Affecting You';
-		exercise.route = 'impact-of-depression';
-		exercise.program = program;
 
     try {
       return Exercises.insert(exercise);

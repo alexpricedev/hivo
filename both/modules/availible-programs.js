@@ -3,7 +3,19 @@ let availiblePrograms = [
 		title: 'Get Active, Feel Good',
 		route: 'depression',
 		description: 'Help your patient to get on top of low mood and depression with this CBT program.',
-		tags: ['depression', 'cognitive behavioural therapy']
+		tags: ['depression', 'cognitive behavioural therapy'],
+		exercises: [
+			{
+				order: 0,
+				route: 'impact-of-depression',
+				title: 'How Is Your Depression and Low Mood Affecting You'
+			},
+			{
+				order: 1,
+				route: 'thinking-ahead',
+				title: 'What Do You Want to Get Out of Treatment?'
+			}
+		]
 	},
 	{
 		title: 'Anxiety 101',

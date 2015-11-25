@@ -13,6 +13,7 @@ let updateExercise = (exercise, props, percent) => {
 	Meteor.call('updateProgramProgress', program._id, percent);
 
 	FlowRouter.go(programRoute);
+
 };
 
 Modules.client.updateExercise = updateExercise;

@@ -32,6 +32,11 @@ let ExercisesSchema = new SimpleSchema({
     label: "The ID for the parent program for this exercise.",
 		optional: true
   },
+  "order": {
+    type: Number,
+    label: "The position of this exercise in the program list.",
+		optional: true
+  },
   "modal": {
     type: String,
     label: "The ID for the modal window to display.",
@@ -50,7 +55,9 @@ let ExercisesSchema = new SimpleSchema({
     autoValue: function() {
       if (this.isUpdate) {
         return true;
-      }
+      } else if (this.isInsert) {
+        return false;
+			}
     }
   }
 });
