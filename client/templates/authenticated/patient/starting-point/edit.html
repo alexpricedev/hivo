@@ -1,0 +1,73 @@
+<template name="startingPointEdit">
+
+    {{#if Template.subscriptionsReady}}
+
+        {{#if isEnrolled}}
+
+            <ol class="breadcrumb">
+                <li><a href="{{pathFor 'index' }}">Dashboard</a></li>
+                <li><a href="{{pathFor 'depression' }}">Depression</a></li>
+                <li><a href="{{pathFor 'starting-point' }}">Starting Point</a></li>
+                <li class="active">Edit entry from {{entryDate}}</li>
+            </ol>
+
+            <h3>Get Active, Feel Good Depression Program</h3>
+
+            <h4>Exercise Three - Starting point: Editing entry from {{entryDate}}</h4>
+
+            <hr>
+
+            <form>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="alert alert-success" role="alert">
+                            <p>
+                                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                                <b>Editing entry</b> from {{entryDate}}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="what">What?</label>
+                            <textarea class="form-control" id="what" rows="4" placeholder="What did you do?" value="{{entry.what}}"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="where">Where?</label>
+                            <textarea class="form-control" id="where" rows="4" placeholder="Where were you when you did it?" value="{{entry.where}}"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="who">Who?</label>
+                            <textarea class="form-control" id="who" rows="4" placeholder="Who were you with when you did it?" value="{{entry.who}}"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12">
+                        <button type="submit" class="btn btn-primary pull-right">Save</button>
+                        <a href="{{pathFor 'starting-point'}}" class="btn btn-default pull-right" style="margin-right: 3px">Cancel</a>
+                        <br><br><br>
+                    </div>
+                </div>
+            </form>
+
+        {{else}}
+
+            {{>notFound}}
+
+        {{/if}}
+
+    {{else}}
+
+        {{>loading}}
+
+    {{/if}}
+</template>

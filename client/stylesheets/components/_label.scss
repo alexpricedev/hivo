@@ -13,3 +13,7 @@ $program-tags:
         background-color : nth($tag, 2);
     }
 }
+
+.label-as-badge {
+    border-radius: 1em;
+}

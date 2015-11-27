@@ -14,6 +14,11 @@ let availiblePrograms = [
 				order: 1,
 				route: 'thinking-ahead',
 				title: 'What Do You Want to Get Out of Treatment?'
+			},
+			{
+				order: 2,
+				route: 'starting-point',
+				title: 'My Starting Point Diary'
 			}
 		]
 	},

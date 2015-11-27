@@ -1,0 +1,128 @@
+<template name="startingPoint">
+
+    {{#if Template.subscriptionsReady}}
+
+        {{#if isEnrolled}}
+
+            <ol class="breadcrumb">
+                <li><a href="{{pathFor 'index' }}">Dashboard</a></li>
+                <li><a href="{{pathFor 'depression' }}">Depression</a></li>
+                <li class="active">Starting Point</li>
+            </ol>
+
+            <h3>Get Active, Feel Good Depression Program</h3>
+
+            <h4>
+                Exercise Three - Starting point
+                <small>
+                    <a href="#" data-toggle="modal" data-target="#modal">
+                        <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
+                    </a>
+                </small>
+            </h4>
+
+            <hr>
+
+            <div class="row">
+                <div class="col-md-6 col-md-push-6">
+                    <div class="jumbotron">
+                        <h3>Step one</h3>
+                        <h4>Record what you are currently doing</h4>
+                        <p>Using the interactive diary on this page, record what you are currently doing during the week. Start today and record over the next 7 days. There are boxes for the morning, afternoon and evening. We recommend a minimum of two things you have done for each.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-md-pull-6">
+                    <div class="clearfix" style="margin-bottom: 4px; text-align: center;">
+                        <a href="#" class="btn btn-sm btn-default disabled pull-left">
+                            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                        </a>
+                        <h4 style="display: inline-block; margin: 0; padding: 5px 0 10px;">Today</h4>
+                        <a href="#" class="btn btn-sm btn-default disabled pull-right">
+                            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                        </a>
+                    </div>
+                    <div class="well well-sm">
+                        <table class="table" style="margin: 0;">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        Morning
+                                        {{exerciseBadge 'morning'}}
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {{#each exerciseData.morning}}
+                                    <tr>
+                                        <td><a href="{{pathFor 'starting-point-edit' day=currentPage.day month=currentPage.month year=currentPage.year time='morning' entryId=entryId}}">{{what}}</a></td>
+                                    </tr>
+                                {{/each}}
+                                <tr>
+                                    <td><a class="btn btn-block btn-warning" href="{{pathFor 'starting-point-new' time='morning' }}">Add an entry</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="well well-sm">
+                        <table class="table" style="margin: 0;">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        Afternoon
+                                        {{exerciseBadge 'afternoon'}}
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {{#each exerciseData.afternoon}}
+                                    <tr>
+                                        <td><a href="{{pathFor 'starting-point-edit' day=currentPage.day month=currentPage.month year=currentPage.year time='afternoon' entryId=entryId}}">{{what}}</a></td>
+                                    </tr>
+                                {{/each}}
+                                <tr>
+                                    <td><a href="{{pathFor 'starting-point-new' time='afternoon' }}" class="btn btn-block btn-warning">Add an entry</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="well well-sm">
+                        <table class="table" style="margin: 0;">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        Evening
+                                        {{exerciseBadge 'evening'}}
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {{#each exerciseData.evening}}
+                                    <tr>
+                                        <td><a href="{{pathFor 'starting-point-edit' day=currentPage.day month=currentPage.month year=currentPage.year time='evening' entryId=entryId}}">{{what}}</a></td>
+                                    </tr>
+                                {{/each}}
+                                <tr>
+                                    <td><a href="{{pathFor 'starting-point-new' time='evening' }}" class="btn btn-block btn-warning">Add an entry</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            {{>modal modal=exerciseIntroduction}}
+
+        {{else}}
+
+            {{>notFound}}
+
+        {{/if}}
+
+    {{else}}
+
+        {{>loading}}
+
+    {{/if}}
+</template>
