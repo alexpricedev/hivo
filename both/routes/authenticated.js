@@ -80,11 +80,29 @@ authenticatedRoutes.route('/depression/starting-point', {
   }
 });
 
-authenticatedRoutes.route('/depression/starting-point/new/:time', {
+authenticatedRoutes.route('/depression/starting-point/:day/:month/:year', {
+  name: 'starting-point',
+	triggersEnter: [function(context, redirect) {
+		let p = context.params;
+		if (!moment(`${p.day}-${p.month}-${p.year}`, 'DD-MM-YYYY').isValid()) {
+			redirect('not-found');
+		}
+	}],
+  action() {
+    BlazeLayout.render('default', {
+      yield: 'startingPoint',
+      footer: 'footer'
+    });
+  }
+});
+
+authenticatedRoutes.route('/depression/starting-point/:day/:month/:year/new/:time', {
   name: 'starting-point-new',
 	triggersEnter: [function(context, redirect) {
+		let p = context.params;
 		let options = ['morning', 'afternoon', 'evening'];
-		if(!lodash.includes(options, context.params.time)) {
+		if (!lodash.includes(options, p.time)) { redirect('not-found'); }
+		if (!moment(`${p.day}-${p.month}-${p.year}`, 'DD-MM-YYYY').isValid()) {
 			redirect('not-found');
 		}
 	}],
@@ -96,7 +114,7 @@ authenticatedRoutes.route('/depression/starting-point/new/:time', {
   }
 });
 
-authenticatedRoutes.route('/depression/starting-point/edit/:day/:month/:year/:time/:entryId', {
+authenticatedRoutes.route('/depression/starting-point/:day/:month/:year/edit/:time/:entryId', {
   name: 'starting-point-edit',
 	triggersEnter: [function(context, redirect) {
 		let p = context.params;

@@ -2,13 +2,11 @@ Template.startingPointNew.onCreated(function() {
 	this.userId = Meteor.userId();
 	this.program = Modules.client.getProgram();
 	this.exercise = Modules.client.getExercise();
-/*
- *  this.page = new ReactiveVar();
- *
- *  this.autorun(() => {
- *    this.page.set(parseInt(FlowRouter.getQueryParam('page')));
- *  });
- */
+
+	this.day = FlowRouter.getParam('day');
+	this.month = FlowRouter.getParam('month');
+	this.year = FlowRouter.getParam('year');
+	this.time  = FlowRouter.getParam('time');
 
 	this.subscribe('programs', this.userId);
 	this.subscribe('modals', this.exercise);
@@ -16,7 +14,6 @@ Template.startingPointNew.onCreated(function() {
 });
 
 Template.startingPointNew.onRendered(function() {
-	// TODO: make module
 	let wait = () => {
 		if (this.subscriptionsReady()){
 			Modules.client.showModalOnRender(this.exercise);
@@ -28,86 +25,49 @@ Template.startingPointNew.onRendered(function() {
 });
 
 Template.startingPointNew.helpers({
-	timeOfDay() {
-		return Modules.both.capitalizeFirstLetter(
-			FlowRouter.getParam('time')
-		);
+	fromNow() {
+		let self = Template.instance();
+		let date = `${self.day}/${self.month}/${self.year}`;
+		let momentObj = moment(date, 'DD/MM/YYYY');
+		return Modules.client.getDateFromNow(momentObj).toLowerCase();
+	},
+	currentDate() {
+		let self = Template.instance();
+		return {
+			day: self.day,
+			month: self.month,
+			year: self.year
+		};
 	},
 	exerciseIntroduction() {
 		return Modals.findOne({
 			slug: Template.instance().exercise
 		});
 	}
-/*
- *  currentPage() {
- *    let page = Template.instance().page.get();
- *
- *    if (page) {
- *      switch(page) {
- *        case 1:
- *          return 'Today';
- *          break;
- *        case 2:
- *          return 'Tomorrow';
- *          break;
- *        default:
- *          return moment(new Date()).add(page-1, 'days').format('dddd');
- *      }
- *    }
- *
- *    return 'Today';
- *  },
- */
-/*
- *  previousPage() {
- *    let currentPage = Template.instance().page.get();
- *    let previousPage = null;
- *
- *    if (currentPage && currentPage > 1 && currentPage <= 7) {
- *      previousPage = currentPage - 1;
- *    }
- *
- *    return previousPage;
- *  },
- *  nextPage() {
- *    let currentPage = Template.instance().page.get();
- *    let nextPage = null;
- *
- *    if (currentPage && currentPage > 0 && currentPage < 7) {
- *      nextPage = currentPage + 1;
- *    } else {
- *      nextPage = currentPage == 7 ? null : 2;
- *    }
- *
- *    return nextPage;
- *  }
- */
 });
 
 Template.startingPointNew.events({
 	'submit form': (event) => {
 		event.preventDefault();
 
-		let userId = Template.instance().userId;
-
-		let d = new Date();
-		let simpleDate = `${d.getDate()}/${d.getMonth()+1}/${d.getFullYear()}`;
+		let self = Template.instance();
+		let date = `${self.day}/${self.month}/${self.year}`;
 
 		let exercise = Exercises.findOne({
-			userId: userId,
-			route: Template.instance().exercise
+			userId: self.userId,
+			route: self.exercise
 		});
 
 		// If no entries for today, set them up
-		if (!exercise.exerciseData[simpleDate]) {
-			exercise.exerciseData[simpleDate] = {
+		if (!exercise.exerciseData[date]) {
+			exercise.exerciseData[date] = {
 				morning: [],
 				afternoon: [],
 				evening: []
 			};
 		}
 
-		let time = exercise.exerciseData[simpleDate][FlowRouter.getParam('time')];
+		let time = exercise.exerciseData[date][self.time];
 		let entryId  = time.length + 1;
 
 		time.push({
@@ -118,11 +78,12 @@ Template.startingPointNew.events({
 		});
 
 		let exerciseProps = {
-			userId: userId,
+			userId: self.userId,
 			exerciseData: exercise.exerciseData
 		};
 
 		// n% complete..??
-		Modules.client.updateExercise(exercise, exerciseProps, 20);
+		Modules.client.updateExercise(exercise, exerciseProps, 20, true);
+		FlowRouter.go('starting-point', {day: self.day, month: self.month, year: self.year});
 	}
 });

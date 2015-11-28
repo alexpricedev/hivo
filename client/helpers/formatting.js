@@ -1,7 +1,3 @@
-Template.registerHelper('isAdmin', function() {
-  return Meteor.user().profile.isAdmin;
-});
-
 Template.registerHelper('getFullName', function(user) {
   return user.profile.name.first + ' ' + user.profile.name.last;
 });
@@ -22,13 +18,6 @@ Template.registerHelper('formatDateString', function(date) {
 	return moment(date).format('Do MMMM YYYY');
 });
 
-Template.registerHelper('isEnrolled', () => {
-	let route = Modules.client.getProgram();
-
-	let programs = Programs.findOne({
-		userId: Meteor.userId(),
-		route: route
-	});
-
-	return programs ? true : false;
+Template.registerHelper('sentanceCase', function(string) {
+	return Modules.both.capitalizeFirstLetter(string);
 });

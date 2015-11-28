@@ -42,15 +42,19 @@ Template.startingPointEdit.helpers({
 			return obj.entryId === parseInt(self.entryId);
 		});
 	},
-	entryDate() {
+	currentDate() {
 		let self = Template.instance();
-		return moment(`${self.day}/${self.month}/${self.year}`, 'DD/MM/YYYY').locale('en').calendar(null, {
-			sameDay: '[Today]',
-			nextDay: '[Tomorrow]',
-			nextWeek: 'dddd',
-			lastDay: '[Yesterday]',
-			lastWeek: '[Last] dddd'
-		});
+		return {
+			day: self.day,
+			month: self.month,
+			year: self.year
+		};
+	},
+	fromNow() {
+		let self = Template.instance();
+		let date = `${self.day}/${self.month}/${self.year}`;
+		let momentObj = moment(date, 'DD/MM/YYYY');
+		return Modules.client.getDateFromNow(momentObj).toLowerCase();
 	}
 });
 
@@ -59,7 +63,6 @@ Template.startingPointEdit.events({
 		event.preventDefault();
 
 		let self = Template.instance();
-
 		let date = `${self.day}/${self.month}/${self.year}`;
 
 		let exercise = Exercises.findOne({

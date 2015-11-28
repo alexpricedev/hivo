@@ -2,10 +2,18 @@ Template.startingPoint.onCreated(function() {
 	this.userId = Meteor.userId();
 	this.program = Modules.client.getProgram();
 	this.exercise = Modules.client.getExercise();
-	this.page = new ReactiveVar();
 
-	this.autorun(() => {
-		this.page.set(parseInt(FlowRouter.getQueryParam('page')));
+	this.day = new ReactiveVar(FlowRouter.getParam('day'));
+	this.month = new ReactiveVar(FlowRouter.getParam('month'));
+	this.year = new ReactiveVar(FlowRouter.getParam('year'));
+
+	// Watch for changes in URL state
+	Tracker.autorun(() => {
+		FlowRouter.watchPathChange();
+		let context = FlowRouter.current();
+		this.day.set(context.params.day);
+		this.month.set(context.params.month);
+		this.year.set(context.params.year);
 	});
 
 	this.subscribe('programs', this.userId);
@@ -26,66 +34,96 @@ Template.startingPoint.onRendered(function() {
 
 Template.startingPoint.helpers({
 	exerciseData() {
+		let self = Template.instance();
+
 		let exercise = Exercises.findOne({
-			userId: Template.instance().userId,
-			route: Template.instance().exercise
+			userId: self.userId,
+			route: self.exercise
 		});
 
-		let d = new Date();
-		let simpleDate = `${d.getDate()}/${d.getMonth()+1}/${d.getFullYear()}`;
+		let date = Modules.client.getSimpleDate(self);
+		let data = exercise.exerciseData[date] ? exercise.exerciseData[date] : null;
 
-		let data = exercise.exerciseData[simpleDate];
-		return data ? data : null;
-	},
-	exerciseBadge(time) {
-		// TODO: moduralise this
-		let exercise = Exercises.findOne({
-			userId: Template.instance().userId,
-			route: Template.instance().exercise
-		});
-
-		let d = new Date();
-		let simpleDate = `${d.getDate()}/${d.getMonth()+1}/${d.getFullYear()}`;
-		let exerciseData = exercise.exerciseData[simpleDate];
-
-		let complete = 0;
-		let cls = '';
-
-		if (exerciseData) {
-			let data = exerciseData[time];
-			complete = data ? data.length : 0;
-
-			switch(complete) {
-				case 0:
-					cls = 'alert-danger';
-					break;
-				case 1:
-					cls = 'alert-info';
-					break;
-				default:
-					cls = 'alert-success';
-			}
+		if (data) {
+			return [{
+				name: 'morning',
+				data: data.morning,
+				badge: Modules.client.getBadge(data.morning)
+			}, {
+				name: 'afternoon',
+				data: data.afternoon,
+				badge: Modules.client.getBadge(data.afternoon)
+			}, {
+				name: 'evening',
+				data: data.evening,
+				badge: Modules.client.getBadge(data.evening)
+			}];
 		}
 
-		return Spacebars.SafeString(
-			`<span class="badge pull-right ${cls}">${complete} / 2</span>`
-		);
+		return [
+			{ name: 'morning', data: null, badge: null },
+			{ name: 'afternoon', data: null, badge: null },
+			{ name: 'evening', data: null, badge: null }
+		];
 	},
 	exerciseIntroduction() {
 		return Modals.findOne({
 			slug: Template.instance().exercise
 		});
 	},
-	currentPage() {
+	pages() {
+		let exercise = Exercises.findOne({
+			userId: Template.instance().userId,
+			route: Template.instance().exercise
+		});
+
+		// only allow date navigation if completed first day
+		if (exercise.complete) {
+			// get previous and next dates
+			let currentDate = Modules.client.getSimpleDate(Template.instance());
+			let previous = moment(currentDate, 'DD/MM/YYYY').locale('en').subtract(1, 'days');
+			let next = moment(currentDate, 'DD/MM/YYYY').locale('en').add(1, 'days');
+
+			let previousParams = {
+				day: previous.get('date'),
+				month: previous.get('month')+1,
+				year: next.get('year')};
+			let nextParams = {
+				day: next.get('date'),
+				month: next.get('month')+1,
+				year: next.get('year')};
+
+			let previousPath = FlowRouter.path('starting-point', previousParams);
+			let nextPath = FlowRouter.path('starting-point', nextParams);
+
+			let paths = {
+				previous: previousPath,
+				next: nextPath
+			};
+
+			return paths;
+		}
+
+		return false;
+	},
+	currentDate() {
+		let self = Template.instance();
 		let date = new Date();
-		let day = FlowRouter.getParam('day') ? FlowRouter.getParam('day') : date.getDate(),
-				month = FlowRouter.getParam('month') ? FlowRouter.getParam('month') : date.getMonth()+1,
-				year = FlowRouter.getParam('year') ? FlowRouter.getParam('year') : date.getFullYear();
+
+		let day = self.day.get() ? self.day.get() : date.getDate(),
+				month = self.month.get() ? self.month.get() : date.getMonth()+1,
+				year = self.year.get() ? self.year.get(): date.getFullYear();
+
+		let string = `${day}/${month}/${year}`;
+		let momentObj = moment(string, 'DD/MM/YYYY');
 
 		return {
 			day: day,
 			month: month,
-			year: year
+			year: year,
+			string: string,
+			moment: momentObj,
+			fromNow: Modules.client.getDateFromNow(momentObj)
 		};
 	}
 });

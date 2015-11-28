@@ -5,8 +5,8 @@
         {{#if isEnrolled}}
 
             <ol class="breadcrumb">
-                <li><a href="{{pathFor 'index' }}">Dashboard</a></li>
-                <li><a href="{{pathFor 'depression' }}">Depression</a></li>
+                <li><a href="{{pathFor 'index'}}">Dashboard</a></li>
+                <li><a href="{{pathFor 'depression'}}">Depression</a></li>
                 <li class="active">Starting Point</li>
             </ol>
 
@@ -33,82 +33,59 @@
                 </div>
                 <div class="col-md-6 col-md-pull-6">
                     <div class="clearfix" style="margin-bottom: 4px; text-align: center;">
-                        <a href="#" class="btn btn-sm btn-default disabled pull-left">
-                            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-                        </a>
-                        <h4 style="display: inline-block; margin: 0; padding: 5px 0 10px;">Today</h4>
-                        <a href="#" class="btn btn-sm btn-default disabled pull-right">
-                            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-                        </a>
-                    </div>
-                    <div class="well well-sm">
-                        <table class="table" style="margin: 0;">
-                            <thead>
-                                <tr>
-                                    <th>
-                                        Morning
-                                        {{exerciseBadge 'morning'}}
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {{#each exerciseData.morning}}
-                                    <tr>
-                                        <td><a href="{{pathFor 'starting-point-edit' day=currentPage.day month=currentPage.month year=currentPage.year time='morning' entryId=entryId}}">{{what}}</a></td>
-                                    </tr>
-                                {{/each}}
-                                <tr>
-                                    <td><a class="btn btn-block btn-warning" href="{{pathFor 'starting-point-new' time='morning' }}">Add an entry</a></td>
-                                </tr>
-                            </tbody>
-                        </table>
+                        {{#if pages}}
+                            <a href="{{pages.previous}}" class="btn btn-sm btn-default pull-left"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span></a>
+                        {{else}}
+                            <a href="#" class="btn btn-sm btn-default disabled pull-left"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span></a>
+                        {{/if}}
+
+                        <h4 style="display: inline-block; margin: 0; padding: 5px 0 10px;">{{currentDate.fromNow}}</h4>
+
+                        {{#if pages}}
+                            <a href="{{pages.next}}" class="btn btn-sm btn-default pull-right"><span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a>
+                        {{else}}
+                            <a href="#" class="btn btn-sm btn-default disabled pull-right"><span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span> </a>
+                        {{/if}}
                     </div>
 
-                    <div class="well well-sm">
-                        <table class="table" style="margin: 0;">
-                            <thead>
-                                <tr>
-                                    <th>
-                                        Afternoon
-                                        {{exerciseBadge 'afternoon'}}
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {{#each exerciseData.afternoon}}
+                    {{#each exerciseData}}
+                        <div class="well well-sm">
+                            <table class="table" style="margin: 0;">
+                                <thead>
                                     <tr>
-                                        <td><a href="{{pathFor 'starting-point-edit' day=currentPage.day month=currentPage.month year=currentPage.year time='afternoon' entryId=entryId}}">{{what}}</a></td>
+                                        <th>{{sentanceCase name}} {{badge}}</th>
                                     </tr>
-                                {{/each}}
-                                <tr>
-                                    <td><a href="{{pathFor 'starting-point-new' time='afternoon' }}" class="btn btn-block btn-warning">Add an entry</a></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-
-                    <div class="well well-sm">
-                        <table class="table" style="margin: 0;">
-                            <thead>
-                                <tr>
-                                    <th>
-                                        Evening
-                                        {{exerciseBadge 'evening'}}
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {{#each exerciseData.evening}}
+                                </thead>
+                                <tbody>
+                                    {{#each data}}
+                                        <tr>
+                                            <td>
+                                                <small class="text-muted">
+                                                    {{#if what}}What{{else}}{{#if where}}Where{{else}}Who{{/if}}{{/if}}
+                                                </small>
+                                                <a href="{{pathFor 'starting-point-edit' day=currentDate.day month=currentDate.month year=currentDate.year time=../name entryId=entryId}}">
+                                                    {{#if what}}
+                                                        <b>{{what}}</b>
+                                                    {{else}}
+                                                        {{#if where}}
+                                                            <b>{{where}}</b>
+                                                        {{else}}
+                                                            <b>{{who}}</b>
+                                                        {{/if}}
+                                                    {{/if}}
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    {{/each}}
                                     <tr>
-                                        <td><a href="{{pathFor 'starting-point-edit' day=currentPage.day month=currentPage.month year=currentPage.year time='evening' entryId=entryId}}">{{what}}</a></td>
+                                        <td>
+                                            <a class="btn btn-block btn-warning" href="{{pathFor 'starting-point-new' day=currentDate.day month=currentDate.month year=currentDate.year time=name}}">Add an entry</a>
+                                        </td>
                                     </tr>
-                                {{/each}}
-                                <tr>
-                                    <td><a href="{{pathFor 'starting-point-new' time='evening' }}" class="btn btn-block btn-warning">Add an entry</a></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
+                                </tbody>
+                            </table>
+                        </div>
+                    {{/each}}
                 </div>
             </div>
 

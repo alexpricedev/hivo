@@ -5,25 +5,25 @@
         {{#if isEnrolled}}
 
             <ol class="breadcrumb">
-                <li><a href="{{pathFor 'index' }}">Dashboard</a></li>
-                <li><a href="{{pathFor 'depression' }}">Depression</a></li>
-                <li><a href="{{pathFor 'starting-point' }}">Starting Point</a></li>
-                <li class="active">Edit entry from {{entryDate}}</li>
+                <li><a href="{{pathFor 'index'}}">Dashboard</a></li>
+                <li><a href="{{pathFor 'depression'}}">Depression</a></li>
+                <li><a href="{{pathFor 'starting-point'}}">Starting Point</a></li>
+                <li class="active">Edit Entry</li>
             </ol>
 
             <h3>Get Active, Feel Good Depression Program</h3>
 
-            <h4>Exercise Three - Starting point: Editing entry from {{entryDate}}</h4>
+            <h4>Exercise Three - Starting point: Editing entry</h4>
 
             <hr>
 
             <form>
                 <div class="row">
-                    <div class="col-md-4">
+                    <div class="col-md-5">
                         <div class="alert alert-success" role="alert">
                             <p>
-                                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-                                <b>Editing entry</b> from {{entryDate}}
+                                <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
+                                Editing <b>{{param 'time'}}</b> entry for <b>{{fromNow}}</b>
                             </p>
                         </div>
                     </div>
@@ -53,7 +53,7 @@
 
                     <div class="col-md-12">
                         <button type="submit" class="btn btn-primary pull-right">Save</button>
-                        <a href="{{pathFor 'starting-point'}}" class="btn btn-default pull-right" style="margin-right: 3px">Cancel</a>
+                        <a href="{{pathFor 'starting-point' day=currentDate.day month=currentDate.month year=currentDate.year}}" class="btn btn-default pull-right" style="margin-right: 3px">Cancel</a>
                         <br><br><br>
                     </div>
                 </div>
