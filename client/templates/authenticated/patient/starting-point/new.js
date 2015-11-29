@@ -63,7 +63,8 @@ Template.startingPointNew.events({
 			exercise.exerciseData[date] = {
 				morning: [],
 				afternoon: [],
-				evening: []
+				evening: [],
+				comments: ''
 			};
 		}
 

@@ -29,7 +29,7 @@ Template.startingPoint.onRendered(function() {
 			setTimeout(wait, 100);
 		}
 	};
-	wait();
+	// wait();
 });
 
 Template.startingPoint.helpers({
@@ -61,10 +61,21 @@ Template.startingPoint.helpers({
 		}
 
 		return [
-			{ name: 'morning', data: null, badge: null },
-			{ name: 'afternoon', data: null, badge: null },
-			{ name: 'evening', data: null, badge: null }
+			{ name: 'morning', data: null, badge: Modules.client.getBadge([]) },
+			{ name: 'afternoon', data: null, badge: Modules.client.getBadge([]) },
+			{ name: 'evening', data: null, badge: Modules.client.getBadge([]) }
 		];
+	},
+	comments() {
+		let self = Template.instance();
+
+		let exercise = Exercises.findOne({
+			userId: self.userId,
+			route: self.exercise
+		});
+
+		let date = Modules.client.getSimpleDate(self);
+		return exercise.exerciseData[date] ? exercise.exerciseData[date].comments : null;
 	},
 	exerciseIntroduction() {
 		return Modals.findOne({
@@ -120,5 +131,46 @@ Template.startingPoint.helpers({
 			moment: momentObj,
 			fromNow: Modules.client.getDateFromNow(momentObj)
 		};
+	}
+});
+
+Template.startingPoint.events({
+	'submit form': (event) => {
+		event.preventDefault();
+
+		let self = Template.instance();
+		let date = `${self.day.get()}/${self.month.get()}/${self.year.get()}`;
+
+		let exercise = Exercises.findOne({
+			userId: self.userId,
+			route: self.exercise
+		});
+
+		// If no entries for today, set them up
+		if (!exercise.exerciseData[date]) {
+			exercise.exerciseData[date] = {
+				morning: [],
+				afternoon: [],
+				evening: [],
+				comments: ''
+			};
+		}
+
+		exercise.exerciseData[date].comments = event.target.comments.value;
+
+		let exerciseProps = {
+			userId: self.userId,
+			exerciseData: exercise.exerciseData
+		};
+
+		Meteor.call('updateExercise', exercise._id, exerciseProps);
+		Bert.alert('Comments saved successfully', 'success', 'growl-top-right');
+
+		let program = Programs.findOne({
+			userId: self.userId,
+			route: self.program
+		});
+
+		Meteor.call('updateProgramLastCompleted', program._id);
 	}
 });
