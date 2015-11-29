@@ -82,12 +82,7 @@ authenticatedRoutes.route('/depression/starting-point', {
 
 authenticatedRoutes.route('/depression/starting-point/:day/:month/:year', {
   name: 'starting-point',
-	triggersEnter: [function(context, redirect) {
-		let p = context.params;
-		if (!moment(`${p.day}-${p.month}-${p.year}`, 'DD-MM-YYYY').isValid()) {
-			redirect('not-found');
-		}
-	}],
+	triggersEnter: [Modules.both.checkValidDate],
   action() {
     BlazeLayout.render('default', {
       yield: 'startingPoint',
@@ -98,14 +93,10 @@ authenticatedRoutes.route('/depression/starting-point/:day/:month/:year', {
 
 authenticatedRoutes.route('/depression/starting-point/:day/:month/:year/new/:time', {
   name: 'starting-point-new',
-	triggersEnter: [function(context, redirect) {
-		let p = context.params;
-		let options = ['morning', 'afternoon', 'evening'];
-		if (!lodash.includes(options, p.time)) { redirect('not-found'); }
-		if (!moment(`${p.day}-${p.month}-${p.year}`, 'DD-MM-YYYY').isValid()) {
-			redirect('not-found');
-		}
-	}],
+	triggersEnter: [
+		Modules.both.checkValidDate,
+		Modules.both.checkValidTime
+	],
   action() {
     BlazeLayout.render('default', {
       yield: 'startingPointNew',
@@ -116,14 +107,10 @@ authenticatedRoutes.route('/depression/starting-point/:day/:month/:year/new/:tim
 
 authenticatedRoutes.route('/depression/starting-point/:day/:month/:year/edit/:time/:entryId', {
   name: 'starting-point-edit',
-	triggersEnter: [function(context, redirect) {
-		let p = context.params;
-		let options = ['morning', 'afternoon', 'evening'];
-		if (!lodash.includes(options, p.time)) { redirect('not-found'); }
-		if (!moment(`${p.day}-${p.month}-${p.year}`, 'DD-MM-YYYY').isValid()) {
-			redirect('not-found');
-		}
-	}],
+	triggersEnter: [
+		Modules.both.checkValidDate,
+		Modules.both.checkValidTime
+	],
   action() {
     BlazeLayout.render('default', {
       yield: 'startingPointEdit',
