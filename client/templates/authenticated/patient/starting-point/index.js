@@ -42,7 +42,7 @@ Template.startingPoint.helpers({
 		});
 
 		let date = Modules.client.getSimpleDate(self);
-		let data = exercise.exerciseData[date] ? exercise.exerciseData[date] : null;
+		let data = _.has(exercise.exerciseData, date) ? exercise.exerciseData[date] : null;
 
 		if (data) {
 			return [{
