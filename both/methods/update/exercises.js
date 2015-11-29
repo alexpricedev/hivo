@@ -6,6 +6,8 @@ Meteor.methods({
 		// TODO: figure out how to make this work
     // check(exercise.exerciseData, ImpactOfDepressionSchema);
 
+		exercise.complete = true;
+
     try {
       return Exercises.update(_id, {
         $set: exercise

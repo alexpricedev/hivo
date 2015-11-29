@@ -6,6 +6,10 @@ let modals = [{
   title: 'Thinking Ahead',
   text: 'In the "Details about your goal" boxes, write down three things you are not presently doing but would like to. Then say how well you think you can currently achieve them by selecting the appropriate number between 0 and 6 (0 means "Not at all" and 6 means "Anytime"). It should be something that you are not able to do at the moment but that you think you can realistically achieve over the coming months. If you are struggling to identify any aims for your treatment, your councillor can help.',
 	slug: 'thinking-ahead'
+}, {
+  title: 'Starting Point',
+  text: 'Using the interactive diary on this page, record what you are currently doing during the week. Start today and record over the next 7 days. There are boxes for the morning, afternoon and evening. We recommend a minimum of two things you have done for each.',
+	slug: 'starting-point'
 }];
 
 let _checkIfModalExist = () => {

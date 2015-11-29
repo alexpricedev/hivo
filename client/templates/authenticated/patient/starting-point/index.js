@@ -77,34 +77,29 @@ Template.startingPoint.helpers({
 			route: Template.instance().exercise
 		});
 
-		// only allow date navigation if completed first day
-		if (exercise.complete) {
-			// get previous and next dates
-			let currentDate = Modules.client.getSimpleDate(Template.instance());
-			let previous = moment(currentDate, 'DD/MM/YYYY').locale('en').subtract(1, 'days');
-			let next = moment(currentDate, 'DD/MM/YYYY').locale('en').add(1, 'days');
+		// get previous and next dates
+		let currentDate = Modules.client.getSimpleDate(Template.instance());
+		let previous = moment(currentDate, 'DD/MM/YYYY').locale('en').subtract(1, 'days');
+		let next = moment(currentDate, 'DD/MM/YYYY').locale('en').add(1, 'days');
 
-			let previousParams = {
-				day: previous.get('date'),
-				month: previous.get('month')+1,
-				year: next.get('year')};
-			let nextParams = {
-				day: next.get('date'),
-				month: next.get('month')+1,
-				year: next.get('year')};
+		let previousParams = {
+			day: previous.get('date'),
+			month: previous.get('month')+1,
+			year: next.get('year')};
+		let nextParams = {
+			day: next.get('date'),
+			month: next.get('month')+1,
+			year: next.get('year')};
 
-			let previousPath = FlowRouter.path('starting-point', previousParams);
-			let nextPath = FlowRouter.path('starting-point', nextParams);
+		let previousPath = FlowRouter.path('starting-point', previousParams);
+		let nextPath = FlowRouter.path('starting-point', nextParams);
 
-			let paths = {
-				previous: previousPath,
-				next: nextPath
-			};
+		let paths = {
+			previous: previousPath,
+			next: nextPath
+		};
 
-			return paths;
-		}
-
-		return false;
+		return paths;
 	},
 	currentDate() {
 		let self = Template.instance();
@@ -125,38 +120,5 @@ Template.startingPoint.helpers({
 			moment: momentObj,
 			fromNow: Modules.client.getDateFromNow(momentObj)
 		};
-	}
-});
-
-Template.startingPoint.events({
-	'submit form': (event) => {
-		event.preventDefault();
-
-		let userId = Template.instance().userId;
-
-		let goals = [];
-
-		$.each($('.goal'), function(i, value) {
-			goals.push({
-			  date: moment($(value).find(`#date${i}`).val(), 'Do MMMM YYYY', 'en').toDate(),
-			  goal: $(value).find(`#goal${i}`).val(),
-				score: $(value).find(`#score${i}`).val()
-			});
-		});
-
-		let exerciseProps = {
-			userId: userId,
-			exerciseData: {
-				goals: goals
-			}
-		};
-
-		let exercise = Exercises.findOne({
-			userId: userId,
-			route: Template.instance().exercise
-		});
-
-		// 20% complete
-		Modules.client.updateExercise(exercise, exerciseProps, 20);
 	}
 });

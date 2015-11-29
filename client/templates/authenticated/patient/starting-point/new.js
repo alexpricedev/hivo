@@ -82,8 +82,19 @@ Template.startingPointNew.events({
 			exerciseData: exercise.exerciseData
 		};
 
-		// n% complete..??
-		Modules.client.updateExercise(exercise, exerciseProps, 20, true);
-		FlowRouter.go('starting-point', {day: self.day, month: self.month, year: self.year});
+		Meteor.call('updateExercise', exercise._id, exerciseProps);
+		Bert.alert('Entry added successfully', 'success', 'growl-top-right');
+
+		let program = Programs.findOne({
+			userId: self.userId,
+			route: self.program
+		});
+
+		Meteor.call('updateProgramLastCompleted', program._id);
+
+		FlowRouter.go(
+			'starting-point',
+			{day: self.day, month: self.month, year: self.year}
+		);
 	}
 });

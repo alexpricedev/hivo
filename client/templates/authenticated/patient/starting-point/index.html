@@ -24,14 +24,7 @@
             <hr>
 
             <div class="row">
-                <div class="col-md-6 col-md-push-6">
-                    <div class="jumbotron">
-                        <h3>Step one</h3>
-                        <h4>Record what you are currently doing</h4>
-                        <p>Using the interactive diary on this page, record what you are currently doing during the week. Start today and record over the next 7 days. There are boxes for the morning, afternoon and evening. We recommend a minimum of two things you have done for each.</p>
-                    </div>
-                </div>
-                <div class="col-md-6 col-md-pull-6">
+                <div class="col-md-6">
                     <div class="clearfix" style="margin-bottom: 4px; text-align: center;">
                         {{#if pages}}
                             <a href="{{pages.previous}}" class="btn btn-sm btn-default pull-left"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span></a>
@@ -86,6 +79,30 @@
                             </table>
                         </div>
                     {{/each}}
+                </div>
+                <div class="col-md-6">
+                    <form>
+                        <div class="form-group">
+                            <label for="comment">Daily comments</label>
+                            <textarea class="form-control" id="comments" rows="7" placeholder="Write any comments about your day here. This is a good place to note any times during the day you felt better or worse" value="{{entry.comments}}"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Save comments</button>
+                        <br><br>
+                    </form>
+                </div>
+                <div class="col-md-6">
+                    <div class="well">
+                        <h4>Record what you are currently doing</h4>
+                        <p>It can really help later on if you are able to provide some detail about:</p>
+                        <dl>
+                            <dt>What you are doing?</dt><dd>Watching television</dd>
+                            <dt>Where you are doing it?</dt><dd>Lounge</dd>
+                            <dt>Who you were with?</dt><dd>On my own</dd>
+                        </dl>
+                    </div>
+                    <div class="well">
+                        <p>At the end of each day have a look at your diary and write any comments you have in the comments box. Think about what you have been up to, and try to note if there were times when you felt better or worse. This will help you and your councillor when you discuss your week at the next session.</p>
+                    </div>
                 </div>
             </div>
 

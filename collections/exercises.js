@@ -51,14 +51,7 @@ let ExercisesSchema = new SimpleSchema({
   "complete": {
     type: Boolean,
     label: "Has the exercise been completed?",
-    optional: true,
-    autoValue: function() {
-      if (this.isUpdate) {
-        return true;
-      } else if (this.isInsert) {
-        return false;
-			}
-    }
+    optional: true
   }
 });
 

@@ -1,4 +1,4 @@
-let updateExercise = (exercise, props, percent, customRouting) => {
+let updateExercise = (exercise, props, percent) => {
 	Meteor.call('updateExercise', exercise._id, props);
 	Bert.alert('Update successful', 'success', 'growl-top-right');
 
@@ -12,9 +12,7 @@ let updateExercise = (exercise, props, percent, customRouting) => {
 	Meteor.call('updateProgramLastCompleted', program._id);
 	Meteor.call('updateProgramProgress', program._id, percent);
 
-	if (!customRouting) {
-		FlowRouter.go(programRoute);
-	}
+	FlowRouter.go(programRoute);
 };
 
 Modules.client.updateExercise = updateExercise;
