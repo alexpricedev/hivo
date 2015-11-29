@@ -1,5 +1,5 @@
 let updateExercise = (exercise, props, percent) => {
-	exercise.complete = true;
+	props.complete = true;
 
 	Meteor.call('updateExercise', exercise._id, props);
 	Bert.alert('Update successful', 'success', 'growl-top-right');
