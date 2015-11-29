@@ -58,7 +58,11 @@ Template.startingPointNew.events({
 			route: self.exercise
 		});
 
-		// If no entries for today, set them up
+		// If there is no exercise data or data for this date, set them up
+		if (!exercise.exerciseData) {
+			exercise.exerciseData = {};
+		}
+
 		if (!exercise.exerciseData[date]) {
 			exercise.exerciseData[date] = {
 				morning: [],

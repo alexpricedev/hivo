@@ -42,22 +42,25 @@ Template.startingPoint.helpers({
 		});
 
 		let date = Modules.client.getSimpleDate(self);
-		let data = _.has(exercise.exerciseData, date) ? exercise.exerciseData[date] : null;
 
-		if (data) {
-			return [{
-				name: 'morning',
-				data: data.morning,
-				badge: Modules.client.getBadge(data.morning)
-			}, {
-				name: 'afternoon',
-				data: data.afternoon,
-				badge: Modules.client.getBadge(data.afternoon)
-			}, {
-				name: 'evening',
-				data: data.evening,
-				badge: Modules.client.getBadge(data.evening)
-			}];
+		if (exercise.exerciseData) {
+			let data = _.has(exercise.exerciseData, date) ? exercise.exerciseData[date] : null;
+
+			if (data) {
+				return [{
+					name: 'morning',
+					data: data.morning,
+					badge: Modules.client.getBadge(data.morning)
+				}, {
+					name: 'afternoon',
+					data: data.afternoon,
+					badge: Modules.client.getBadge(data.afternoon)
+				}, {
+					name: 'evening',
+					data: data.evening,
+					badge: Modules.client.getBadge(data.evening)
+				}];
+			}
 		}
 
 		return [
