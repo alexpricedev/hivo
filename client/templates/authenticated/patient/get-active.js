@@ -1,12 +1,12 @@
-Template.depression.onCreated(function() {
-  this.subscribe('exercises', Meteor.userId(), 'depression');
+Template.getActive.onCreated(function() {
+  this.subscribe('exercises', Meteor.userId(), 'get-active');
 });
 
-Template.depression.helpers({
+Template.getActive.helpers({
   exercises() {
     let exercises = Exercises.find({
       userId: Meteor.userId(),
-			program: 'depression'
+			program: 'get-active'
     }).fetch().sort(function(a, b) {
 			return a.order - b.order;
 		});

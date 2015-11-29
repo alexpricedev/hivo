@@ -93,17 +93,21 @@ Template.startingPoint.helpers({
 
 		// get previous and next dates
 		let currentDate = Modules.client.getSimpleDate(Template.instance());
-		let previous = moment(currentDate, 'DD/MM/YYYY').locale('en').subtract(1, 'days');
-		let next = moment(currentDate, 'DD/MM/YYYY').locale('en').add(1, 'days');
+		let previous = moment(currentDate, 'DD/MM/YYYY').locale('en')
+																										.subtract(1, 'days');
+		let next = moment(currentDate, 'DD/MM/YYYY').locale('en')
+																								.add(1, 'days');
 
 		let previousParams = {
 			day: previous.get('date'),
 			month: previous.get('month')+1,
-			year: next.get('year')};
+			year: next.get('year')
+		};
 		let nextParams = {
 			day: next.get('date'),
 			month: next.get('month')+1,
-			year: next.get('year')};
+			year: next.get('year')
+		};
 
 		let previousPath = FlowRouter.path('starting-point', previousParams);
 		let nextPath = FlowRouter.path('starting-point', nextParams);

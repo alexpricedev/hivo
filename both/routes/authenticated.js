@@ -40,17 +40,17 @@ authenticatedRoutes.route('/patient/:_id', {
 
 // Patient routes
 
-authenticatedRoutes.route('/depression', {
-  name: 'depression',
+authenticatedRoutes.route('/get-active', {
+  name: 'get-active',
   action() {
     BlazeLayout.render('default', {
-      yield: 'depression',
+      yield: 'get-active',
       footer: 'footer'
     });
   }
 });
 
-authenticatedRoutes.route('/depression/impact-of-depression', {
+authenticatedRoutes.route('/get-active/impact-of-depression', {
   name: 'impact-of-depression',
   action() {
     BlazeLayout.render('default', {
@@ -60,7 +60,7 @@ authenticatedRoutes.route('/depression/impact-of-depression', {
   }
 });
 
-authenticatedRoutes.route('/depression/thinking-ahead', {
+authenticatedRoutes.route('/get-active/thinking-ahead', {
   name: 'thinking-ahead',
   action() {
     BlazeLayout.render('default', {
@@ -70,7 +70,7 @@ authenticatedRoutes.route('/depression/thinking-ahead', {
   }
 });
 
-authenticatedRoutes.route('/depression/starting-point', {
+authenticatedRoutes.route('/get-active/starting-point', {
   name: 'starting-point',
   action() {
     BlazeLayout.render('default', {
@@ -80,7 +80,7 @@ authenticatedRoutes.route('/depression/starting-point', {
   }
 });
 
-authenticatedRoutes.route('/depression/starting-point/:day/:month/:year', {
+authenticatedRoutes.route('/get-active/starting-point/:day/:month/:year', {
   name: 'starting-point',
 	triggersEnter: [Modules.both.checkValidDate],
   action() {
@@ -91,7 +91,7 @@ authenticatedRoutes.route('/depression/starting-point/:day/:month/:year', {
   }
 });
 
-authenticatedRoutes.route('/depression/starting-point/:day/:month/:year/new/:time', {
+authenticatedRoutes.route('/get-active/starting-point/:day/:month/:year/new/:time', {
   name: 'starting-point-new',
 	triggersEnter: [
 		Modules.both.checkValidDate,
@@ -105,7 +105,7 @@ authenticatedRoutes.route('/depression/starting-point/:day/:month/:year/new/:tim
   }
 });
 
-authenticatedRoutes.route('/depression/starting-point/:day/:month/:year/edit/:time/:entryId', {
+authenticatedRoutes.route('/get-active/starting-point/:day/:month/:year/edit/:time/:entryId', {
   name: 'starting-point-edit',
 	triggersEnter: [
 		Modules.both.checkValidDate,
