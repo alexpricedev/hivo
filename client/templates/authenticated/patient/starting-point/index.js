@@ -78,6 +78,13 @@ Template.startingPoint.helpers({
 		});
 
 		let date = Modules.client.getSimpleDate(self);
+
+		console.log(date);
+
+		if (!exercise.exerciseData) {
+			return null;
+		}
+
 		return exercise.exerciseData[date] ? exercise.exerciseData[date].comments : null;
 	},
 	exerciseIntroduction() {
@@ -146,12 +153,16 @@ Template.startingPoint.events({
 		event.preventDefault();
 
 		let self = Template.instance();
-		let date = `${self.day.get()}/${self.month.get()}/${self.year.get()}`;
+		let date = Modules.client.getSimpleDate(self);
 
 		let exercise = Exercises.findOne({
 			userId: self.userId,
 			route: self.exercise
 		});
+
+		if (!exercise.exerciseData) {
+			exercise.exerciseData = {}
+		}
 
 		// If no entries for today, set them up
 		if (!exercise.exerciseData[date]) {

@@ -44,7 +44,7 @@ authenticatedRoutes.route('/get-active', {
   name: 'get-active',
   action() {
     BlazeLayout.render('default', {
-      yield: 'get-active',
+      yield: 'getActive',
       footer: 'footer'
     });
   }
