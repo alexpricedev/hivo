@@ -40,3 +40,5 @@ random
 kadira:debug
 tsega:bootstrap3-datetimepicker
 arillo:flow-router-helpers
+react
+kadira:react-layout
