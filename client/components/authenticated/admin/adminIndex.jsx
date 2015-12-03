@@ -21,7 +21,7 @@ AdminIndex = React.createClass({
 							<h4 className="pull-left">Your Patients</h4>
 						</div>
 						<div className="col-xs-6">
-							<a href="{FlowHelpers.pathFor('adminAddPatient')}" className="btn btn-sm btn-success pull-right">Add Patient</a>
+							<a href={FlowHelpers.pathFor('adminAddPatient')} className="btn btn-sm btn-success pull-right">Add Patient</a>
 						</div>
 					</div>
 

@@ -11,7 +11,11 @@ PatientTableRow = React.createClass({
 	render() {
 		return (
 			<tr>
-				<td><a href="{FlowHelpers.pathFor('adminAddPatient', {_id: this.props.patient._id})}" title="View profile">{FormattingHelpers.fullName(this.props.patient)}</a></td>
+				<td>
+					<a href={FlowHelpers.pathFor('adminPatientOverview', {_id: this.props.patient._id})} title="View profile">
+						{FormattingHelpers.fullName(this.props.patient)}
+					</a>
+				</td>
 				<td>{FormattingHelpers.emailAddress(this.props.patient)}</td>
 				<td>{this.status()}</td>
 			</tr>

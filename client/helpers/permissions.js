@@ -1,8 +1,8 @@
-Template.registerHelper('isAdmin', function() {
+let admin = () => {
   return Meteor.user().profile.isAdmin;
-});
+};
 
-Template.registerHelper('isEnrolled', () => {
+let enrolled = () => {
 	let route = Modules.client.getProgram();
 
 	let programs = Programs.findOne({
@@ -11,4 +11,9 @@ Template.registerHelper('isEnrolled', () => {
 	});
 
 	return programs ? true : false;
-});
+};
+
+PermissionHelpers = {
+  admin: admin,
+  enrolled: enrolled
+};
