@@ -1,7 +1,7 @@
 let availiblePrograms = [
 	{
-		title: 'Get Active, Feel Good',
-		route: 'get-active',
+		title: 'Depression',
+		route: 'depression',
 		description: 'Help your patient to get on top of low mood and depression with this CBT program.',
 		tags: ['depression', 'cognitive behavioural therapy'],
 		exercises: [
