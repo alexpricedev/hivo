@@ -21,18 +21,14 @@ authenticatedRoutes.route('/', {
 authenticatedRoutes.route('/patient/new', {
   name: 'adminAddPatient',
   action() {
-    BlazeLayout.render('default', {
-      yield: 'adminAddPatient'
-    });
+		ReactLayout.render( Default, { yield: <AddPatient /> } );
   }
 });
 
 authenticatedRoutes.route('/patient/:_id', {
   name: 'adminPatientOverview',
-  action(params) {
-    BlazeLayout.render('default', {
-      yield: 'adminPatientOverview'
-    });
+  action() {
+		ReactLayout.render( Default, { yield: <PatientOverview /> } );
   }
 });
 
@@ -41,40 +37,40 @@ authenticatedRoutes.route('/patient/:_id', {
 authenticatedRoutes.route('/get-active', {
   name: 'get-active',
   action() {
-    BlazeLayout.render('default', {
-      yield: 'getActive',
-      footer: 'footer'
-    });
+		ReactLayout.render(Default, {
+			yield: <GetActive />,
+			footer: <Footer />
+		});
   }
 });
 
 authenticatedRoutes.route('/get-active/impact-of-depression', {
   name: 'impact-of-depression',
   action() {
-    BlazeLayout.render('default', {
-      yield: 'impactOfDepression',
-      footer: 'footer'
-    });
+		ReactLayout.render(Default, {
+			yield: <ImpactOfDepression />,
+			footer: <Footer />
+		});
   }
 });
 
 authenticatedRoutes.route('/get-active/thinking-ahead', {
   name: 'thinking-ahead',
   action() {
-    BlazeLayout.render('default', {
-      yield: 'thinkingAhead',
-      footer: 'footer'
-    });
+		ReactLayout.render(Default, {
+			yield: <ThinkingAhead />,
+			footer: <Footer />
+		});
   }
 });
 
 authenticatedRoutes.route('/get-active/starting-point', {
   name: 'starting-point',
   action() {
-    BlazeLayout.render('default', {
-      yield: 'startingPoint',
-      footer: 'footer'
-    });
+		ReactLayout.render(Default, {
+			yield: <StartingPoint />,
+			footer: <Footer />
+		});
   }
 });
 
@@ -82,10 +78,10 @@ authenticatedRoutes.route('/get-active/starting-point/:day/:month/:year', {
   name: 'starting-point',
 	triggersEnter: [Modules.both.checkValidDate],
   action() {
-    BlazeLayout.render('default', {
-      yield: 'startingPoint',
-      footer: 'footer'
-    });
+		ReactLayout.render(Default, {
+			yield: <StartingPoint />,
+			footer: <Footer />
+		});
   }
 });
 
@@ -96,10 +92,10 @@ authenticatedRoutes.route('/get-active/starting-point/:day/:month/:year/new/:tim
 		Modules.both.checkValidTime
 	],
   action() {
-    BlazeLayout.render('default', {
-      yield: 'startingPointNew',
-      footer: 'footer'
-    });
+		ReactLayout.render(Default, {
+			yield: <StartingPointNew />,
+			footer: <Footer />
+		});
   }
 });
 
@@ -110,9 +106,9 @@ authenticatedRoutes.route('/get-active/starting-point/:day/:month/:year/edit/:ti
 		Modules.both.checkValidTime
 	],
   action() {
-    BlazeLayout.render('default', {
-      yield: 'startingPointEdit',
-      footer: 'footer'
-    });
+		ReactLayout.render(Default, {
+			yield: <StartingPointEdit />,
+			footer: <Footer />
+		});
   }
 });

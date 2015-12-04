@@ -1,5 +1,3 @@
-	// {{>bertAlert}}
-
 Default = React.createClass({
   render() {
     return (

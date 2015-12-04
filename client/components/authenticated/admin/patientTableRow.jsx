@@ -1,12 +1,15 @@
 PatientTableRow = React.createClass({
 	status() {
 		let status = this.props.patient.status;
-		if (status.online) {
-			return <span className="label label-success">Active now</span>;
-		} else {
-			let date = status.lastLogin ? status.lastLogin.date : null;
-			return FormattingHelpers.dateLabel(date);
+		if (status) {
+			if (status.online) {
+				return <span className="label label-success">Active now</span>;
+			} else {
+				let date = status.lastLogin ? status.lastLogin.date : null;
+				return FormattingHelpers.dateLabel(date);
+			}
 		}
+		return FormattingHelpers.dateLabel(null);
 	},
 	render() {
 		return (
