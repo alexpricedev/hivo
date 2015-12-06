@@ -37,7 +37,7 @@ PatientIndex = React.createClass({
 		return (
 			<tbody>
 				<tr>
-					<td colSpan="2">You are not enrolled in any programs. Please speak with your counsellor about starting a new program.</td>
+					<td colSpan="3">You are not enrolled in any programs. Please speak with your counsellor about starting a new program.</td>
 				</tr>
 			</tbody>
 		);

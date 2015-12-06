@@ -1,8 +1,7 @@
 Meteor.methods({
   insertExercise(exercise) {
+		exercise.exerciseData = {};
     check(exercise, Exercises.simpleSchema());
-
-		// TODO: Figure out how to validate exercise data
 
     try {
       return Exercises.insert(exercise);
