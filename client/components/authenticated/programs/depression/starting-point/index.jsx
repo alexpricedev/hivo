@@ -22,6 +22,7 @@
 
 		let exercise = {};
 		let exerciseData = {};
+		let comments = '';
 
 		if (subscription.ready()) {
 			exercise = Exercises.findOne({
@@ -30,6 +31,11 @@
 			});
 
 			exerciseData = exercise.exerciseData[this.state.dateString];
+
+			if (exerciseData) {
+				// Fast deep copy to unhitch reference
+				comments = JSON.parse(JSON.stringify(exerciseData.comments));
+			}
 		}
 
 		return {
@@ -37,7 +43,8 @@
 			userId: uid,
 			exercise: exercise,
 			exerciseData: exerciseData,
-			times: ['morning', 'afternoon', 'evening']
+			times: ['morning', 'afternoon', 'evening'],
+			comments: comments
 		};
 	},
 	getDate() {
@@ -132,7 +139,7 @@
 							})}
 						</div>
 
-						<StartingPointComments text={''} onSubmit={function(event) {event.preventDefault(); console.log(event)}} />
+						<StartingPointComments data={this.data} dateString={this.state.dateString} />
 
 						<div className="col-md-6">
 							<div className="well">
