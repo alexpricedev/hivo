@@ -21,17 +21,6 @@ Template.startingPoint.onCreated(function() {
 	this.subscribe('exercises', this.userId, this.program);
 });
 
-Template.startingPoint.onRendered(function() {
-	let wait = () => {
-		if (this.subscriptionsReady()) {
-			Modules.client.showModalOnRender(this.exercise);
-		} else {
-			setTimeout(wait, 100);
-		}
-	};
-	// wait();
-});
-
 Template.startingPoint.helpers({
 	exerciseData() {
 		let self = Template.instance();
@@ -78,8 +67,6 @@ Template.startingPoint.helpers({
 		});
 
 		let date = Modules.client.getSimpleDate(self);
-
-		console.log(date);
 
 		if (!exercise.exerciseData) {
 			return null;

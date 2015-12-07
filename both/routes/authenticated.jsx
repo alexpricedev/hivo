@@ -85,29 +85,15 @@ authenticatedRoutes.route('/depression/starting-point/:day/:month/:year', {
   }
 });
 
-authenticatedRoutes.route('/depression/starting-point/:day/:month/:year/new/:time', {
-  name: 'starting-point-new',
+authenticatedRoutes.route('/depression/starting-point/:day/:month/:year/:time/:entryId?', {
+  name: 'starting-point-entry',
 	triggersEnter: [
 		Modules.both.checkValidDate,
 		Modules.both.checkValidTime
 	],
   action() {
 		ReactLayout.render(Default, {
-			yield: <StartingPointNew />,
-			// footer: <Footer />
-		});
-  }
-});
-
-authenticatedRoutes.route('/depression/starting-point/:day/:month/:year/edit/:time/:entryId', {
-  name: 'starting-point-edit',
-	triggersEnter: [
-		Modules.both.checkValidDate,
-		Modules.both.checkValidTime
-	],
-  action() {
-		ReactLayout.render(Default, {
-			yield: <StartingPointEdit />,
+			yield: <StartingPointEntry />,
 			// footer: <Footer />
 		});
   }

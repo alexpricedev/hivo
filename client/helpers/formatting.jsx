@@ -19,8 +19,21 @@ let dateString = (date) => {
 	return moment(date).format('Do MMMM YYYY');
 };
 
+let dateFromNow = (momentDate) => {
+	return momentDate.locale('en').calendar(
+		null,
+		{
+			sameDay: '[Today]',
+			nextDay: '[Tomorrow]',
+			nextWeek: 'dddd',
+			lastDay: '[Yesterday]',
+			lastWeek: '[Last] dddd'
+		}
+	);
+};
+
 let sentanceCase = (string) => {
-	return Modules.both.capitalizeFirstLetter(string);
+	return string.charAt(0).toUpperCase() + string.slice(1);
 };
 
 FormattingHelpers = {
@@ -28,5 +41,6 @@ FormattingHelpers = {
   emailAddress: emailAddress,
   dateLabel: dateLabel,
 	dateString: dateString,
+	dateFromNow: dateFromNow,
 	sentanceCase: sentanceCase
 };

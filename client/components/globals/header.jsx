@@ -24,7 +24,7 @@ AppHeader = React.createClass({
 											<span className="icon-bar"></span>
 											<span className="icon-bar"></span>
 									</button>
-									<a className="navbar-brand" href={this.brandLink()}>hivo</a>
+									<a className="navbar-brand" href={this.brandLink()} style={{fontFamily: 'Comfortaa', color: '#3D3D3D', letterSpacing: '1px'}}>hivo</a>
 							</div>
 							{this.navigationItems()}
 					</div>
