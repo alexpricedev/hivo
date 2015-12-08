@@ -9,6 +9,8 @@ Default = React.createClass({
         </div>
 
 				{this.props.footer}
+
+				<Modal slug={this.props.modal} />
       </div>
     );
   }

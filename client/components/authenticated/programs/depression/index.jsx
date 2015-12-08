@@ -16,8 +16,8 @@ DepressionIndex = React.createClass({
 					</div>
 
 					<div className="col-md-6">
-						<div className="jumbotron">
-							<p>Sometimes the hardest steps are the first ones, and by getting this far you have already taken your first step to get on top of your low mood.</p>
+						<div className="well">
+							<p style={{fontSize: '18px'}}>Sometimes the hardest steps are the first ones, and by getting this far you have already taken your first step to get on top of your low mood.</p>
 						</div>
 					</div>
 

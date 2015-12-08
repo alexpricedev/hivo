@@ -49,7 +49,8 @@ authenticatedRoutes.route('/depression/impact-of-depression', {
   action() {
 		ReactLayout.render(Default, {
 			yield: <ImpactOfDepression />,
-			footer: <Footer />
+			footer: <Footer />,
+			modal: 'impact-of-depression'
 		});
   }
 });
@@ -59,7 +60,8 @@ authenticatedRoutes.route('/depression/thinking-ahead', {
   action() {
 		ReactLayout.render(Default, {
 			yield: <ThinkingAhead />,
-			footer: <Footer />
+			footer: <Footer />,
+			modal: 'thinking-ahead'
 		});
   }
 });
@@ -69,7 +71,8 @@ authenticatedRoutes.route('/depression/starting-point', {
   action() {
 		ReactLayout.render(Default, {
 			yield: <StartingPoint />,
-			footer: <Footer />
+			footer: <Footer />,
+			modal: 'starting-point'
 		});
   }
 });

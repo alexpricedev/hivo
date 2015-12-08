@@ -11,8 +11,6 @@ Meteor.methods({
 		if (index >= 0) {
 			let program = lodash.clone(Modules.both.availiblePrograms[index]);
 
-			program.userId = userId;
-
 			let exercises = [];
 
 			lodash.forEach(program.exercises, function(exercise) {
@@ -30,6 +28,7 @@ Meteor.methods({
 				);
 			});
 
+			program.userId = userId;
 			program.exercises = exercises;
 
 			try {

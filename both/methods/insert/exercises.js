@@ -1,6 +1,5 @@
 Meteor.methods({
   insertExercise(exercise) {
-		exercise.exerciseData = {};
     check(exercise, Exercises.simpleSchema());
 
     try {

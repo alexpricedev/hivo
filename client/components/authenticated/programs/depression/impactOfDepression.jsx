@@ -5,13 +5,19 @@ ImpactOfDepression = React.createClass({
 		let subscription = Meteor.subscribe('exercises', uid, 'depression');
 		Meteor.subscribe('programs', uid); // Needed for updateExercise
 
+		let exercise = {};
+
+		if (subscription.ready()) {
+			exercise = Exercises.findOne({
+				userId: uid,
+				route: 'impact-of-depression'
+			});
+		};
+
 		return {
 			isLoading: !subscription.ready(),
 			userId: uid,
-			exercise: Exercises.findOne({
-				userId: uid,
-				route: 'impact-of-depression'
-			})
+			exercise: exercise
 		};
 	},
 	handleSubmit(event) {
