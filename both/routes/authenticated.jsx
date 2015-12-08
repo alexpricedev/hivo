@@ -38,8 +38,8 @@ authenticatedRoutes.route('/depression', {
   name: 'depression',
   action() {
 		ReactLayout.render(Default, {
-			yield: <DepressionIndex />
-			// footer: <Footer />
+			yield: <DepressionIndex />,
+			footer: <Footer />
 		});
   }
 });
@@ -49,7 +49,7 @@ authenticatedRoutes.route('/depression/impact-of-depression', {
   action() {
 		ReactLayout.render(Default, {
 			yield: <ImpactOfDepression />,
-			// footer: <Footer />
+			footer: <Footer />
 		});
   }
 });
@@ -59,7 +59,7 @@ authenticatedRoutes.route('/depression/thinking-ahead', {
   action() {
 		ReactLayout.render(Default, {
 			yield: <ThinkingAhead />,
-			// footer: <Footer />
+			footer: <Footer />
 		});
   }
 });
@@ -69,7 +69,7 @@ authenticatedRoutes.route('/depression/starting-point', {
   action() {
 		ReactLayout.render(Default, {
 			yield: <StartingPoint />,
-			// footer: <Footer />
+			footer: <Footer />
 		});
   }
 });
@@ -80,7 +80,7 @@ authenticatedRoutes.route('/depression/starting-point/:day/:month/:year', {
   action() {
 		ReactLayout.render(Default, {
 			yield: <StartingPoint />,
-			// footer: <Footer />
+			footer: <Footer />
 		});
   }
 });
@@ -94,7 +94,7 @@ authenticatedRoutes.route('/depression/starting-point/:day/:month/:year/:time/:e
   action() {
 		ReactLayout.render(Default, {
 			yield: <StartingPointEntry />,
-			// footer: <Footer />
+			footer: <Footer />
 		});
   }
 });
