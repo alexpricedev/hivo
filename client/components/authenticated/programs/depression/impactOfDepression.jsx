@@ -37,11 +37,11 @@ ImpactOfDepression = React.createClass({
 		} else {
 			return (
 				<div>
-					<ol className="breadcrumb">
-						<li><a href={FlowHelpers.pathFor('index')}>Dashboard</a></li>
-						<li><a href={FlowHelpers.pathFor('depression')}>Depression</a></li>
-						<li className="active">How Is Depression Affecting You?</li>
-					</ol>
+					<Breadcrumb links={[
+						{link: 'index', text: 'Dashboard'},
+						{link: 'depression', text: 'Depression'},
+						{link: null, text: 'How Is Depression Affecting You?'}
+					]} />
 
 					<h3>Mentality Depression Program</h3>
 

@@ -92,13 +92,13 @@
 		} else {
 			return (
 				<div>
-					<ol className="breadcrumb">
-						<li><a href={FlowHelpers.pathFor('index')}>Dashboard</a></li>
-						<li><a href={FlowHelpers.pathFor('depression')}>Depression</a></li>
-						<li>Starting Point</li>
-					</ol>
+					<Breadcrumb links={[
+						{link: 'index', text: 'Dashboard'},
+						{link: 'depression', text: 'Depression'},
+						{link: null, text: 'Starting Point'}
+					]} />
 
-					<h3>Mentality Depression Program</h3>
+					<h3>hivo Depression Program</h3>
 
 					<h4>
 						Exercise Three - Starting point{' '}

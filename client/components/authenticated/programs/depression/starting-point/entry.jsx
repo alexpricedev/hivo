@@ -126,8 +126,14 @@ StartingPointEntry = React.createClass({
 						<li><a href={FlowHelpers.pathFor('index')}>Dashboard</a></li>
 						<li><a href={FlowHelpers.pathFor('depression')}>Depression</a></li>
 						<li><a href={FlowHelpers.pathFor('starting-point')}>Starting Point</a></li>
-						<li>{this.newOrEdit()}</li>
+						<li>{}</li>
 					</ol>
+					<Breadcrumb links={[
+						{link: 'index', text: 'Dashboard'},
+						{link: 'depression', text: 'Depression'},
+						{link: 'starting-point', text: 'Starting Point'},
+						{link: null, text: this.newOrEdit()}
+					]} />
 
 					<h3>Get Active, Feel Good Depression Program</h3>
 

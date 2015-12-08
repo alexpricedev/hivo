@@ -39,6 +39,8 @@ StartingPointEntryTable = React.createClass({
 				default:
 					cls = cls + ' alert-success';
 			}
+		} else {
+			cls = cls + ' alert-danger';
 		}
 
 		return <span className={cls}>{num} / 2</span>;

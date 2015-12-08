@@ -2,10 +2,10 @@ DepressionIndex = React.createClass({
 	render() {
 		return (
 			<div>
-				<ol className="breadcrumb">
-					<li><a href={FlowHelpers.pathFor('index')}>Dashboard</a></li>
-					<li>Depression</li>
-				</ol>
+				<Breadcrumb links={[
+					{link: 'index', text: 'Dashboard'},
+					{link: null, text: 'Depression'}
+				]} />
 
 				<h3>Mentality Depression Program</h3>
 

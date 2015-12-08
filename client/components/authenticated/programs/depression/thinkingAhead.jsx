@@ -95,11 +95,11 @@ ThinkingAhead = React.createClass({
 		} else {
 			return (
 				<div>
-					<ol className="breadcrumb">
-						<li><a href={FlowHelpers.pathFor('index')}>Dashboard</a></li>
-						<li><a href={FlowHelpers.pathFor('depression')}>Depression</a></li>
-						<li className="active">Thinking Ahead</li>
-					</ol>
+					<Breadcrumb links={[
+						{link: 'index', text: 'Dashboard'},
+						{link: 'depression', text: 'Depression'},
+						{link: null, text: 'Thinking Ahead'}
+					]} />
 
 					<h3>Mentality Depression Program</h3>
 
