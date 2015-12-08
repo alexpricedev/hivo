@@ -1,12 +1,12 @@
 let login = (options) => {
-  _validate(options.form, options.template);
+  _validate(options.form);
 };
 
-let _validate = (form, template) => {
-  $(form).validate(_validation(template));
+let _validate = (form) => {
+  $(form).validate(_validation());
 };
 
-let _validation = (template) => {
+let _validation = () => {
   return {
     rules: {
       emailAddress: {
@@ -27,14 +27,14 @@ let _validation = (template) => {
       }
     },
     submitHandler() {
-      _handleLogin(template);
+      _handleLogin();
     }
   };
 };
 
-let _handleLogin = (template) => {
-  let email = template.find('[name="emailAddress"]').value,
-    password = template.find('[name="password"]').value;
+let _handleLogin = () => {
+  let email = $('[name="emailAddress"]').val();
+  let password = $('[name="password"]').val();
 
   Meteor.loginWithPassword(email, password, (error) => {
     if (error) {

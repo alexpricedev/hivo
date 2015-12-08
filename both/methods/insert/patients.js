@@ -24,9 +24,9 @@ Meteor.methods({
 				last: props.last
 			};
 
-			let password = Random.secret([16]);
-
 			// TODO: assign random password to user
+			// let password = Random.secret([16]);
+
 			Accounts.createUser({
 				email: props.email,
 				password: 'password',
@@ -36,6 +36,10 @@ Meteor.methods({
 					counsellor: props.counsellor
 				}
 			});
+
+			// TODO: Improve error handling here.
+			// Currently a false data submit will still result in
+			// a 'success' Bert notification.
 
 			Bert.alert('Invitation sent', 'success', 'growl-top-right');
 

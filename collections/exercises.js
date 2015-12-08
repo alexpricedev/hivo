@@ -37,15 +37,11 @@ let ExercisesSchema = new SimpleSchema({
     label: "The position of this exercise in the program list.",
 		optional: true
   },
-  "modal": {
-    type: String,
-    label: "The ID for the modal window to display.",
-		optional: true
-  },
   "exerciseData": {
     type: Object,
     label: "The data collected from the exercise.",
     optional: true,
+    defaultValue: {},
 		blackbox: true
   },
   "complete": {
