@@ -23,10 +23,17 @@ let availiblePrograms = [
 		]
 	},
 	{
-		title: 'Anxiety 101',
+		title: 'Anxiety',
 		route: 'anxiety',
 		description: 'Help your patient to beat anxiety.',
-		tags: ['anxiety', 'cognitive behavioural therapy']
+		tags: ['anxiety', 'cognitive behavioural therapy'],
+		exercises: [
+			{
+				order: 0,
+				route: 'anxiety-hierarchy',
+				title: 'Your Anxiety Rating Table'
+			}
+		]
 	}
 ];
 

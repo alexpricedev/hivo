@@ -1,7 +1,7 @@
 {
-  "name": "Mentality",
+  "name": "Hivo",
   "version": "1.0.0",
-  "description": "",
+  "description": "Happiness Innovation using CBT",
   "scripts": {
     "start": "meteor --settings settings-development.json",
     "staging": "modulus deploy",
