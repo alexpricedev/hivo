@@ -16,6 +16,10 @@ EditAnxietyRowOverlay = React.createClass({
 	getInitialState() {
 		return {
 			entryText: '',
+			entryTextError: {
+				status: false,
+				message: ''
+			},
 			entryPercentage: '50'
 		};
 	},
@@ -26,10 +30,20 @@ EditAnxietyRowOverlay = React.createClass({
 	 */
 	handleSubmit(event) {
 		event.preventDefault();
-		console.log(
-			this.state.entryText,
-			this.state.entryPercentage
-		);
+		if (!this.state.entryText.length) {
+			this.setState({
+				entryTextError: {
+					status: true,
+					message: 'You didn\'t enter any text!'
+				},
+			});
+		} else {
+			// TODO: submit to DB
+			console.log(
+				this.state.entryText,
+				this.state.entryPercentage
+			);
+		}
 	},
 	/**
 	 * Updates the state with the latest entryText.
@@ -37,7 +51,11 @@ EditAnxietyRowOverlay = React.createClass({
 	 */
 	handleEntryTextChange(event) {
 		this.setState({
-			entryText: event.target.value
+			entryText: event.target.value,
+			entryTextError: {
+				status: false,
+				message: ''
+			}
 		});
 	},
 	/**
@@ -66,13 +84,20 @@ EditAnxietyRowOverlay = React.createClass({
 		}
   },
 	render() {
+		let entryTextClass = (this.state.entryTextError.status ?
+			'form-group has-error' :
+			'form-group'
+		);
+
 		return (
 			<div>
 				<form onSubmit={this.handleSubmit}>
 
-					<div className="form-group">
-						<label htmlFor="entryText">
-							What makes you anxious?
+					<div className={entryTextClass}>
+						<label
+							className="control-label"
+							htmlFor="entryText">
+								What makes you anxious?
 						</label>
 
 						<TextBox
@@ -80,15 +105,21 @@ EditAnxietyRowOverlay = React.createClass({
 							placeholder={'Over here!'}
 							text={this.state.entryText}
 							onChange={this.handleEntryTextChange} />
+
+						<span className="help-block">
+							{this.state.entryTextError.message}
+						</span>
 					</div>
 
 					<div className="form-group">
-						<label htmlFor="entryText">
-							What rating would you give that?
+						<label
+							className="control-label"
+							htmlFor="entryPercentage">
+								What rating would you give that?
 						</label>
 
 						<PercentageSlider
-							id={'entryText'}
+							id={'entryPercentage'}
 							value={this.state.entryPercentage}
 							onChange={this.handleEntryPercentageChange} />
 					</div>
