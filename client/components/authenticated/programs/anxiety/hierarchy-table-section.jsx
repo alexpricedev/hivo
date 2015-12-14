@@ -19,6 +19,10 @@ AnxietyHierarchyTableSection = React.createClass({
 		 */
 		entries: React.PropTypes.array.isRequired,
 		/**
+		 * Event handler for an edit entry event.
+		 */
+		handleEdit: React.PropTypes.func.isRequired,
+		/**
 		 * The event handler for handling changes to the order
 		 * of the entries in this section.
 		 */
@@ -80,7 +84,8 @@ AnxietyHierarchyTableSection = React.createClass({
 							<AnxietyHierarchyTableEntry
 								key={i}
 								text={entry.text}
-								percentage={entry.percentage} />
+								percentage={entry.percentage}
+								handleEdit={this.props.handleEdit} />
 						);
 					})}
 

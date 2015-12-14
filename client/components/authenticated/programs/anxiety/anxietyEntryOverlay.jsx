@@ -2,12 +2,29 @@
  * An whole page overlay that contains a form for
  * adding/editing anxiety hierarchy entries.
  */
-EditAnxietyRowOverlay = React.createClass({
+AnxietyEntryOverlay = React.createClass({
 	propTypes: {
+		/**
+		 * The Mongo `_id` for the current user.
+		 */
+		userId: React.PropTypes.string.isRequired,
+		/**
+		 * An entry to modified. If `null` add new entry.
+		 */
+		entry: React.PropTypes.object,
+		/**
+		 * The Mongo `_id` for the current exercise.
+		 */
+		exerciseId: React.PropTypes.string.isRequired,
+		/**
+		 * An object containing the `hard`, `medium` and `easy`
+		 * arrays of entry objects.
+		 */
+		entries: React.PropTypes.object.isRequired,
 		/**
 		 * An event handler for a cancel `onClick` event.
 		 */
-		onCancel: React.PropTypes.func.isRequired,
+		onCancel: React.PropTypes.func.isRequired
 	},
 	/**
 	 * The state of the overlay contains the values of
@@ -24,12 +41,25 @@ EditAnxietyRowOverlay = React.createClass({
 		};
 	},
 	/**
+	 * If the component was mounted with an entry prop,
+	 * set the state for edit mode.
+	 */
+	componentDidMount() {
+		if (this.props.entry) {
+			this.setState({
+				entryText: this.props.entry.text,
+				entryPercentage: this.props.entry.percentage.toString()
+			});
+		}
+	},
+	/**
 	 * Creates a new anxiety hierarchy entry using the
 	 * data stored in the state.
 	 * @param {Object} event
 	 */
 	handleSubmit(event) {
 		event.preventDefault();
+
 		if (!this.state.entryText.length) {
 			this.setState({
 				entryTextError: {
@@ -38,11 +68,57 @@ EditAnxietyRowOverlay = React.createClass({
 				},
 			});
 		} else {
-			// TODO: submit to DB
-			console.log(
-				this.state.entryText,
-				this.state.entryPercentage
+			// Existing entries
+			let entries = this.props.entries;
+
+			let newEntry = {
+				text: this.state.entryText,
+				percentage: parseInt(this.state.entryPercentage)
+			};
+
+			// If in 'edit mode'
+			if (this.props.entry) {
+				let entryDifficulty, entryKey;
+
+				_.forEach(entries, (entriesForDifficulty, difficulty) => {
+					_.forEach(entriesForDifficulty, (entry, key) => {
+						if(_.isEqual(entry, this.props.entry)) {
+							entryDifficulty = difficulty;
+							entryKey = key;
+						}
+					});
+				});
+
+				if (entryDifficulty && _.isNumber(entryKey)) {
+					entries[entryDifficulty][entryKey] = newEntry;
+				}
+			} else { // 'new entry mode'
+				let defaultPosition = 'hard';
+
+				if (newEntry.percentage < 30) {
+					defaultPosition = 'easy';
+				} else if (newEntry.percentage >= 30 && newEntry.percentage < 60) {
+					defaultPosition = 'medium';
+				}
+
+				entries[defaultPosition].push(newEntry);
+			}
+
+			let props = {
+				userId: this.props.userId,
+				exerciseData: {
+					entries: entries
+				}
+			};
+
+			Meteor.call(
+				'updateExercise',
+				this.props.exerciseId,
+				props
 			);
+
+			// Hide overlay
+			this.props.onCancel();
 		}
 	},
 	/**

@@ -4,56 +4,131 @@
  */
 AnxietyHierarchy = React.createClass({
 	/**
-	 * When the state of the page is `editMode=true` an overlay
+	 * We use the `ReactMeteorData` plugin to assist us
+	 * in getting data from the DB.
+	 */
+	mixins: [ReactMeteorData],
+	/**
+	 * When the state of the page is `overlayIsVisible=true` an overlay
 	 * will be shown containing a form to manipulate entry data.
 	 */
 	getInitialState() {
 		return {
-			editMode: false
+			overlayIsVisible: false,
+			entry: null
 		};
 	},
 	/**
-	 * Changes the state so the user can add a new
-	 * entry to the table.
+	 * This is the methoded used in conjunction with the `ReactMeteorData`
+	 * plugin. Here we subscribe to the publications and, when the
+	 * subscription is ready, update the client with the exercise and
+	 * entry data for the current user.
+	 */
+	getMeteorData() {
+		let uid = Meteor.userId();
+		let subscription = Meteor.subscribe('exercises', uid, 'anxiety');
+		Meteor.subscribe('programs', uid); // Needed for updateExercise
+
+		let exercise = {};
+		let entries = {
+			hard: [],
+			medium: [],
+			easy: []
+		};
+
+		if (subscription.ready()) {
+			exercise = Exercises.findOne({
+				userId: uid,
+				route: 'anxiety-hierarchy'
+			});
+
+			if (exercise.exerciseData.entries) {
+				entries = exercise.exerciseData.entries
+			}
+		};
+
+		return {
+			isLoading: !subscription.ready(),
+			userId: uid,
+			exercise: exercise,
+			entries: entries
+		};
+	},
+	/**
+	 * Changes the state to show the entry form overlay
 	 * @param {Object} event
 	 */
-	addEntry(event) {
+	showNewEntryForm(event) {
 		event.preventDefault();
 		this.setState({
-			editMode: true
+			overlayIsVisible: true
 		});
 	},
 	/**
-	 * Resets the editMode state so the hierarchy table
-	 * is visible.
+	 * Changes the state to hide the entry form overlay
 	 * @param {Object} event
 	 */
-	cancelAddEntry(event) {
+	hideNewEntryForm(event) {
+		// Might not be called `onClick`
+		if (event) {
+			event.preventDefault();
+		}
+
+		this.setState({
+			overlayIsVisible: false
+		});
+	},
+	/**
+	 * Event handler for editing an entry.
+	 * @param {Object} event
+	 * @param {Object} entry
+	 */
+	editEntry(event, entry) {
 		event.preventDefault();
 		this.setState({
-			editMode: false
+			overlayIsVisible: true,
+			entry: entry
 		});
 	},
 	render() {
-		if (this.state.editMode) {
-			return (
-				<EditAnxietyRowOverlay onCancel={this.cancelAddEntry} />
-			);
+		if (!PermissionHelpers.enrolled) {
+			return <NotFound />;
+		} else if (this.data.isLoading) {
+			return <Loading />;
 		} else {
-			return (
-				<div className="row">
 
-					<div className="col-md-6 col-md-push-3">
+			if (this.state.overlayIsVisible) {
 
-						<h3>Your anxiety rating table</h3>
-						<AddButton onClick={this.addEntry} />
+				return (
+					<AnxietyEntryOverlay
+						userId={this.data.userId}
+						entry={this.state.entry}
+						exerciseId={this.data.exercise._id}
+						entries={this.data.entries}
+						onCancel={this.hideNewEntryForm} />
+				);
 
-						<AnxietyHierarchyTable />
+			} else {
 
+				return (
+					<div className="row">
+						<div className="col-md-6 col-md-push-3">
+
+							<h3>Your anxiety rating table</h3>
+							<AddButton onClick={this.showNewEntryForm} />
+
+							<AnxietyHierarchyTable
+								userId={this.data.userId}
+								exerciseId={this.data.exercise._id}
+								entries={this.data.entries}
+								handleEdit={this.editEntry} />
+
+						</div>
 					</div>
+				);
 
-				</div>
-			);
+			}
+
 		}
 	}
 });
