@@ -32,6 +32,7 @@ PercentageSlider = React.createClass({
 				id={this.props.id}
         min="0"
         max="100"
+        step="5"
         value={this.props.value}
         onChange={this.props.onChange} />
 		);

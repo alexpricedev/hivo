@@ -76,7 +76,17 @@ AnxietyHierarchyTableSection = React.createClass({
 	 * @param {Object} event
 	 */
 	handleSort(event) {
-		this.props.handleReorder(event, this.state.entries);
+		let sortedEntries = _.sortByOrder(
+			this.state.entries,
+			['percentage', 'text'],
+			['desc', 'asc']
+		);
+
+		this.setState({
+			entries: sortedEntries
+		});
+
+		this.props.handleReorder(event, sortedEntries);
 	},
 	/**
 	 * Event handler for deleting an entry from this exercise.

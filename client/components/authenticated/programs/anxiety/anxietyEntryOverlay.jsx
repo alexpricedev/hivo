@@ -51,6 +51,8 @@ AnxietyEntryOverlay = React.createClass({
 				entryPercentage: this.props.entry.percentage.toString()
 			});
 		}
+
+		$('#entryText').focus();
 	},
 	/**
 	 * Creates a new anxiety hierarchy entry using the
@@ -91,6 +93,11 @@ AnxietyEntryOverlay = React.createClass({
 
 				if (entryDifficulty && _.isNumber(entryKey)) {
 					entries[entryDifficulty][entryKey] = newEntry;
+					entries[entryDifficulty] = _.sortByOrder(
+						entries[entryDifficulty],
+						['percentage', 'text'],
+						['desc', 'asc']
+					);
 				}
 			} else { // 'new entry mode'
 				let defaultPosition = 'hard';
@@ -102,6 +109,12 @@ AnxietyEntryOverlay = React.createClass({
 				}
 
 				entries[defaultPosition].push(newEntry);
+
+				entries[defaultPosition] = _.sortByOrder(
+					entries[defaultPosition],
+					['percentage', 'text'],
+					['desc', 'asc']
+				);
 			}
 
 			let props = {
