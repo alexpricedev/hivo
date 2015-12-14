@@ -49,29 +49,58 @@ AnxietyHierarchyTable = React.createClass({
 			);
 		}
 	},
+	/**
+	 * Deletes an entry from this exercise.
+	 * @param {String} difficulty
+	 * @param {Number} index
+	 */
+	deleteEntry(difficulty, index) {
+		let entries = this.props.entries;
+
+		if (entries[difficulty][index]) {
+			// Remove entry at index
+			entries[difficulty].splice(index, 1);
+
+			let props = {
+				userId: this.props.userId,
+				exerciseData: {
+					entries: entries
+				}
+			};
+
+			Meteor.call(
+				'updateExercise',
+				this.props.exerciseId,
+				props
+			);
+		}
+	},
 	render() {
 		return (
 			<div>
 
 				<h5>Stuff that makes your really anxious</h5>
 				<AnxietyHierarchyTableSection
-					id={'hard'}
+					difficulty={'hard'}
 					entries={this.props.entries.hard}
 					handleEdit={this.props.handleEdit}
+					deleteEntry={this.deleteEntry}
 					handleReorder={this.updateEntryOrder} />
 
 				<h5>Stuff you don’t like the sound of doing</h5>
 				<AnxietyHierarchyTableSection
-					id={'medium'}
+					difficulty={'medium'}
 					entries={this.props.entries.medium}
 					handleEdit={this.props.handleEdit}
+					deleteEntry={this.deleteEntry}
 					handleReorder={this.updateEntryOrder} />
 
 				<h5>Stuff you would rather avoid doing</h5>
 				<AnxietyHierarchyTableSection
-					id={'easy'}
+					difficulty={'easy'}
 					entries={this.props.entries.easy}
 					handleEdit={this.props.handleEdit}
+					deleteEntry={this.deleteEntry}
 					handleReorder={this.updateEntryOrder} />
 
 			</div>

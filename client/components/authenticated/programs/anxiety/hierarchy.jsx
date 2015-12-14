@@ -61,7 +61,8 @@ AnxietyHierarchy = React.createClass({
 	showNewEntryForm(event) {
 		event.preventDefault();
 		this.setState({
-			overlayIsVisible: true
+			overlayIsVisible: true,
+			entry: null
 		});
 	},
 	/**

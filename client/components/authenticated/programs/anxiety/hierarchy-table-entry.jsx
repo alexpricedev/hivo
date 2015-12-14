@@ -4,6 +4,11 @@
 AnxietyHierarchyTableEntry = React.createClass({
 	propTypes: {
 		/**
+		 * The index of this entry object in the current section
+		 * array of objects.
+		 */
+		index: React.PropTypes.number.isRequired,
+		/**
 		 * The text for this entry.
 		 */
 		text: React.PropTypes.string.isRequired,
@@ -15,7 +20,11 @@ AnxietyHierarchyTableEntry = React.createClass({
 		/**
 		 * Event handler for an edit entry event.
 		 */
-		handleEdit: React.PropTypes.func.isRequired
+		handleEdit: React.PropTypes.func.isRequired,
+		/**
+		 * Event handler for a delete entry event.
+		 */
+		handleDelete: React.PropTypes.func.isRequired
 	},
 	/**
 	 * Envoke the edit handler for entries. Passing
@@ -49,8 +58,11 @@ AnxietyHierarchyTableEntry = React.createClass({
 
 					{' '}
 
-					<a href="#">
-						<Icon icon={'trash'} />
+					<a
+						href="#"
+						data-index={this.props.index}
+						onClick={this.props.handleDelete}>
+							<Icon icon={'trash'} />
 					</a>
 				</span>
 
