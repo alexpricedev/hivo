@@ -1,0 +1,32 @@
+// ==============================================
+// Form input styles
+// ==============================================
+
+.input {
+    @include fontSize(18px);
+    background: white(0.05);
+    border: none;
+    border-bottom: 3px solid green(0.5);
+    display: block;
+    font-weight: 200;
+    letter-spacing: rem(1px);
+    margin: rem(0 0 30px);
+    outline: none;
+    padding: rem(8px 14px);
+    width: 100%;
+
+    @include break(medium) {
+        @include fontSize(26px);
+    }
+}
+
+.input:focus {
+    background: white(0.1);
+    border-bottom-color: green();
+}
+
+.input::-webkit-input-placeholder {
+    color: white(0.5);
+    font-style: italic;
+    letter-spacing: rem(1px);
+}

@@ -1,19 +1,14 @@
 // ==============================================
-// Bootstrap label extension
+// Form label styles
 // ==============================================
 
-$program-tags:
-    anxiety       #27ae60,
-    depression    #f39c12,
-    cognitive     #e74c3c
-;
+.label {
+    @include fontSize(22px);
+    display: block;
+    font-weight: 300;
+    margin: rem(0 0 10px);
 
-@each $tag in $program-tags {
-    .label-#{nth($tag, 1)} {
-        background-color : nth($tag, 2);
+    @include break(medium) {
+        @include fontSize(30px);
     }
-}
-
-.label-as-badge {
-    border-radius: 1em;
 }

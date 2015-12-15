@@ -27,7 +27,11 @@
 // Component imports
 @import "components/button";
 @import "components/header";
+@import "components/input";
+@import "components/label";
 @import "components/mainnav";
+@import "components/overlay";
+@import "components/range";
 
 // Program specific imports
 @import "components/anxiety/anxiety-page";
@@ -35,3 +39,4 @@
 @import "components/anxiety/hierarchy-table-entry";
 @import "components/anxiety/hierarchy-table-section";
 @import "components/anxiety/hierarchy-table";
+@import "components/anxiety/percentage-slider";

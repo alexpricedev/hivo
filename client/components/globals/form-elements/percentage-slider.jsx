@@ -14,6 +14,10 @@ PercentageSlider = React.createClass({
 		 */
 		value: React.PropTypes.string.isRequired,
 		/**
+		 * A string representation of `this.props.value`.
+		 */
+		valueText: React.PropTypes.string,
+		/**
 		 * A function to handle the `onChange` event triggered
 		 * when the handle is moved. This will usually update
 		 * `this.props.value`.
@@ -27,14 +31,25 @@ PercentageSlider = React.createClass({
 	},
 	render() {
 		return (
-			<input
-        type="range"
-				id={this.props.id}
-        min="0"
-        max="100"
-        step="5"
-        value={this.props.value}
-        onChange={this.props.onChange} />
+			<div className="percentage-slider">
+				<input
+					className="range"
+					type="range"
+					id={this.props.id}
+					min="0"
+					max="100"
+					step="5"
+					value={this.props.value}
+					onChange={this.props.onChange} />
+
+					<span className="percentage-slider-value">
+						{this.props.value}%
+					</span>
+
+					<span className="percentage-slider-text">
+						{this.props.valueText}
+					</span>
+			</div>
 		);
 	}
 });

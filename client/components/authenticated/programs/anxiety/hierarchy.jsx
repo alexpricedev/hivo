@@ -119,7 +119,7 @@ AnxietyHierarchy = React.createClass({
 								Your anxiety rating table
 							</h1>
 							<AddButton
-								modClass={'mod-right'}
+								modClass={'mod-right mod-icon'}
 								onClick={this.showNewEntryForm} />
 						</div>
 

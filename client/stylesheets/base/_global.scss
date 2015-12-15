@@ -27,3 +27,11 @@ body {
         width: $large;
     }
 }
+
+.container.mod-small {
+    width: 100%;
+
+    @include break(medium) {
+        width: $medium;
+    }
+}

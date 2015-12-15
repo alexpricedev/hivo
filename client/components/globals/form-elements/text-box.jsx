@@ -34,7 +34,7 @@ TextBox = React.createClass({
 		return (
 			<input
 				type="text"
-				className="form-control"
+				className="input"
 				id={this.props.id}
 				placeholder={this.props.placeholder}
 				value={this.props.text}

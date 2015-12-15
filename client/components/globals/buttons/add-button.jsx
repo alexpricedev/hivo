@@ -17,9 +17,9 @@ AddButton = React.createClass({
 		let cls = this.props.modClass ? `button ${this.props.modClass}` : 'button';
 		return (
 			<a
-				onClick={this.props.onClick}
+				className={cls}
 				href="#"
-				className={cls}>
+				onClick={this.props.onClick}>
 					<Icon icon={'plus'} />
 					<span className="sr-only">
 						Add

@@ -179,47 +179,49 @@ AnxietyEntryOverlay = React.createClass({
 		);
 
 		return (
-			<div>
-				<form onSubmit={this.handleSubmit}>
+			<div className="overlay">
+				<div className="container mod-small">
+					<form onSubmit={this.handleSubmit}>
 
-					<div className={entryTextClass}>
-						<label
-							className="control-label"
-							htmlFor="entryText">
-								What makes you anxious?
-						</label>
+						<div className={entryTextClass}>
+							<label
+								className="label"
+								htmlFor="entryText">
+									What makes you anxious?
+							</label>
 
-						<TextBox
-							id={'entryText'}
-							placeholder={'Over here!'}
-							text={this.state.entryText}
-							onChange={this.handleEntryTextChange} />
+							<TextBox
+								id={'entryText'}
+								placeholder={'Over here!'}
+								text={this.state.entryText}
+								onChange={this.handleEntryTextChange} />
 
-						<span className="help-block">
-							{this.state.entryTextError.message}
-						</span>
-					</div>
+							<span className="help-block">
+								{this.state.entryTextError.message}
+							</span>
+						</div>
 
-					<div className="form-group">
-						<label
-							className="control-label"
-							htmlFor="entryPercentage">
-								What rating would you give that?
-						</label>
+						<div className="form-group">
+							<label
+								className="label"
+								htmlFor="entryPercentage">
+									What rating would you give that?
+							</label>
 
-						<PercentageSlider
-							id={'entryPercentage'}
-							value={this.state.entryPercentage}
-							onChange={this.handleEntryPercentageChange} />
-					</div>
+							<PercentageSlider
+								id={'entryPercentage'}
+								value={this.state.entryPercentage}
+								valueText={this.getPercentageText(this.state.entryPercentage)}
+								onChange={this.handleEntryPercentageChange} />
+						</div>
 
-					<p>{this.state.entryPercentage}%</p>
-					<p>{this.getPercentageText(this.state.entryPercentage)}</p>
+						<SubmitButton modClass={'mod-right'} />
+						<CancelButton
+							modClass={'mod-right'}
+							onClick={this.props.onCancel} />
 
-					<SubmitButton />
-					<CancelButton onClick={this.props.onCancel} />
-
-				</form>
+					</form>
+				</div>
 			</div>
 		);
 	}
