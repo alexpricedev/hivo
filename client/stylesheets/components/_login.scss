@@ -1,0 +1,24 @@
+// ==============================================
+// Login page styles
+// ==============================================
+
+.login {
+    @include border-radius();
+    margin: 0 auto;
+    width: 50%;
+}
+
+    .login-title {
+        border-bottom: 3px solid blue();
+        margin: 0;
+        padding: rem(10px 0);
+    }
+
+    .login-form {
+        color: blue();
+        padding: rem(10px 0);
+    }
+
+        .login-form-label {
+            padding: rem(0);
+        }

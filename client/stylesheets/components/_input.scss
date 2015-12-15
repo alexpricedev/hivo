@@ -25,8 +25,50 @@
     border-bottom-color: green();
 }
 
+.input.mod-light {
+    background: blue(0.03);
+}
+
+.input.mod-light:focus {
+    background: blue(0.05);
+}
+
+.input::-ms-input-placeholder {
+    color: white(0.5);
+    font-style: italic;
+    letter-spacing: rem(1px);
+}
+
+.input::-moz-placeholder {
+    color: white(0.5);
+    font-style: italic;
+    letter-spacing: rem(1px);
+}
+
+.input:-moz-placeholder {
+    color: white(0.5);
+    font-style: italic;
+    letter-spacing: rem(1px);
+}
+
 .input::-webkit-input-placeholder {
     color: white(0.5);
     font-style: italic;
     letter-spacing: rem(1px);
+}
+
+.input.mod-light::-ms-input-placeholder {
+    color: blue(0.7);
+}
+
+.input.mod-light::-moz-placeholder {
+    color: blue(0.7);
+}
+
+.input.mod-light:-moz-placeholder {
+    color: blue(0.7);
+}
+
+.input.mod-light::-webkit-input-placeholder {
+    color: blue(0.7);
 }

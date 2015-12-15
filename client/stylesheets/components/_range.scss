@@ -12,7 +12,7 @@
 }
 
 .range:focus {
-  outline: none; /* Removes the blue border. You should probably do some kind of focus styling for accessibility reasons though. */
+    outline: none; /* Removes the blue border. */
 }
 
 .range::-ms-track {
@@ -38,6 +38,7 @@
 .range::-moz-range-thumb {
     @include border-radius(999px);
     background: green();
+    border: 0;
     cursor: pointer;
     height: rem(24px);
     width: rem(24px);
@@ -67,6 +68,7 @@
     background: green();
     cursor: pointer;
     height: rem(3px);
+    outline: 0;
     width: 100%;
 }
 
