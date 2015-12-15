@@ -1,0 +1,32 @@
+// ==============================================
+// Base styles: Background, typography etc.
+// ==============================================
+
+html, body {
+    @include clearfix();
+    box-sizing: border-box;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+    min-height: 0;
+}
+
+body {
+    background: $white;
+    font-family: 'Brandon Grotesque';
+}
+
+.container {
+    margin: 0 auto;
+    padding: 0 $gutter;
+    width: 100%;
+
+    @include break(small) {
+        width: $medium;
+    }
+
+    @include break(medium) {
+        width: $large;
+    }
+}

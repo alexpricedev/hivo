@@ -1,6 +1,29 @@
-@import "tools/extends";
+// ==============================================
+// Hivo: Style imports
+// Created by: Alex Price (@alexpriceonline)
+// Contributors: []
+// ==============================================
 
-@import "objects/forms";
+// Basic imports
+@import "vendor/normalize";
+@import url(https://fonts.googleapis.com/css?family=Comfortaa:400,700,300);
+@import "variables";
 
-@import "components/label";
-@import "components/login";
+// Mixin imports
+@import "mixins/border-radius";
+@import "mixins/break";
+@import "mixins/clearfix";
+@import "mixins/flex";
+@import "mixins/font-size";
+@import "mixins/rem";
+@import "mixins/transition";
+
+// Base imports
+@import "base/colours";
+@import "base/global";
+@import "base/fonts";
+
+// Component imports
+@import "components/button";
+@import "components/header";
+@import "components/mainnav";

@@ -13,14 +13,10 @@ AddButton = React.createClass({
 			<a
 				onClick={this.props.onClick}
 				href="#"
-				className="btn btn-default">
-					<span
-						className="glyphicon glyphicon-plus"
-						aria-hidden="true">
-					</span>
-					<span
-						className="sr-only">
-							Add
+				className="button">
+					<Icon icon={'plus'} />
+					<span className="sr-only">
+						Add
 					</span>
 			</a>
 		);

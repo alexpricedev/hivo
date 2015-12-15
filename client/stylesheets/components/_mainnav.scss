@@ -1,0 +1,36 @@
+// ==============================================
+// Hivo main navigation styles
+// ==============================================
+
+.mainnav {
+    float: right;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+    .mainnav-item {
+        display: inline-block;
+        margin: rem(0 0 0 30px);
+
+        &:first-of-type {
+            margin: 0;
+        }
+    }
+
+        .mainnav-item-link {
+            @include fontSize(12px);
+            @include transition(border-bottom-color .3s ease);
+            border-bottom: 2px solid transparent;
+            color: white();
+            font-weight: 600;
+            letter-spacing: rem(1px);
+            line-height: rem(1);
+            text-decoration: none;
+            text-transform: uppercase;
+        }
+
+        .mainnav-item-link.is-active,
+        .mainnav-item-link:hover {
+            border-bottom-color: green();
+        }

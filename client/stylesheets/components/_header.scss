@@ -1,0 +1,24 @@
+// ==============================================
+// Hivo main header styles
+// ==============================================
+
+.header {
+    @include clearfix();
+    background: blue();
+    border-bottom: 2px solid green();
+    padding: rem(10px 0);
+}
+
+    .header-logo {
+        @include fontSize(20px);
+        @include transition(color .2s ease);
+        color: white();
+        display: inline-block;
+        font-family: 'Comfortaa';
+        letter-spacing: rem(2px);
+        text-decoration: none;
+    }
+
+    .header-logo:hover {
+        color: white(0.8);
+    }

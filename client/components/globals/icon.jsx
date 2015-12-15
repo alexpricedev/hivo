@@ -1,15 +1,18 @@
 Icon = React.createClass({
 	propTypes :{
 		/**
-		 * The name of the Glyphicon icon to use.
-		 * http://glyphicons.com
+		 * The name of the FontAwesome icon to use.
+		 * http://fontawesome.io
 		 */
 		icon: React.PropTypes.string.isRequired
 	},
 	render() {
-		const cls = `glyphicon glyphicon-${this.props.icon}`;
+		const cls = `fa fa-${this.props.icon}`;
 		return (
-			<span className={cls}></span>
+			<i
+				className={cls}
+				aria-hidden="true">
+			</i>
 		);
 	}
 });

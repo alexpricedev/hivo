@@ -15,17 +15,14 @@ AppHeader = React.createClass({
 	},
 	render() {
 		return (
-			<nav className="navbar navbar-default" role="navigation">
+			<nav className="header" role="navigation">
 				<div className="container">
-					<div className="navbar-header">
-						<button type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
-							<span className="sr-only">Toggle navigation</span>
-							<span className="icon-bar"></span>
-							<span className="icon-bar"></span>
-							<span className="icon-bar"></span>
-						</button>
-						<a className="navbar-brand" href={this.brandLink()} style={{fontFamily: 'Comfortaa', color: '#3D3D3D', letterSpacing: '1px'}}>hivo</a>
-					</div>
+					<a
+						className="header-logo"
+						href={this.brandLink()}>
+							hivo
+					</a>
+
 					{this.navigationItems()}
 				</div>
 			</nav>
