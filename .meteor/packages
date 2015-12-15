@@ -9,7 +9,6 @@ jquery
 check
 audit-argument-checks
 themeteorchef:jquery-validation
-twbs:bootstrap
 browser-policy
 meteorhacks:npm
 
@@ -41,3 +40,6 @@ kadira:debug
 tsega:bootstrap3-datetimepicker
 react
 kadira:react-layout
+rubaxa:sortable
+ovcharik:alertifyjs
+fortawesome:fontawesome

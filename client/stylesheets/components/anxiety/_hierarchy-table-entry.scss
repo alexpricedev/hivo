@@ -1,0 +1,123 @@
+// ==============================================
+// Anxiety hierarchy table entry styles
+// ==============================================
+
+.hierarchy-table-entry {
+    @include border-radius-bottom-right();
+    @include border-radius-top-right();
+    @include clearfix();
+    background: red(0.2);
+    border-left: rem(6px) solid red(0.8);
+    cursor: ns-resize;
+    margin: rem(0 0 10px);
+    padding: rem(14px);
+    position: relative;
+}
+
+    .hierarchy-table-entry-title {
+        @include fontSize(18px);
+        display: inline-block;
+        float: left;
+        margin: 0;
+        padding: 0;
+
+        @include break(medium) {
+            @include fontSize(24px);
+        }
+    }
+
+    .hierarchy-table-entry-percentage {
+        @include fontSize(18px);
+        display: inline-block;
+        float: right;
+        opacity: 0.4;
+
+        @include break(medium) {
+            @include fontSize(24px);
+        }
+    }
+
+    .hierarchy-table-entry-edit {
+        display: none;
+        height: rem(40px);
+        padding: rem(0 5px);
+        position: absolute;
+        right: rem(-60px);
+        top: 50%;
+        -ms-transform: translateY(-20px);
+        -webkit-transform: translateY(-20px);
+        transform: translateY(-20px);
+        width: rem(60px);
+    }
+
+    .hierarchy-table-entry:hover .hierarchy-table-entry-edit {
+        display: block;
+    }
+
+        .hierarchy-table-entry-edit-link {
+            @include fontSize(20px);
+            @include transition(color .2s ease);
+            color: blue(0.2);
+            display: inline-block;
+            line-height: rem(40px);
+            padding: rem(0 0 0 5px);
+            text-decoration: none;
+        }
+
+        .hierarchy-table-entry-edit-link:hover {
+            color: blue();
+        }
+
+// Sortable active states
+.hierarchy-table-entry.sortable-ghost {
+    opacity: 0;
+}
+
+.hierarchy-table-entry.sortable-chosen {
+    @include border-radius();
+    background: red(1);
+    color: white();
+
+    .hierarchy-table-entry-edit {
+        display: none;
+    }
+}
+
+// Colours are based on the section
+.hierarchy-table-section.mod-medium .hierarchy-table-entry {
+    background: yellow(0.2);
+    border-left-color: yellow(0.8);
+
+    &.sortable-chosen {
+        background: yellow(1);
+    }
+}
+
+.hierarchy-table-section.mod-easy .hierarchy-table-entry {
+    background: green(0.2);
+    border-left-color: green(0.8);
+
+    &.sortable-chosen {
+        background: green(1);
+    }
+}
+
+// Empty entry
+.hierarchy-table-section .hierarchy-table-entry.mod-empty {
+    @include border-radius();
+    @include fontSize(24px);
+    background: blue(0);
+    border: 2px dashed blue(0.4);
+    color: blue(0.5);
+    cursor: default;
+    font-style: italic;
+    min-height: 40px;
+    opacity: 0.3;
+    position: absolute;
+    text-align: center;
+    width: 100%;
+
+    @include break(medium) {
+        min-height: 62px;
+    }
+}

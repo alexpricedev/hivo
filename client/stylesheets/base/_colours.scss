@@ -1,0 +1,35 @@
+// ==============================================
+// Project colour declarations
+// ==============================================
+
+// Main project colours
+@function blue($opacity:1) {
+    @return rgba(51, 77, 92, $opacity)
+}
+
+@function green($opacity:1) {
+    @return rgba(69, 178, 157, $opacity)
+}
+
+@function yellow($opacity:1) {
+    @return rgba(239, 201, 76, $opacity)
+}
+
+@function orange($opacity:1) {
+    @return rgba(226, 122, 63, $opacity)
+}
+
+@function red($opacity:1) {
+    @return rgba(223, 90, 73, $opacity)
+}
+
+@function white($opacity:1) {
+    @return rgba(255, 255, 255, $opacity)
+}
+
+$blue:    blue();
+$green:   green();
+$yellow:  yellow();
+$orange:  orange();
+$red:     red();
+$white:   white();

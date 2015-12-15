@@ -1,0 +1,22 @@
+// ==============================================
+// Fullscreen overlay styles
+// ==============================================
+
+.overlay {
+    background: blue();
+    color: white();
+    height: 100%;
+    left: 0;
+    padding: rem(20px 0 0);
+    position: fixed;
+    top: 0;
+    width: 100%;
+
+    @include break(small) {
+        padding: rem(40px 0 0);
+    }
+
+    @include break(medium) {
+        padding: rem(70px 0 0);
+    }
+}

@@ -1,0 +1,99 @@
+// ==============================================
+// Form range slider overriding styles
+// ==============================================
+
+.range {
+  -webkit-appearance: none; /* Hides the slider so that custom slider can be made */
+  width: 100%; /* Specific width is required for Firefox. */
+}
+
+.range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+}
+
+.range:focus {
+    outline: none; /* Removes the blue border. */
+}
+
+.range::-ms-track {
+  width: 100%;
+  cursor: pointer;
+  background: transparent; /* Hides the slider so custom styles can be added */
+  border-color: transparent;
+  color: transparent;
+}
+
+/* Special styling for WebKit/Blink */
+.range::-webkit-slider-thumb {
+    @include border-radius(999px);
+    -webkit-appearance: none;
+    background: green();
+    cursor: pointer;
+    height: rem(24px);
+    margin-top: rem(-11px); /* You need to specify a margin in Chrome, but in Firefox and IE it is automatic */
+    width: rem(24px);
+}
+
+/* All the same stuff for Firefox */
+.range::-moz-range-thumb {
+    @include border-radius(999px);
+    background: green();
+    border: 0;
+    cursor: pointer;
+    height: rem(24px);
+    width: rem(24px);
+}
+
+/* All the same stuff for IE */
+.range::-ms-thumb {
+    @include border-radius(999px);
+    background: green();
+    cursor: pointer;
+    height: rem(24px);
+    width: rem(24px);
+}
+
+.range::-webkit-slider-runnable-track {
+    background: green();
+    cursor: pointer;
+    height: rem(3px);
+    width: 100%;
+}
+
+.range:focus::-webkit-slider-runnable-track {
+    background: green();
+}
+
+.range::-moz-range-track {
+    background: green();
+    cursor: pointer;
+    height: rem(3px);
+    outline: 0;
+    width: 100%;
+}
+
+.range::-ms-track {
+    background: transparent;
+    border-color: transparent;
+    border-width: 16px 0;
+    color: transparent;
+    cursor: pointer;
+    height: rem(3px);
+    width: 100%;
+}
+
+.range::-ms-fill-lower {
+    background: green();
+}
+
+.range:focus::-ms-fill-lower {
+    background: green();
+}
+
+.range::-ms-fill-upper {
+    background: green();
+}
+
+.range:focus::-ms-fill-upper {
+    background: green();
+}

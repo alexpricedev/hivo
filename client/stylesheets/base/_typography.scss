@@ -1,0 +1,31 @@
+// ==============================================
+// Typography styles
+// ==============================================
+
+h1 {
+    @include fontSize(22px);
+    font-weight: 400;
+    line-height: 1;
+
+    @include break(small) {
+        @include fontSize(26px);
+    }
+
+    @include break(medium) {
+        @include fontSize(30px);
+    }
+}
+
+h2 {
+    @include fontSize(16px);
+    font-weight: 400;
+    line-height: 1;
+
+    @include break(small) {
+        @include fontSize(20px);
+    }
+
+    @include break(medium) {
+        @include fontSize(24px);
+    }
+}

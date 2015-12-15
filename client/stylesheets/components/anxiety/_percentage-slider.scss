@@ -1,0 +1,33 @@
+// ==============================================
+// Anxiety percentage slider styles
+// ==============================================
+
+.percentage-slider {
+    @include clearfix();
+    padding: rem(20px 0);
+}
+
+    .percentage-slider .range {
+        width: calc(100% - 70px);
+        float: left;
+    }
+
+    .percentage-slider-value {
+        @include fontSize(26px);
+        display: inline-block;
+        float: left;
+        font-weight: 300;
+        line-height: 1;
+        text-align: right;
+        -ms-transform: translateY(rem(-13px));
+        -webkit-transform: translateY(rem(-13px));
+        transform: translateY(rem(-13px));
+        width: 70px;
+    }
+
+    .percentage-slider-text {
+        display: block;
+        letter-spacing: rem(1px);
+        text-align: right;
+        width: 100%;
+    }
