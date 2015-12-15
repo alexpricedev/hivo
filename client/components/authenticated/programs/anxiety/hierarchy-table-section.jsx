@@ -66,7 +66,8 @@ AnxietyHierarchyTableSection = React.createClass({
 	sortableOptions: {
 		ref: 'entries',
 		group: 'entries',
-		model: 'entries'
+		model: 'entries',
+		filter: '.ignore-move'
 	},
 	/**
 	 * 'handleSort()` is the default event handler for events
@@ -111,26 +112,38 @@ AnxietyHierarchyTableSection = React.createClass({
 													.set(settings)
 													.show();
 	},
-	render() {
+	noEntries() {
+		if (this.state.entries.length == 0) {
 			return (
-				<div
-					ref="entries"
-					id={this.props.difficulty}
-					style={{padding: '30px 0'}}>
-
-					{this.state.entries.map((entry, i) => {
-						return (
-							<AnxietyHierarchyTableEntry
-								key={i}
-								index={i}
-								text={entry.text}
-								percentage={entry.percentage}
-								handleEdit={this.props.handleEdit}
-								handleDelete={this.handleDelete} />
-						);
-					})}
-
+				<div className="hierarchy-table-entry mod-empty ignore-move">
+					No entries
 				</div>
 			);
+		}
+	},
+	render() {
+		let cls = `hierarchy-table-section mod-${this.props.difficulty}`;
+		return (
+			<div
+				className={cls}
+				ref="entries"
+				id={this.props.difficulty}>
+
+				{this.state.entries.map((entry, i) => {
+					return (
+						<AnxietyHierarchyTableEntry
+							key={i}
+							index={i}
+							text={entry.text}
+							percentage={entry.percentage}
+							handleEdit={this.props.handleEdit}
+							handleDelete={this.handleDelete} />
+					);
+				})}
+
+				{this.noEntries()}
+
+			</div>
+		);
 	}
 });

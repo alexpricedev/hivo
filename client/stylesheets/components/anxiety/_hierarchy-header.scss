@@ -1,0 +1,25 @@
+// ==============================================
+// Anxiety hierarchy header styles
+// ==============================================
+
+.hierarchy-header {
+    @include clearfix();
+    border-bottom: 2px solid blue();
+    margin: rem(0 0 $gutter);
+    padding: rem(0 0 10px);
+
+    @include break(medium) {
+        padding: rem(0 0 14px);
+    }
+}
+
+    .hierarchy-header-title {
+        float: left;
+        margin: 0;
+        padding: 0;
+        line-height: rem(30px);
+
+        @include break(medium) {
+            line-height: 1;
+        }
+    }

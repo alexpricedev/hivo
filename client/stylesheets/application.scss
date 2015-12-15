@@ -22,8 +22,16 @@
 @import "base/colours";
 @import "base/global";
 @import "base/fonts";
+@import "base/typography";
 
 // Component imports
 @import "components/button";
 @import "components/header";
 @import "components/mainnav";
+
+// Program specific imports
+@import "components/anxiety/anxiety-page";
+@import "components/anxiety/hierarchy-header";
+@import "components/anxiety/hierarchy-table-entry";
+@import "components/anxiety/hierarchy-table-section";
+@import "components/anxiety/hierarchy-table";

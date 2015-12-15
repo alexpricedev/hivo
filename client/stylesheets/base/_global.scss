@@ -1,5 +1,5 @@
 // ==============================================
-// Base styles: Background, typography etc.
+// Misc. global styles
 // ==============================================
 
 html, body {
@@ -13,7 +13,8 @@ html, body {
 }
 
 body {
-    background: $white;
+    background: white();
+    color: blue();
     font-family: 'Brandon Grotesque';
 }
 
@@ -22,11 +23,7 @@ body {
     padding: 0 $gutter;
     width: 100%;
 
-    @include break(small) {
-        width: $medium;
-    }
-
-    @include break(medium) {
+    @include break(large) {
         width: $large;
     }
 }

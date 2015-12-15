@@ -1,0 +1,11 @@
+// ==============================================
+// Anxiety hierarchy table styles
+// ==============================================
+
+.hierarchy-table {
+}
+
+    .hierarchy-table-header {
+        @include fontSize(14px);
+        margin: rem(0 0 10px);
+    }

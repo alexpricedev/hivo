@@ -1,5 +1,5 @@
 // ==============================================
-// Hivo button styles
+// Button styles
 // ==============================================
 
 .button {
@@ -11,11 +11,16 @@
     );
     border: 3px solid green();
     color: green();
+    display: inline-block;
     line-height: 1;
-    padding: rem(5px 9px 2px);
+    padding: rem(5px 6px 3px);
 }
 
 .button:hover {
     background: green();
     color: white();
+}
+
+.button.mod-right {
+    float: right;
 }

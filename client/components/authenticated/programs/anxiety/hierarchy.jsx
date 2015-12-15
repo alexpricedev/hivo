@@ -112,11 +112,16 @@ AnxietyHierarchy = React.createClass({
 			} else {
 
 				return (
-					<div className="row">
-						<div className="col-md-6 col-md-push-3">
+					<div className="anxiety-page">
 
-							<h3>Your anxiety rating table</h3>
-							<AddButton onClick={this.showNewEntryForm} />
+						<div className="hierarchy-header">
+							<h1 className="hierarchy-header-title">
+								Your anxiety rating table
+							</h1>
+							<AddButton
+								modClass={'mod-right'}
+								onClick={this.showNewEntryForm} />
+						</div>
 
 							<AnxietyHierarchyTable
 								userId={this.data.userId}
@@ -124,7 +129,6 @@ AnxietyHierarchy = React.createClass({
 								entries={this.data.entries}
 								handleEdit={this.editEntry} />
 
-						</div>
 					</div>
 				);
 

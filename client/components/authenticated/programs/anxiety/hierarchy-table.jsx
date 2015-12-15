@@ -77,9 +77,11 @@ AnxietyHierarchyTable = React.createClass({
 	},
 	render() {
 		return (
-			<div>
+			<div className="hierarchy-table">
 
-				<h5>Stuff that makes your really anxious</h5>
+				<h2 className="hierarchy-table-header">
+					Most difficult
+				</h2>
 				<AnxietyHierarchyTableSection
 					difficulty={'hard'}
 					entries={this.props.entries.hard}
@@ -87,7 +89,9 @@ AnxietyHierarchyTable = React.createClass({
 					deleteEntry={this.deleteEntry}
 					handleReorder={this.updateEntryOrder} />
 
-				<h5>Stuff you don’t like the sound of doing</h5>
+				<h2 className="hierarchy-table-header">
+					Medium difficulty
+				</h2>
 				<AnxietyHierarchyTableSection
 					difficulty={'medium'}
 					entries={this.props.entries.medium}
@@ -95,7 +99,9 @@ AnxietyHierarchyTable = React.createClass({
 					deleteEntry={this.deleteEntry}
 					handleReorder={this.updateEntryOrder} />
 
-				<h5>Stuff you would rather avoid doing</h5>
+				<h2 className="hierarchy-table-header">
+					Least difficult
+				</h2>
 				<AnxietyHierarchyTableSection
 					difficulty={'easy'}
 					entries={this.props.entries.easy}

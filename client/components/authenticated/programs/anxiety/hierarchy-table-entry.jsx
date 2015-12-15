@@ -41,34 +41,34 @@ AnxietyHierarchyTableEntry = React.createClass({
 	},
 	render() {
 		return (
-			<div
-				href="#"
-				className="alert alert-info clearfix"
-				style={{display: 'block'}}>
+			<div className="hierarchy-table-entry">
 
-				<span className="pull-left">
-
+				<p className="hierarchy-table-entry-title">
 					{this.props.text}
+				</p>
 
-					{' '}
+				<span className="hierarchy-table-entry-percentage">
+					{this.props.percentage}%
+				</span>
 
-					<a href="#" onClick={this.handleEdit}>
-						<Icon icon={'pencil'} />
+				<div className="hierarchy-table-entry-edit">
+					<a
+						className="hierarchy-table-entry-edit-link ignore-move"
+						href="#"
+						onClick={this.handleEdit}>
+							<Icon icon={'pencil'} />
 					</a>
 
 					{' '}
 
 					<a
+						className="hierarchy-table-entry-edit-link ignore-move"
 						href="#"
 						data-index={this.props.index}
 						onClick={this.props.handleDelete}>
 							<Icon icon={'trash'} />
 					</a>
-				</span>
-
-				<span className="pull-right">
-					{this.props.percentage}%
-				</span>
+				</div>
 
 			</div>
 		);
