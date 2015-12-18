@@ -5,7 +5,7 @@ PublicNavigation = React.createClass({
 				<li className="mainnav-item">
 					<a
 						className="mainnav-item-link is-active"
-						href={FlowHelpers.currentRoute('login')}>
+						href={FlowHelpers.pathFor('login')}>
 							Login
 					</a>
 				</li>
