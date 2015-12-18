@@ -3,12 +3,12 @@
 // ==============================================
 
 .range {
-  -webkit-appearance: none; /* Hides the slider so that custom slider can be made */
-  width: 100%; /* Specific width is required for Firefox. */
+    -webkit-appearance: none; /* Hides the slider so that custom slider can be made */
+    width: 100%; /* Specific width is required for Firefox. */
 }
 
 .range::-webkit-slider-thumb {
-  -webkit-appearance: none;
+    -webkit-appearance: none;
 }
 
 .range:focus {
@@ -16,11 +16,11 @@
 }
 
 .range::-ms-track {
-  width: 100%;
-  cursor: pointer;
-  background: transparent; /* Hides the slider so custom styles can be added */
-  border-color: transparent;
-  color: transparent;
+    width: 100%;
+    cursor: pointer;
+    background: transparent; /* Hides the slider so custom styles can be added */
+    border-color: transparent;
+    color: transparent;
 }
 
 /* Special styling for WebKit/Blink */
@@ -61,7 +61,7 @@
 }
 
 .range:focus::-webkit-slider-runnable-track {
-    background: green();
+    background: green(0.4);
 }
 
 .range::-moz-range-track {
@@ -70,6 +70,10 @@
     height: rem(3px);
     outline: 0;
     width: 100%;
+}
+
+.range:focus::-moz-range-track {
+    background: green(0.4);
 }
 
 .range::-ms-track {
@@ -87,7 +91,7 @@
 }
 
 .range:focus::-ms-fill-lower {
-    background: green();
+    background: green(0.4);
 }
 
 .range::-ms-fill-upper {
@@ -95,5 +99,5 @@
 }
 
 .range:focus::-ms-fill-upper {
-    background: green();
+    background: green(0.4);
 }

@@ -1,0 +1,20 @@
+// ==============================================
+// Form help text styles
+// ==============================================
+
+.help-text {
+    @include fontSize(14px);
+    display: block;
+    font-weight: 300;
+    letter-spacing: rem(1px);
+    padding: rem(5px 15px);
+}
+
+.help-text.mod-error {
+    background: red();
+    color: white;
+
+    &::before {
+        content: 'Error: ';
+    }
+}

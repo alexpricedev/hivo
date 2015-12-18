@@ -25,7 +25,7 @@ AnxietyHierarchyTableSection = React.createClass({
 		/**
 		 * Event handler for a delete entry event.
 		 */
-		deleteEntry: React.PropTypes.func.isRequired,
+		handleDelete: React.PropTypes.func.isRequired,
 		/**
 		 * The event handler for handling changes to the order
 		 * of the entries in this section.
@@ -95,6 +95,7 @@ AnxietyHierarchyTableSection = React.createClass({
 	 */
 	handleDelete(event) {
 		event.preventDefault();
+		event.stopPropagation(); // prevent opening edit overlay
 
 		let index = $(event.target).parent().data('index');
 
@@ -104,7 +105,7 @@ AnxietyHierarchyTableSection = React.createClass({
 			transition: 'fade',
 			labels: {ok:'Delete'},
 			onok: () => {
-				this.props.deleteEntry(this.props.difficulty, index);
+				this.props.handleDelete(this.props.difficulty, index);
 			}
 		};
 
@@ -136,6 +137,7 @@ AnxietyHierarchyTableSection = React.createClass({
 							index={i}
 							text={entry.text}
 							percentage={entry.percentage}
+							difficulty={this.props.difficulty}
 							handleEdit={this.props.handleEdit}
 							handleDelete={this.handleDelete} />
 					);

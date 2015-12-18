@@ -18,6 +18,17 @@ body {
     font-family: 'Brandon Grotesque';
 }
 
+// Remove border-radius on iOS
+textarea,
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="button"],
+input[type="submit"] {
+    -webkit-appearance: none;
+    border-radius: 0;
+}
+
 .container {
     margin: 0 auto;
     padding: 0 $gutter;

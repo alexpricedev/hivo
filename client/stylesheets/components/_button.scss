@@ -4,7 +4,7 @@
 
 .button {
     @include border-radius(3px);
-    @include fontSize(12px);
+    @include fontSize(16px);
     @include transition(
         background .3s ease,
         color .3s ease
@@ -12,40 +12,78 @@
     background: transparent;
     border: 3px solid green();
     color: green();
-    display: inline-block;
+    display: block;
     font-weight: 600;
     letter-spacing: rem(1);
     line-height: 1;
-    margin: 0;
-    padding: rem(11px 18px 9px);
+    margin: rem(0 0 10px);
+    padding: rem(14px 14px 11px);
+    text-align: center;
     text-decoration: none;
     text-transform: uppercase;
+    width: 100%;
+
+    @include break(medium) {
+        @include fontSize(12px);
+        display: inline-block;
+        margin: 0;
+        padding: rem(11px 18px 9px);
+        width: auto;
+    }
 }
 
+.button:focus,
 .button:hover {
     background: green();
     color: white();
 }
 
+// Button varients
+
 .button.mod-icon {
     @include fontSize(16px);
+    display: inline-block;
+    margin: 0;
     padding: rem(5px 6px 3px);
-}
+    width: auto;
 
-.button.mod-right {
-    float: right;
-}
-
-.button.mod-login {
+    &.mod-right {
+        float: right;
+    }
 }
 
 .button.mod-cancel {
     border-color: yellow();
     color: yellow();
-    margin: rem(0 14px 0 0);
 }
 
+.button.mod-cancel:focus,
 .button.mod-cancel:hover {
     background: yellow();
     color: white();
+}
+
+.button.mod-delete {
+    border-color: red();
+    color: red();
+}
+
+.button.mod-delete:focus,
+.button.mod-delete:hover {
+    background: red();
+    color: white();
+}
+
+// Button helpers
+
+.button.mod-right {
+    @include break(medium) {
+        float: right;
+    }
+}
+
+.button.mod-margin {
+    @include break(medium) {
+        margin: rem(0 14px 0 0);
+    }
 }
