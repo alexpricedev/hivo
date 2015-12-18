@@ -2,6 +2,8 @@
 // Form input styles
 // ==============================================
 
+// Default styles are for dark backgrounds
+
 .input {
     @include fontSize(18px);
     background: white(0.05);
@@ -10,8 +12,6 @@
     display: block;
     font-weight: 200;
     letter-spacing: rem(1px);
-    margin: rem(0 0 30px);
-    outline: none;
     padding: rem(8px 14px);
     width: 100%;
 
@@ -25,6 +25,12 @@
     border-bottom-color: green();
 }
 
+.input.mod-error {
+    border-bottom-color: red();
+}
+
+// Modifier for light backgrounds
+
 .input.mod-light {
     background: blue(0.03);
 }
@@ -32,6 +38,9 @@
 .input.mod-light:focus {
     background: blue(0.05);
 }
+
+// Placeholder overides
+// Needs to be explicit for each browser
 
 .input::-ms-input-placeholder {
     color: white(0.5);

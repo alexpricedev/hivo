@@ -173,9 +173,10 @@ AnxietyEntryOverlay = React.createClass({
 		}
   },
 	render() {
-		let entryTextClass = (this.state.entryTextError.status ?
-			'form-group has-error' :
-			'form-group'
+		let helpTextClass = (
+			this.state.entryTextError.status ?
+			'help-text mod-error' :
+			'help-text'
 		);
 
 		return (
@@ -183,7 +184,7 @@ AnxietyEntryOverlay = React.createClass({
 				<div className="container mod-small">
 					<form onSubmit={this.handleSubmit}>
 
-						<div className={entryTextClass}>
+						<div className="form-group">
 							<label
 								className="label"
 								htmlFor="entryText">
@@ -196,7 +197,7 @@ AnxietyEntryOverlay = React.createClass({
 								text={this.state.entryText}
 								onChange={this.handleEntryTextChange} />
 
-							<span className="help-block">
+							<span className={helpTextClass}>
 								{this.state.entryTextError.message}
 							</span>
 						</div>

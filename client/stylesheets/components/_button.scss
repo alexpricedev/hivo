@@ -22,21 +22,17 @@
     text-transform: uppercase;
 }
 
+.button:focus,
 .button:hover {
     background: green();
     color: white();
 }
 
+// Button varients
+
 .button.mod-icon {
     @include fontSize(16px);
     padding: rem(5px 6px 3px);
-}
-
-.button.mod-right {
-    float: right;
-}
-
-.button.mod-login {
 }
 
 .button.mod-cancel {
@@ -45,7 +41,14 @@
     margin: rem(0 14px 0 0);
 }
 
+.button.mod-cancel:focus,
 .button.mod-cancel:hover {
     background: yellow();
     color: white();
+}
+
+// Button helpers
+
+.button.mod-right {
+    float: right;
 }
