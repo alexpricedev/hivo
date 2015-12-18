@@ -8,7 +8,7 @@
     @include clearfix();
     background: red(0.2);
     border-left: rem(6px) solid red(0.8);
-    cursor: ns-resize;
+    cursor: pointer;
     margin: rem(0 0 10px);
     padding: rem(14px);
     position: relative;
@@ -37,36 +37,39 @@
         }
     }
 
-    .hierarchy-table-entry-edit {
+    .hierarchy-table-entry-delete {
+        @include fontSize(16px);
+        @include transition(color .2s ease);
+        color: blue(0.2);
         display: none;
         height: rem(40px);
-        padding: rem(0 5px);
+        line-height: rem(40px);
+        padding: rem(0 5px 0 10px);
         position: absolute;
-        right: rem(-60px);
+        right: rem(-30px);
+        text-decoration: none;
         top: 50%;
-        -ms-transform: translateY(-20px);
-        -webkit-transform: translateY(-20px);
-        transform: translateY(-20px);
-        width: rem(60px);
-    }
+        -ms-transform: translateY(-18px);
+        -webkit-transform: translateY(-18px);
+        transform: translateY(-18px);
+        width: rem(30px);
 
-    .hierarchy-table-entry:hover .hierarchy-table-entry-edit {
-        display: block;
-    }
-
-        .hierarchy-table-entry-edit-link {
-            @include fontSize(20px);
-            @include transition(color .2s ease);
-            color: blue(0.2);
-            display: inline-block;
-            line-height: rem(40px);
+        @include break(medium) {
             padding: rem(0 0 0 5px);
-            text-decoration: none;
         }
+    }
 
-        .hierarchy-table-entry-edit-link:hover {
-            color: blue();
+    .hierarchy-table-entry-delete:hover {
+        color: blue();
+    }
+
+    .hierarchy-table-entry:hover
+    .hierarchy-table-entry-delete {
+        @include break(medium){
+            display: block;
         }
+    }
+
 
 // Sortable active states
 .hierarchy-table-entry.sortable-ghost {
@@ -78,7 +81,7 @@
     background: red(1);
     color: white();
 
-    .hierarchy-table-entry-edit {
+    .hierarchy-table-entry-delete {
         display: none;
     }
 }
@@ -111,13 +114,9 @@
     color: blue(0.5);
     cursor: default;
     font-style: italic;
-    min-height: 40px;
     opacity: 0.3;
     position: absolute;
+    top: 0;
     text-align: center;
     width: 100%;
-
-    @include break(medium) {
-        min-height: 62px;
-    }
 }

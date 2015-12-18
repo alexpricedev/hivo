@@ -18,7 +18,7 @@ CancelButton = React.createClass({
 		return (
 			<a
 				className={cls}
-				href="#"
+				href="#cancel"
 				onClick={this.props.onClick}>
 					Cancel
 			</a>

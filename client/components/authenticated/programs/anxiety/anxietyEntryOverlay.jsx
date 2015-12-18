@@ -22,9 +22,13 @@ AnxietyEntryOverlay = React.createClass({
 		 */
 		entries: React.PropTypes.object.isRequired,
 		/**
+		 * An event handler for a delete `onClick` event.
+		 */
+		handleDelete: React.PropTypes.func.isRequired,
+		/**
 		 * An event handler for a cancel `onClick` event.
 		 */
-		onCancel: React.PropTypes.func.isRequired
+		handleCancel: React.PropTypes.func.isRequired
 	},
 	/**
 	 * The state of the overlay contains the values of
@@ -80,25 +84,14 @@ AnxietyEntryOverlay = React.createClass({
 
 			// If in 'edit mode'
 			if (this.props.entry) {
-				let entryDifficulty, entryKey;
+				let diff = this.props.entry.difficulty;
 
-				_.forEach(entries, (entriesForDifficulty, difficulty) => {
-					_.forEach(entriesForDifficulty, (entry, key) => {
-						if(_.isEqual(entry, this.props.entry)) {
-							entryDifficulty = difficulty;
-							entryKey = key;
-						}
-					});
-				});
-
-				if (entryDifficulty && _.isNumber(entryKey)) {
-					entries[entryDifficulty][entryKey] = newEntry;
-					entries[entryDifficulty] = _.sortByOrder(
-						entries[entryDifficulty],
-						['percentage', 'text'],
-						['desc', 'asc']
-					);
-				}
+				entries[diff][this.props.entry.id] = newEntry;
+				entries[diff] = _.sortByOrder(
+					entries[diff],
+					['percentage', 'text'],
+					['desc', 'asc']
+				);
 			} else { // 'new entry mode'
 				let defaultPosition = 'hard';
 
@@ -131,7 +124,7 @@ AnxietyEntryOverlay = React.createClass({
 			);
 
 			// Hide overlay
-			this.props.onCancel();
+			this.props.handleCancel();
 		}
 	},
 	/**
@@ -172,6 +165,33 @@ AnxietyEntryOverlay = React.createClass({
 			return 'I\'m going to die';
 		}
   },
+	/**
+	 * Delete event handler
+	 * @param {Object} event
+	 */
+	handleDelete(event) {
+		event.preventDefault();
+
+		this.props.handleDelete(
+			this.props.entry.difficulty,
+			this.props.entry.id
+		);
+
+		// Hide overlay
+		this.props.handleCancel();
+	},
+	deleteButton() {
+		if (this.props.entry) {
+			return (
+				<a
+					className="button mod-delete"
+					href="#delete"
+					onClick={this.handleDelete}>
+						Delete
+				</a>
+			);
+		}
+	},
 	render() {
 		let helpTextClass = (
 			this.state.entryTextError.status ?
@@ -218,8 +238,9 @@ AnxietyEntryOverlay = React.createClass({
 
 						<SubmitButton modClass={'mod-right'} />
 						<CancelButton
-							modClass={'mod-right'}
-							onClick={this.props.onCancel} />
+							modClass={'mod-right mod-margin'}
+							onClick={this.props.handleCancel} />
+						{this.deleteButton()}
 
 					</form>
 				</div>
