@@ -18,6 +18,10 @@ AnxietyHierarchyTable = React.createClass({
 		 */
 		entries: React.PropTypes.object.isRequired,
 		/**
+		 * Event handler for an delete entry event.
+		 */
+		handleDelete: React.PropTypes.func.isRequired,
+		/**
 		 * Event handler for an edit entry event.
 		 */
 		handleEdit: React.PropTypes.func.isRequired
@@ -49,32 +53,6 @@ AnxietyHierarchyTable = React.createClass({
 			);
 		}
 	},
-	/**
-	 * Deletes an entry from this exercise.
-	 * @param {String} difficulty
-	 * @param {Number} index
-	 */
-	deleteEntry(difficulty, index) {
-		let entries = this.props.entries;
-
-		if (entries[difficulty][index]) {
-			// Remove entry at index
-			entries[difficulty].splice(index, 1);
-
-			let props = {
-				userId: this.props.userId,
-				exerciseData: {
-					entries: entries
-				}
-			};
-
-			Meteor.call(
-				'updateExercise',
-				this.props.exerciseId,
-				props
-			);
-		}
-	},
 	render() {
 		return (
 			<div className="hierarchy-table">
@@ -86,7 +64,7 @@ AnxietyHierarchyTable = React.createClass({
 					difficulty={'hard'}
 					entries={this.props.entries.hard}
 					handleEdit={this.props.handleEdit}
-					deleteEntry={this.deleteEntry}
+					handleDelete={this.props.handleDelete}
 					handleReorder={this.updateEntryOrder} />
 
 				<h2 className="hierarchy-table-header">
@@ -96,7 +74,7 @@ AnxietyHierarchyTable = React.createClass({
 					difficulty={'medium'}
 					entries={this.props.entries.medium}
 					handleEdit={this.props.handleEdit}
-					deleteEntry={this.deleteEntry}
+					handleDelete={this.props.handleDelete}
 					handleReorder={this.updateEntryOrder} />
 
 				<h2 className="hierarchy-table-header">
@@ -106,7 +84,7 @@ AnxietyHierarchyTable = React.createClass({
 					difficulty={'easy'}
 					entries={this.props.entries.easy}
 					handleEdit={this.props.handleEdit}
-					deleteEntry={this.deleteEntry}
+					handleDelete={this.props.handleDelete}
 					handleReorder={this.updateEntryOrder} />
 
 			</div>

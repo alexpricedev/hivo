@@ -91,6 +91,32 @@ AnxietyHierarchy = React.createClass({
 			entry: entry
 		});
 	},
+	/**
+	 * Deletes an entry from this exercise.
+	 * @param {String} difficulty
+	 * @param {Number} index
+	 */
+	deleteEntry(difficulty, index) {
+		let entries = _.cloneDeep(this.data.entries);
+
+		if (entries[difficulty][index]) {
+			// Remove entry at index
+			entries[difficulty].splice(index, 1);
+
+			let props = {
+				userId: this.data.userId,
+				exerciseData: {
+					entries: entries
+				}
+			};
+
+			Meteor.call(
+				'updateExercise',
+				this.data.exercise._id,
+				props
+			);
+		}
+	},
 	render() {
 		if (!PermissionHelpers.enrolled) {
 			return <NotFound />;
@@ -106,7 +132,8 @@ AnxietyHierarchy = React.createClass({
 						entry={this.state.entry}
 						exerciseId={this.data.exercise._id}
 						entries={this.data.entries}
-						onCancel={this.hideNewEntryForm} />
+						handleDelete={this.deleteEntry}
+						handleCancel={this.hideNewEntryForm} />
 				);
 
 			} else {
@@ -127,6 +154,7 @@ AnxietyHierarchy = React.createClass({
 								userId={this.data.userId}
 								exerciseId={this.data.exercise._id}
 								entries={this.data.entries}
+								handleDelete={this.deleteEntry}
 								handleEdit={this.editEntry} />
 
 					</div>

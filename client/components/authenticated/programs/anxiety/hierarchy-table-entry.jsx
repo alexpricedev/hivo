@@ -18,6 +18,10 @@ AnxietyHierarchyTableEntry = React.createClass({
 		 */
 		percentage: React.PropTypes.number.isRequired,
 		/**
+		 * The current difficulty section of this entry.
+		 */
+		difficulty: React.PropTypes.string.isRequired,
+		/**
 		 * Event handler for an edit entry event.
 		 */
 		handleEdit: React.PropTypes.func.isRequired,
@@ -34,14 +38,18 @@ AnxietyHierarchyTableEntry = React.createClass({
 		this.props.handleEdit(
 			event,
 			{
+				id: this.props.index,
 				text: this.props.text,
-				percentage: parseInt(this.props.percentage)
+				percentage: parseInt(this.props.percentage),
+				difficulty: this.props.difficulty
 			}
 		);
 	},
 	render() {
 		return (
-			<div className="hierarchy-table-entry">
+			<div
+				className="hierarchy-table-entry"
+				onClick={this.handleEdit}>
 
 				<p className="hierarchy-table-entry-title">
 					{this.props.text}
@@ -51,24 +59,13 @@ AnxietyHierarchyTableEntry = React.createClass({
 					{this.props.percentage}%
 				</span>
 
-				<div className="hierarchy-table-entry-edit">
-					<a
-						className="hierarchy-table-entry-edit-link ignore-move"
-						href="#"
-						onClick={this.handleEdit}>
-							<Icon icon={'pencil'} />
-					</a>
-
-					{' '}
-
-					<a
-						className="hierarchy-table-entry-edit-link ignore-move"
-						href="#"
-						data-index={this.props.index}
-						onClick={this.props.handleDelete}>
-							<Icon icon={'trash'} />
-					</a>
-				</div>
+				<a
+					className="hierarchy-table-entry-delete ignore-move"
+					href="#"
+					data-index={this.props.index}
+					onClick={this.props.handleDelete}>
+						<Icon icon={'times'} />
+				</a>
 
 			</div>
 		);

@@ -18,7 +18,7 @@ AddButton = React.createClass({
 		return (
 			<a
 				className={cls}
-				href="#"
+				href="#add"
 				onClick={this.props.onClick}>
 					<Icon icon={'plus'} />
 					<span className="sr-only">

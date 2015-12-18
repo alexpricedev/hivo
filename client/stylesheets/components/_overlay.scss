@@ -5,10 +5,10 @@
 .overlay {
     background: blue();
     color: white();
-    height: 100%;
+    min-height: 100%;
     left: 0;
     padding: rem(20px 0 0);
-    position: fixed;
+    position: absolute;
     top: 0;
     width: 100%;
 
