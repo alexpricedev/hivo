@@ -77,8 +77,12 @@ AnxietyEntryOverlay = React.createClass({
 			// Existing entries
 			let entries = this.props.entries;
 
+			let text = FormattingHelpers.sentanceCase(
+				this.state.entryText
+			);
+
 			let newEntry = {
-				text: this.state.entryText,
+				text: text,
 				percentage: parseInt(this.state.entryPercentage)
 			};
 
