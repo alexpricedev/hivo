@@ -1,0 +1,8 @@
+// ==============================================
+// Bert notification override styles
+// ==============================================
+
+.bert-alert.success { background: $green; }
+.bert-alert.info    { background: $blue; }
+.bert-alert.warning { background: $yellow; }
+.bert-alert.danger  { background: $red; }
