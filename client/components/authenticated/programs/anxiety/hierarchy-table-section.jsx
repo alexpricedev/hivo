@@ -64,6 +64,7 @@ AnxietyHierarchyTableSection = React.createClass({
 	 * These options are used by the `SortableMixin`.
 	 */
 	sortableOptions: {
+		handle: '.hierarchy-table-reorder',
 		ref: 'entries',
 		group: 'entries',
 		model: 'entries',

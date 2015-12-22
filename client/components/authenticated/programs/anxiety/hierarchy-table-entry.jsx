@@ -55,6 +55,10 @@ AnxietyHierarchyTableEntry = React.createClass({
 					{this.props.text}
 				</p>
 
+				<span className="hierarchy-table-reorder">
+					<Icon icon={'reorder'} />
+				</span>
+
 				<span className="hierarchy-table-entry-percentage">
 					{this.props.percentage}%
 				</span>

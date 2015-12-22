@@ -37,6 +37,20 @@
         }
     }
 
+    .hierarchy-table-reorder {
+        @include fontSize(18px);
+        cursor: move;
+        display: inline-block;
+        float: right;
+        opacity: 0.2;
+        padding: rem(0 0 0 7px);
+
+        @include break(medium) {
+            @include fontSize(20px);
+            padding: rem(3px 0 0 10px);
+        }
+    }
+
     .hierarchy-table-entry-delete {
         @include fontSize(16px);
         @include transition(color .2s ease);
