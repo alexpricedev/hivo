@@ -17,7 +17,9 @@ SubmitButton = React.createClass({
 		let cls = this.props.modClass ? `button ${this.props.modClass}` : 'button';
 		let text = this.props.text ? this.props.text : 'Save';
 		return (
-			<button className={cls}>
+			<button
+				title={text}
+				className={cls}>
 				{text}
 			</button>
 		);

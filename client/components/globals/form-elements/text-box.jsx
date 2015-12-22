@@ -18,11 +18,16 @@ TextBox = React.createClass({
 		 */
 		text: React.PropTypes.string.isRequired,
 		/**
+		 * A function to handle the `onKeyUp` event.
+		 * Useful for use when closing overlays etc.
+		 */
+		onKeyUp: React.PropTypes.func,
+		/**
 		 * A function to handle the `onChange` event triggered
 		 * when the textbox is typed in. This will usually update
 		 * `this.props.text`.
 		 */
-		onChange: React.PropTypes.func.isRequired,
+		onChange: React.PropTypes.func.isRequired
 	},
 	getDefaultProps() {
 		return {
@@ -30,6 +35,7 @@ TextBox = React.createClass({
 			placeholder: 'Enter some text'
 		};
 	},
+
 	render() {
 		return (
 			<input
@@ -38,6 +44,7 @@ TextBox = React.createClass({
 				id={this.props.id}
 				placeholder={this.props.placeholder}
 				value={this.props.text}
+				onKeyUp={this.props.onKeyUp}
 				onChange={this.props.onChange} />
 		);
 	}

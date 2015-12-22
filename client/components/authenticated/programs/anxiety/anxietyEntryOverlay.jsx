@@ -77,8 +77,12 @@ AnxietyEntryOverlay = React.createClass({
 			// Existing entries
 			let entries = this.props.entries;
 
+			let text = FormattingHelpers.sentanceCase(
+				this.state.entryText
+			);
+
 			let newEntry = {
-				text: this.state.entryText,
+				text: text,
 				percentage: parseInt(this.state.entryPercentage)
 			};
 
@@ -155,13 +159,17 @@ AnxietyEntryOverlay = React.createClass({
 	 * @return {String} text
 	 */
 	getPercentageText(percentage) {
-    if (percentage < 30) {
-			return 'Okay';
-		} else if (percentage >= 30 && percentage < 60) {
-			return 'Anxious';
-		} else if (percentage >= 60 && percentage < 80) {
-			return 'Really anxious';
-		} else if (percentage >= 80) {
+    if (percentage == 0) {
+			return 'No anxiety';
+		} else if (percentage > 0 && percentage <= 25) {
+			return 'Mild anxiety';
+		} else if (percentage > 25 && percentage <= 50) {
+			return 'Moderate anxiety';
+		} else if (percentage > 50 && percentage <= 75) {
+			return 'Severe anxiety';
+		} else if (percentage > 75 && percentage < 100) {
+			return 'Panic';
+		} else {
 			return 'I\'m going to die';
 		}
   },
@@ -192,6 +200,12 @@ AnxietyEntryOverlay = React.createClass({
 			);
 		}
 	},
+	handleKeyUp(event) {
+		// If key up is (esc) trigger close
+		if (event.which == 27) {
+			this.props.handleCancel();
+		}
+	},
 	render() {
 		let helpTextClass = (
 			this.state.entryTextError.status ?
@@ -213,8 +227,9 @@ AnxietyEntryOverlay = React.createClass({
 
 							<TextBox
 								id={'entryText'}
-								placeholder={'Over here!'}
+								placeholder={'Write in here...'}
 								text={this.state.entryText}
+								onKeyUp={this.handleKeyUp}
 								onChange={this.handleEntryTextChange} />
 
 							<span className={helpTextClass}>
@@ -233,6 +248,7 @@ AnxietyEntryOverlay = React.createClass({
 								id={'entryPercentage'}
 								value={this.state.entryPercentage}
 								valueText={this.getPercentageText(this.state.entryPercentage)}
+								onKeyUp={this.handleKeyUp}
 								onChange={this.handleEntryPercentageChange} />
 						</div>
 
