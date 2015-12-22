@@ -18,6 +18,7 @@ AddButton = React.createClass({
 		return (
 			<a
 				className={cls}
+				title="Add new"
 				href="#add"
 				onClick={this.props.onClick}>
 					<Icon icon={'plus'} />

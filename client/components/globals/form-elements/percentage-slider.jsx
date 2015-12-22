@@ -18,11 +18,16 @@ PercentageSlider = React.createClass({
 		 */
 		valueText: React.PropTypes.string,
 		/**
+		 * A function to handle the `onKeyUp` event.
+		 * Useful for use when closing overlays etc.
+		 */
+		onKeyUp: React.PropTypes.func,
+		/**
 		 * A function to handle the `onChange` event triggered
 		 * when the handle is moved. This will usually update
 		 * `this.props.value`.
 		 */
-		onChange: React.PropTypes.func.isRequired,
+		onChange: React.PropTypes.func.isRequired
 	},
 	getDefaultProps() {
 		return {
@@ -40,6 +45,7 @@ PercentageSlider = React.createClass({
 					max="100"
 					step="5"
 					value={this.props.value}
+					onKeyUp={this.props.onKeyUp}
 					onChange={this.props.onChange} />
 
 					<span className="percentage-slider-value">
