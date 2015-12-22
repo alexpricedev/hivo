@@ -196,6 +196,12 @@ AnxietyEntryOverlay = React.createClass({
 			);
 		}
 	},
+	handleKeyUp(event) {
+		// If key up is (esc) trigger close
+		if (event.which == 27) {
+			this.props.handleCancel();
+		}
+	},
 	render() {
 		let helpTextClass = (
 			this.state.entryTextError.status ?
@@ -217,8 +223,9 @@ AnxietyEntryOverlay = React.createClass({
 
 							<TextBox
 								id={'entryText'}
-								placeholder={'Over here!'}
+								placeholder={'Write in here...'}
 								text={this.state.entryText}
+								onKeyUp={this.handleKeyUp}
 								onChange={this.handleEntryTextChange} />
 
 							<span className={helpTextClass}>
@@ -237,6 +244,7 @@ AnxietyEntryOverlay = React.createClass({
 								id={'entryPercentage'}
 								value={this.state.entryPercentage}
 								valueText={this.getPercentageText(this.state.entryPercentage)}
+								onKeyUp={this.handleKeyUp}
 								onChange={this.handleEntryPercentageChange} />
 						</div>
 
