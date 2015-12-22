@@ -8,10 +8,6 @@ Login = React.createClass({
 	render() {
 		return (
 			<div className="login">
-				<h1 className="login-title">
-					Login
-				</h1>
-
 				<form
 					className="login-form"
 					id="login"
@@ -27,7 +23,7 @@ Login = React.createClass({
 							className="input mod-light"
 							type="email"
 							name="emailAddress"
-							placeholder="Enter your hotmail from 1998" />
+							placeholder="Enter your email address" />
 					</div>
 
 					<div className="form-group">
@@ -40,7 +36,7 @@ Login = React.createClass({
 							className="input mod-light"
 							type="password"
 							name="password"
-							placeholder="Your super secure password" />
+							placeholder="Enter your super secure password" />
 					</div>
 
 					<SubmitButton

@@ -159,13 +159,17 @@ AnxietyEntryOverlay = React.createClass({
 	 * @return {String} text
 	 */
 	getPercentageText(percentage) {
-    if (percentage < 30) {
-			return 'Okay';
-		} else if (percentage >= 30 && percentage < 60) {
-			return 'Anxious';
-		} else if (percentage >= 60 && percentage < 80) {
-			return 'Really anxious';
-		} else if (percentage >= 80) {
+    if (percentage == 0) {
+			return 'No anxiety';
+		} else if (percentage > 0 && percentage <= 25) {
+			return 'Mild anxiety';
+		} else if (percentage > 25 && percentage <= 50) {
+			return 'Moderate anxiety';
+		} else if (percentage > 50 && percentage <= 75) {
+			return 'Severe anxiety';
+		} else if (percentage > 75 && percentage < 100) {
+			return 'Panic';
+		} else {
 			return 'I\'m going to die';
 		}
   },
