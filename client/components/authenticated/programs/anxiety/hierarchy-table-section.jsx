@@ -118,7 +118,7 @@ AnxietyHierarchyTableSection = React.createClass({
 		if (this.state.entries.length == 0) {
 			return (
 				<div className="hierarchy-table-entry mod-empty ignore-move">
-					No entries
+					Drag an entry into this section
 				</div>
 			);
 		}

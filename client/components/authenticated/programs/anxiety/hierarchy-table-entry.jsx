@@ -35,6 +35,12 @@ AnxietyHierarchyTableEntry = React.createClass({
 	 * the current entry up the component hierarchy.
 	 */
 	handleEdit(event) {
+		// If key up is (space) or (return) trigger edit
+		if (event.type == 'keyup') {
+			if (event.which != 13 && event.which != 32) {
+				return null;
+			}
+		}
 		this.props.handleEdit(
 			event,
 			{
@@ -49,7 +55,11 @@ AnxietyHierarchyTableEntry = React.createClass({
 		return (
 			<div
 				className="hierarchy-table-entry"
-				onClick={this.handleEdit}>
+				role="button"
+				aria-label="Edit entry"
+				tabIndex="0"
+				onClick={this.handleEdit}
+				onKeyUp={this.handleEdit}>
 
 				<p className="hierarchy-table-entry-title">
 					{this.props.text}
@@ -65,7 +75,8 @@ AnxietyHierarchyTableEntry = React.createClass({
 
 				<a
 					className="hierarchy-table-entry-delete ignore-move"
-					href="#"
+					href="#delete"
+					title="Delete entry"
 					data-index={this.props.index}
 					onClick={this.props.handleDelete}>
 						<Icon icon={'times'} />

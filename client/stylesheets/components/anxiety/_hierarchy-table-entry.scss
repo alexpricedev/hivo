@@ -9,6 +9,7 @@
     background: red(0.2);
     border-left: rem(6px) solid red(0.8);
     cursor: pointer;
+    color: blue();
     margin: rem(0 0 10px);
     padding: rem(14px);
     position: relative;
@@ -30,7 +31,6 @@
         @include fontSize(18px);
         display: inline-block;
         float: right;
-        opacity: 0.4;
 
         @include break(medium) {
             @include fontSize(24px);
@@ -122,9 +122,9 @@
 // Empty entry
 .hierarchy-table-section .hierarchy-table-entry.mod-empty {
     @include border-radius();
-    @include fontSize(24px);
-    background: blue(0);
-    border: 2px dashed blue(0.4);
+    @include fontSize(22px);
+    background: blue(0.05);
+    border: rem(4px) dashed blue(0.1);
     color: blue(0.5);
     cursor: default;
     font-style: italic;
