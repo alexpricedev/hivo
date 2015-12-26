@@ -1,0 +1,38 @@
+// ==============================================
+// Table styles
+// ==============================================
+
+.table {
+    @include fontSize(18px);
+    border-bottom: rem(1px) solid blue();
+    width: 100%;
+}
+
+    .table-head {
+        background: blue();
+        color: white();
+    }
+
+        .table-row {
+            background: blue(0.05);
+        }
+
+        .table-row:hover {
+            background: blue(0.1);
+        }
+
+        .table-row:nth-child(even) {
+            background: blue(0.07);
+        }
+
+            .table-heading {
+                text-align: left;
+                padding: rem(4px 10px);
+                font-weight: 400;
+            }
+
+            .table-cell {
+                padding: rem(10px);
+            }
+
+

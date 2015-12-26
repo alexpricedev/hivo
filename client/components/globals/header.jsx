@@ -8,7 +8,10 @@ AppHeader = React.createClass({
 	},
 	navigationItems() {
 		if (!Meteor.loggingIn() && Meteor.user()) {
-			return <AuthenticatedNavigation />;
+			if (PermissionHelpers.admin) {
+				return <AdminNavigation />;
+			}
+			return <PatientNavigation />;
 		} else {
 			return <PublicNavigation />;
 		}

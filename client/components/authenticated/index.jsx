@@ -3,7 +3,8 @@ Index = React.createClass({
 		if (Meteor.user().profile.isAdmin) {
 			return <AdminIndex />;
 		} else {
-			return <PatientIndex />;
+			// return <PatientIndex />;
+			return <AnxietyHierarchy />;
 		}
 	},
 	render() {

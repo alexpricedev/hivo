@@ -1,0 +1,19 @@
+// ==============================================
+// Link styles
+// ==============================================
+
+.link {
+    border-bottom: rem(2px) dotted green(0.5);
+    color: green();
+    font-size: inherit;
+    padding: rem(2px 2px 0);
+    text-decoration: none;
+}
+
+.link:focus,
+.link:hover {
+    background: green(0.1);
+    border-bottom-color: green();
+    border-bottom-style: solid;
+    color: green();
+}

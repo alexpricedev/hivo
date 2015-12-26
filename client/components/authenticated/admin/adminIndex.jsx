@@ -16,16 +16,16 @@ AdminIndex = React.createClass({
 		} else {
 			return (
 				<div>
-					<div className="row">
-						<div className="col-xs-6">
-							<h4 className="pull-left">Your Patients</h4>
-						</div>
-						<div className="col-xs-6">
-							<a href={FlowHelpers.pathFor('adminAddPatient')} className="btn btn-sm btn-success pull-right">Add Patient</a>
-						</div>
+					<div className="shelf">
+						<h1 className="shelf-title">
+							Your Patients
+						</h1>
+						<a
+							className="button mod-right"
+							href={FlowHelpers.pathFor('adminAddPatient')}>
+								Add patient
+						</a>
 					</div>
-
-					<hr style={{marginTop: '10px'}} />
 
 					<PatientTable patients={this.data.patients} />
 
