@@ -14,15 +14,15 @@
     }
 
         .table-row {
+            background: blue(0.03);
+        }
+
+        .table-row:nth-child(even) {
             background: blue(0.05);
         }
 
         .table-row:hover {
-            background: blue(0.1);
-        }
-
-        .table-row:nth-child(even) {
-            background: blue(0.07);
+            background: green(0.1);
         }
 
             .table-heading {
