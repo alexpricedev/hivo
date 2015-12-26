@@ -18,16 +18,24 @@ PatientOverview = React.createClass({
 			if (!PermissionHelpers.admin()) {
 				return <NotFound />;
 			} else {
+				let mailto = `mailto:${FormattingHelpers.emailAddress(this.data.patient)}`
 				return (
 					<div>
-            <h4>{FormattingHelpers.fullName(this.data.patient)}</h4>
-            <h5>
-                <a href="mailto:{FormattingHelpers.emailAddress(this.data.patient)}">
-									{FormattingHelpers.emailAddress(this.data.patient)}
-                </a>
-            </h5>
-
-            <hr />
+						<div className="shelf">
+							<h1 className="shelf-title">
+								{FormattingHelpers.fullName(this.data.patient)}
+							</h1>
+							<a
+								className="button mod-cancel mod-right"
+								href={FlowHelpers.pathFor('index')}>
+									Back
+							</a>
+							<a
+								className="button mod-right mod-margin"
+								href={mailto}>
+									Email patient
+							</a>
+						</div>
 
             <ProgramTable patient={this.data.patient} />
             <ProgramsNotEnrolledIn patient={this.data.patient} />

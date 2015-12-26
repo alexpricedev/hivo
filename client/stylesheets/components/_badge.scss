@@ -16,6 +16,10 @@
     text-align: center;
 }
 
+.badge:not(:first-of-type) {
+    margin: rem(0 0 0 3px);
+}
+
 // Badge varients
 
 .badge.mod-success {
@@ -28,4 +32,16 @@
 
 .badge.mod-danger {
     background: red();
+}
+
+.badge.mod-anxiety {
+    @extend .badge.mod-success;
+}
+
+.badge.mod-depression {
+    @extend .badge.mod-info;
+}
+
+.badge.mod-cognitive {
+    @extend .badge.mod-danger;
 }

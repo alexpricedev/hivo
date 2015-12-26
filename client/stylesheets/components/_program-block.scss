@@ -1,0 +1,32 @@
+// ==============================================
+// Program block styles
+// ==============================================
+
+.program-block {
+    @include border-radius(3px);
+    border: rem(3px) solid blue();
+    display: inline-block;
+    float: left;
+    margin: rem($gutter) 2% 0 0;
+    width: 32%;
+
+    &:nth-of-type(3n) {
+        margin: rem($gutter 0 0);
+    }
+}
+
+    .program-block-title {
+        background: blue();
+        padding: rem(8px $gutter);
+        color: white();
+        letter-spacing: rem(1px);
+    }
+
+    .program-block-body {
+        padding: rem(8px);
+    }
+
+        .program-block-body-tags {
+            display: block;
+            margin: rem(0 0 8px);
+        }
