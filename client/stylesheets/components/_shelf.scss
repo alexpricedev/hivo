@@ -7,6 +7,10 @@
     margin: rem(0 0 $gutter);
 }
 
+.shelf.mod-border {
+    border-bottom: rem(2px) solid blue();
+}
+
     .shelf-title {
         @include fontSize(20px);
         display: inline-block;

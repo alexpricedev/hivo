@@ -18,8 +18,11 @@ AppHeader = React.createClass({
 	},
 	render() {
 		return (
-			<nav className="header" role="navigation">
-				<div className="container">
+			<nav
+				className="header"
+				role="navigation">
+
+				<div className="container mod-header">
 					<a
 						className="header-logo"
 						href={this.brandLink()}>
