@@ -20,7 +20,7 @@ AddPatient = React.createClass({
 		let props = {
 			email: this.state.email,
 			first: this.state.first,
-			last: this.state.last,
+			last: this.state.second,
       counsellor: Meteor.user()
 		};
 
@@ -29,7 +29,6 @@ AddPatient = React.createClass({
 	updateState(event) {
 		let obj = {};
 		obj[event.target.id] = event.target.value;
-		console.log(obj);
 		this.setState(obj);
 	},
 	render() {
