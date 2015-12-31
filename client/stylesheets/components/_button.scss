@@ -74,6 +74,22 @@
     color: white();
 }
 
+.button.mod-shelf {
+    @include fontSize(14px);
+
+    &:last-of-type {
+        margin: 0;
+    }
+
+    @include break(medium) {
+        float: right;
+
+        &.mod-margin:last-of-type {
+            margin: rem(0 14px 0 0);
+        }
+    }
+}
+
 // Button helpers
 
 .button.mod-right {

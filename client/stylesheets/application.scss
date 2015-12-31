@@ -24,6 +24,7 @@
 @import "base/typography";
 
 // Component imports
+@import "components/badge";
 @import "components/bert";
 @import "components/button";
 @import "components/form-group";
@@ -31,10 +32,14 @@
 @import "components/help-text";
 @import "components/input";
 @import "components/label";
+@import "components/link";
 @import "components/login";
 @import "components/mainnav";
 @import "components/overlay";
+@import "components/program-block";
 @import "components/range";
+@import "components/shelf";
+@import "components/table";
 
 // Program specific imports
 @import "components/anxiety/anxiety-page";

@@ -9,9 +9,9 @@ let emailAddress = (user) => {
 let dateLabel = (date) => {
   if (date) {
 		let fromNow = moment(date).fromNow();
-		return <span className="label label-info">{fromNow}</span>;
+		return <span className="badge mod-info">{fromNow}</span>;
   } else {
-		return <span className="label label-danger">Never</span>;
+		return <span className="badge mod-danger">Never</span>;
   }
 };
 

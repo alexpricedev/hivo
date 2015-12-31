@@ -3,23 +3,12 @@ const authenticatedRoutes = Modules.both.authenticatedRouteHelpers.authenticated
 
 // Admin routes
 
-authenticatedRoutes.route('/patients', {
-	name: 'patients',
+authenticatedRoutes.route('/', {
+	name: 'index',
 	action() {
 		ReactLayout.render( Default, { yield: <Index /> } );
 	}
 });
-
-// TEMP
-authenticatedRoutes.route('/', {
-  name: 'index',
-  action() {
-		ReactLayout.render(Default, {
-			yield: <AnxietyHierarchy />
-		});
-  }
-});
-// TEMP
 
 authenticatedRoutes.route('/patient/new', {
   name: 'adminAddPatient',

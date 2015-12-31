@@ -33,7 +33,7 @@ ProgramsNotEnrolledIn = React.createClass({
 				return <NotFound />;
 			} else {
 				return (
-					<div className="row">
+					<div>
 						{this.notEnrolled().map(function(program, i) {
 							return <EnrollInProgramBlock program={program} key={i} />;
 						})}

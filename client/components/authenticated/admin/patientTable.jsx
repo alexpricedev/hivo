@@ -1,12 +1,12 @@
 PatientTable = React.createClass({
 	render() {
 		return (
-			<table className="table table-striped">
-				<thead>
-					<tr>
-						<th>Name</th>
-						<th>Email Address</th>
-						<th>Last Logged In</th>
+			<table className="table">
+				<thead className="table-head">
+					<tr className="table-row">
+						<th className="table-heading">Name</th>
+						<th className="table-heading mod-hide">Email Address</th>
+						<th className="table-heading">Last Login</th>
 					</tr>
 				</thead>
 				<tbody>
