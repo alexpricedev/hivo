@@ -8,15 +8,21 @@ AppHeader = React.createClass({
 	},
 	navigationItems() {
 		if (!Meteor.loggingIn() && Meteor.user()) {
-			return <AuthenticatedNavigation />;
+			if (PermissionHelpers.admin) {
+				return <AdminNavigation />;
+			}
+			return <PatientNavigation />;
 		} else {
 			return <PublicNavigation />;
 		}
 	},
 	render() {
 		return (
-			<nav className="header" role="navigation">
-				<div className="container">
+			<nav
+				className="header"
+				role="navigation">
+
+				<div className="container mod-header">
 					<a
 						className="header-logo"
 						href={this.brandLink()}>

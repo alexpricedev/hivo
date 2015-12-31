@@ -13,6 +13,7 @@
     .header-logo {
         @include fontSize(20px);
         @include transition(color .2s ease);
+        border: none;
         color: white();
         display: inline-block;
         font-family: 'Comfortaa';
@@ -20,6 +21,7 @@
         text-decoration: none;
     }
 
+    .header-logo:focus,
     .header-logo:hover {
         color: white(0.8);
     }

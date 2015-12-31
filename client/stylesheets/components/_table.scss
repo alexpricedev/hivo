@@ -1,0 +1,53 @@
+// ==============================================
+// Table styles
+// ==============================================
+
+.table {
+    @include fontSize(18px);
+    border-bottom: rem(1px) solid blue();
+    width: 100%;
+}
+
+    .table-head {
+        background: blue();
+        border-bottom: rem(2px) solid green();
+        color: white();
+    }
+
+        .table-row {
+            background: blue(0.03);
+        }
+
+        .table-row:nth-child(even) {
+            background: blue(0.05);
+        }
+
+        .table-row:hover {
+            background: green(0.1);
+        }
+
+            .table-heading {
+                text-align: left;
+                padding: rem(4px 10px);
+                font-weight: 400;
+            }
+
+            .table-heading.mod-hide {
+                display: none;
+
+                @include break(medium) {
+                    display: table-cell;
+                }
+            }
+
+            .table-cell {
+                padding: rem(10px);
+            }
+
+            .table-cell.mod-hide {
+                display: none;
+
+                @include break(medium) {
+                    display: table-cell;
+                }
+            }

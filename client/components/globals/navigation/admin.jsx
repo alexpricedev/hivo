@@ -1,4 +1,4 @@
-AuthenticatedNavigation = React.createClass({
+AdminNavigation = React.createClass({
 	render() {
 		let home = `mainnav-item-link is-${FlowHelpers.currentRoute('index')}`;
 		return (
@@ -7,7 +7,7 @@ AuthenticatedNavigation = React.createClass({
 						<a
 							className={home}
 							href="/">
-								Anxiety table
+								Patients
 						</a>
 				</li>
 				<li className="mainnav-item">

@@ -31,12 +31,16 @@ input[type="submit"] {
 
 .container {
     margin: 0 auto;
-    padding: 0 $gutter;
+    padding: 0 $gutter $gutter;
     width: 100%;
 
     @include break(large) {
         width: $large;
     }
+}
+
+.container.mod-header {
+    padding: 0 $gutter;
 }
 
 .container.mod-small {

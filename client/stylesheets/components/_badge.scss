@@ -1,0 +1,47 @@
+// ==============================================
+// Badge styles
+// ==============================================
+
+.badge {
+    @include border-radius(3px);
+    @include fontSize(12px);
+    background: blue();
+    color: white();
+    display: inline-block;
+    font-weight: 300;
+    letter-spacing: rem(1);
+    line-height: 1;
+    margin: 0;
+    padding: rem(3px 6px 4px);
+    text-align: center;
+}
+
+.badge:not(:last-of-type) {
+    margin: rem(0 3px 0 0);
+}
+
+// Badge varients
+
+.badge.mod-success {
+    background: green();
+}
+
+.badge.mod-info {
+    background: darken(yellow(), 10%);
+}
+
+.badge.mod-danger {
+    background: red();
+}
+
+.badge.mod-anxiety {
+    @extend .badge.mod-success;
+}
+
+.badge.mod-depression {
+    @extend .badge.mod-info;
+}
+
+.badge.mod-cognitive {
+    @extend .badge.mod-danger;
+}

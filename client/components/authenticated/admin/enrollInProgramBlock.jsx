@@ -4,16 +4,16 @@ EnrollInProgramBlock = React.createClass({
 
 		if (this.props.program.tags.length) {
 			_.forEach(this.props.program.tags, function(tag, i) {
-				let cls = `label label-${tag}`;
+				let cls = `badge mod-${tag}`;
 				tags.push(
 					<span className={cls} key={i}>{tag}</span>
 				);
 			});
 
 			return (
-				<p>
+				<span className="program-block-body-tags">
 					{tags}
-				</p>
+				</span>
 			);
 		}
 	},
@@ -30,14 +30,19 @@ EnrollInProgramBlock = React.createClass({
 	},
 	render() {
 		return (
-			<div className="col-sm-6 col-md-4">
-				<div className="thumbnail">
-					<div className="caption">
-						<h3>{this.props.program.title}</h3>
-						{this.tags()}
-						<p>{this.props.program.description}</p>
-						<p><a href="#enroll" className="btn btn-primary enroll" data-program={this.props.program.route} onClick={this.enroll}>Enroll patient</a></p>
-					</div>
+			<div className="program-block">
+				<h3 className="program-block-title">
+					{this.props.program.title}
+				</h3>
+				<div className="program-block-body">
+					{this.tags()}
+					<p>{this.props.program.description}</p>
+					<a
+						href="#enroll"
+						className="button enroll"
+						data-program={this.props.program.route}
+						onClick={this.enroll}>Enroll patient
+					</a>
 				</div>
 			</div>
 		);

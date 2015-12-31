@@ -16,9 +16,17 @@ ProgramTable = React.createClass({
 
 			_.forEach(this.data.programs, function(program, i) {
 				rows.push(
-					<tr key={i}>
-						<td>{program.title}</td>
-						<td>{FormattingHelpers.dateLabel(program.lastCompleted)}</td>
+					<tr
+						className="table-row"
+						key={i}>
+
+						<td className="table-cell">
+							{program.title}
+						</td>
+						<td className="table-cell">
+							{FormattingHelpers.dateLabel(program.lastCompleted)}
+						</td>
+
 					</tr>
 				);
 			});
@@ -32,8 +40,12 @@ ProgramTable = React.createClass({
 
 		return (
 			<tbody>
-				<tr>
-					<td colSpan="2">They are not enrolled in any programs.</td>
+				<tr className="table-row">
+					<td
+						className="table-cell"
+						colSpan="2">
+						They are not enrolled in any programs.
+					</td>
 				</tr>
 			</tbody>
 		);
@@ -43,11 +55,11 @@ ProgramTable = React.createClass({
 			return <Loading />;
 		} else {
 			return (
-				<table className="table table-striped">
-					<thead>
-						<tr>
-							<th>Programs</th>
-							<th>Last Completed</th>
+				<table className="table">
+					<thead className="table-head">
+						<tr className="table-row">
+							<th className="table-heading">Programs</th>
+							<th className="table-heading">Last Completed</th>
 						</tr>
 					</thead>
 					{this.tbody()}

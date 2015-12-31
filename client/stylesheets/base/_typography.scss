@@ -2,6 +2,10 @@
 // Typography styles
 // ==============================================
 
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+}
+
 h1 {
     @include fontSize(22px);
     font-weight: 400;
@@ -28,4 +32,8 @@ h2 {
     @include break(medium) {
         @include fontSize(24px);
     }
+}
+
+p {
+    margin: rem(0 0 10px);
 }
