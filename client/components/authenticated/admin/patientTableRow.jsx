@@ -29,7 +29,7 @@ PatientTableRow = React.createClass({
 							{FormattingHelpers.fullName(this.props.patient)}
 					</a>
 				</td>
-				<td className="table-cell">
+				<td className="table-cell mod-hide">
 					<a
 						className="link"
 						role="button"

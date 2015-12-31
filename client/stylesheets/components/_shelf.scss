@@ -12,11 +12,17 @@
 }
 
     .shelf-title {
-        @include fontSize(20px);
+        @include fontSize(18px);
         display: inline-block;
-        float: left;
         letter-spacing: rem(2px);
-        line-height: rem(38px);
-        margin: 0;
+        line-height: rem(30px);
+        margin: rem(0 0 10px);
         vertical-align: middle;
+
+        @include break(medium) {
+            @include fontSize(20px);
+            float: left;
+            line-height: rem(38px);
+            margin: 0;
+        }
     }

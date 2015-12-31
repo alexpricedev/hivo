@@ -5,13 +5,17 @@
 .program-block {
     @include border-radius(3px);
     border: rem(3px) solid blue();
-    display: inline-block;
-    float: left;
-    margin: rem($gutter) 2% 0 0;
-    width: 32%;
+    display: block;
+    margin: rem($gutter) 0 0 0;
 
-    &:nth-of-type(3n) {
-        margin: rem($gutter 0 0);
+    @include break(medium) {
+        float: left;
+        margin: rem($gutter) 2% 0 0;
+        width: 32%;
+
+        &:nth-of-type(3n) {
+            margin: rem($gutter 0 0);
+        }
     }
 }
 

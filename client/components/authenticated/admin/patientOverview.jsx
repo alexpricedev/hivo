@@ -26,12 +26,12 @@ PatientOverview = React.createClass({
 								{FormattingHelpers.fullName(this.data.patient)}
 							</h1>
 							<a
-								className="button mod-cancel mod-right"
+								className="button mod-shelf mod-cancel"
 								href={FlowHelpers.pathFor('index')}>
 									Back
 							</a>
 							<a
-								className="button mod-right mod-margin"
+								className="button mod-shelf mod-margin"
 								href={mailto}>
 									Email patient
 							</a>

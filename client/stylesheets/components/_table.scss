@@ -32,8 +32,22 @@
                 font-weight: 400;
             }
 
+            .table-heading.mod-hide {
+                display: none;
+
+                @include break(medium) {
+                    display: table-cell;
+                }
+            }
+
             .table-cell {
                 padding: rem(10px);
             }
 
+            .table-cell.mod-hide {
+                display: none;
 
+                @include break(medium) {
+                    display: table-cell;
+                }
+            }

@@ -21,7 +21,7 @@ AdminIndex = React.createClass({
 							Your Patients
 						</h1>
 						<a
-							className="button mod-right"
+							className="button mod-shelf"
 							href={FlowHelpers.pathFor('adminAddPatient')}>
 								Add patient
 						</a>
