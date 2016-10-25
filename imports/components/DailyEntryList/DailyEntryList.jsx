@@ -4,12 +4,15 @@ import React  from 'react';
 import { connect }  from 'react-redux';
 
 import DailyEntries from '../../collections/daily-entries';
+import Loading from '../Loading/Loading';
 import DailyEntry from '../DailyEntry/DailyEntry';
 import { changePage } from './actions';
 
 class DailyEntryList extends React.Component {
   render() {
-    const { dailyEntryList: entries } = this.props;
+    const { loading, dailyEntryList: entries } = this.props;
+
+    if (loading) { return <Loading />; }
 
     return (
       <div>
@@ -27,11 +30,12 @@ class DailyEntryList extends React.Component {
 }
 
 const DailyEntryListContainer = createContainer(({ pageSkip }) => {
-  const sub = Meteor.subscribe('daily-entries.all', pageSkip);
+  const userId = Meteor.userId();
+  const sub = Meteor.subscribe('daily-entries.all', userId, pageSkip);
   return {
-    loading: sub.ready(),
+    loading: !sub.ready(),
     dailyEntryList: DailyEntries.find(
-      {},
+      { userId },
       {
         sort: {createdAt: -1},
         limit: 10
