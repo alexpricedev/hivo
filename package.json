@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "description": "CBT for High Performers",
   "scripts": {
-    "start": "meteor"
+    "start": "meteor",
+    "production": "modulus deploy -p 'Hivo' --node-version 4 --include-modules"
   },
   "dependencies": {
     "bcrypt": "^0.8.7",

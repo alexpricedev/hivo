@@ -2,7 +2,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import Root from '../imports/components/Root/Root';
+import Root from '../imports/components/Misc/Root';
 
 Meteor.startup(() => {
   ReactDOM.render(

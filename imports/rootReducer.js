@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 
-import pageSkip from './components/DailyEntryList/reducers';
+import pageSkip from './components/DailyEntries/reducers';
 
 const rootReducer = combineReducers({
   pageSkip,
