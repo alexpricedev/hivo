@@ -1,0 +1,20 @@
+/*
+ * Styles for the New Daily Entry form
+ */
+
+.form {
+  padding: 20px;
+}
+
+
+  .select,
+  .textarea,
+  .range,
+  .button {
+    margin-bottom: 10px;
+    width: 100%;
+  }
+
+  .textarea {
+    height: 100px;
+  }

@@ -7,6 +7,6 @@ import Root from '../imports/components/Misc/Root';
 Meteor.startup(() => {
   ReactDOM.render(
     <Root />,
-    document.getElementById('app')
+    document.getElementById('root')
   );
 });

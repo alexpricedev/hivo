@@ -20,5 +20,37 @@
     "redux": "^3.6.0",
     "redux-logger": "^2.7.0",
     "redux-thunk": "^2.1.0"
+  },
+  "devDependencies": {
+    "postcss-import": "^8.1.2",
+    "postcss-modules-extract-imports": "1.0.0",
+    "postcss-modules-local-by-default": "1.0.0",
+    "postcss-modules-scope": "1.0.0",
+    "postcss-modules-values": "1.1.1",
+    "postcss-nested": "1.0.0",
+    "postcss-simple-vars": "1.1.0"
+  },
+  "cssModules": {
+    "ignorePaths": [
+      "^node_modules"
+    ],
+    "passthroughPaths": [
+      "^client/reset.css"
+    ],
+    "postcssPlugins": {
+      "postcss-import": {},
+      "postcss-simple-vars": {
+        "inlineOptions": {
+          "variables": {
+            "orange": "orange"
+          }
+        }
+      },
+      "postcss-modules-values": {},
+      "postcss-nested": {},
+      "postcss-modules-local-by-default": {},
+      "postcss-modules-extract-imports": {},
+      "postcss-modules-scope": {}
+    }
   }
 }

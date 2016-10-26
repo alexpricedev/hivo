@@ -1,0 +1,9 @@
+/*
+ * styles for the Daily Entry list item
+ */
+
+.entry {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
