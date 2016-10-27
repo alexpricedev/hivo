@@ -2,11 +2,21 @@ import {
   UPDATE_TIMEOFDAY,
   UPDATE_TEXT,
   UPDATE_RANGE,
+  RESET_FORM,
 } from './constants';
 
 const addDailyEntry = function(entry) {
-  return () => {
-    Meteor.call('dailyEntry.insert', entry);
+  return (dispatch, getState) => {
+    const { newDailyEntryForm: form } = getState();
+    Meteor.call('dailyEntry.insert', {
+      timeOfDay: form.timeOfDay,
+      text: form.text,
+      mood: form.mood
+    }, (error) => {
+      if (!error) {
+        dispatch({ type: RESET_FORM });
+      }
+    });
   };
 };
 

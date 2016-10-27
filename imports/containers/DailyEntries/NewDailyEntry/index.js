@@ -17,11 +17,8 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     onSubmit: (evt) => {
-      dispatch(addDailyEntry({
-        timeOfDay: evt.target.timeOfDay.value,
-        text: evt.target.text.value,
-        mood: evt.target.mood.value,
-      }));
+      evt.preventDefault();
+      dispatch(addDailyEntry());
     },
     onChange: (evt) => {
       dispatch(updateDailyEntryValue(evt.target));

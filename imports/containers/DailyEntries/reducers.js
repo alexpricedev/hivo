@@ -2,6 +2,7 @@ import {
   UPDATE_TIMEOFDAY,
   UPDATE_TEXT,
   UPDATE_RANGE,
+  RESET_FORM,
 } from './constants';
 
 const initalState = {
@@ -24,6 +25,8 @@ const newDailyEntryForm = function(state = initalState, action = {}) {
       return Object.assign({}, state, {
         mood: parseInt(action.value)
       });
+    case RESET_FORM:
+      return initalState;
     default:
       return state;
   }
