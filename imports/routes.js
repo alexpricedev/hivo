@@ -15,7 +15,7 @@ import NewDailyEntry from './containers/DailyEntries/NewDailyEntry';
 
 export const routes = (
   <Router history={browserHistory}>
-    <Route path="/" component={Root} onEnter={requireAuth}>
+    <Route path="/" component={Root}>
       <IndexRoute component={Index} />
 
       <Route path="daily" component={DailyEntryList} />
