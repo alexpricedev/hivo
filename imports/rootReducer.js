@@ -1,10 +1,9 @@
 import { combineReducers } from 'redux';
 
-import { pageSkip, updateRange } from './components/DailyEntries/reducers';
+import { newDailyEntryForm } from './containers/DailyEntries/reducers';
 
 const rootReducer = combineReducers({
-  pageSkip,
-  updateRange
+  newDailyEntryForm
 });
 
 export default rootReducer;

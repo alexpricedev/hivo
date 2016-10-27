@@ -1,4 +1,4 @@
-/* global Meteor, Counts */
+/* global Meteor */
 
 import DailyEntries from '../../imports/collections/daily-entries';
 
@@ -10,20 +10,13 @@ const dailyEntryPubFields = {
   createdAt: 1,
 };
 
-const getDailyEntriesPublication = function(userId, pageSkip = 0) {
-  Counts.publish(
-    this,
-    'DailyEntryCount',
-    DailyEntries.find({ userId })
-  );
+const getDailyEntriesPublication = function(userId) {
 
   return DailyEntries.find(
     { userId },
     {
       fields: dailyEntryPubFields,
-      skip: pageSkip,
       sort: {createdAt: -1},
-      limit: 10
     }
   );
 };
