@@ -1,12 +1,13 @@
-/* global Meteor, document */
+/* global document */
+import { Meteor } from 'meteor/meteor';
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import Root from '../imports/containers/Root';
+import { routes } from '/imports/routes';
 
 Meteor.startup(() => {
   ReactDOM.render(
-    <Root />,
+    routes,
     document.getElementById('root')
   );
 });

@@ -1,4 +1,5 @@
 import React  from 'react';
+import { Link } from 'react-router';
 
 import Loading from '../../UI/Loading';
 import DailyEntry from '../DailyEntry';
@@ -12,8 +13,11 @@ class DailyEntryList extends React.Component {
     if (loading) { return <Loading />; }
 
     return (
-      <div>
-        <ul className={styles.list}>
+      <div className={styles.wrapper}>
+        <Link className={styles.link} to="daily/new">
+          Create new
+        </Link>
+        <ul>
           {entries.map(entry =>
             <DailyEntry key={entry._id} {...entry} />
           )}

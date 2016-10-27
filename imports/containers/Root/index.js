@@ -4,9 +4,9 @@ import { Provider } from 'react-redux';
 import Store from '../../store';
 import App from '../App';
 
-const Root = () => (
+const Root = ({ children }) => (
   <Provider store={Store}>
-    <App />
+    <App children={children} />
   </Provider>
 );
 
