@@ -2,6 +2,7 @@ import React  from 'react';
 import { Link } from 'react-router';
 
 import Loading from '../../UI/Loading';
+import Shelf from '../../UI/Shelf';
 import DailyEntry from '../DailyEntry';
 
 import styles from './styles.css';
@@ -14,13 +15,16 @@ class DailyEntryList extends React.Component {
 
     return (
       <div>
-        <Link
-          className="pt-button pt-intent-success"
-          style={{marginBottom: '20px'}}
-          to="daily/new"
-        >
-          Create new
-        </Link>
+
+        <Shelf title="Your Daily Enties">
+          <Link
+            className="pt-button pt-intent-success"
+            to="daily/new"
+          >
+            Create new
+          </Link>
+        </Shelf>
+
         <ul className={styles.ul}>
           {entries.map(entry =>
             <li key={entry._id}>
@@ -31,6 +35,7 @@ class DailyEntryList extends React.Component {
             </li>
           )}
         </ul>
+
       </div>
     );
   }
