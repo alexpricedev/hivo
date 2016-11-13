@@ -2,20 +2,7 @@
  * Styles for the Daily Entry list
  */
 
-.wrapper {
-  padding: 20px;
-}
-
-.link {
-  background: green;
-  border-radius: 3px;
-  color: white;
-  display: inline-block;
-  margin: 0 0 20px;
-  padding: 8px 14px;
-  text-decoration: none;
-}
-
-.link:hover {
-  background: blue;
+.ul {
+  margin: 0;
+  padding: 0;
 }

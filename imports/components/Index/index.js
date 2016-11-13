@@ -6,7 +6,11 @@ import styles from './styles.css';
 const Index = () => {
   return (
     <center style={{ marginTop: '20px' }}>
-      <Link className={styles.link} to="daily/new">
+      <Link
+        className="pt-button pt-intent-primary"
+        role="button"
+        to="daily/new"
+      >
         Quick add daily entry
       </Link>
       <br /><br />

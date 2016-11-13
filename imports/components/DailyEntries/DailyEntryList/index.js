@@ -13,13 +13,22 @@ class DailyEntryList extends React.Component {
     if (loading) { return <Loading />; }
 
     return (
-      <div className={styles.wrapper}>
-        <Link className={styles.link} to="daily/new">
+      <div>
+        <Link
+          className="pt-button pt-intent-success"
+          style={{marginBottom: '20px'}}
+          to="daily/new"
+        >
           Create new
         </Link>
-        <ul>
+        <ul className={styles.ul}>
           {entries.map(entry =>
-            <DailyEntry key={entry._id} {...entry} />
+            <li key={entry._id}>
+              <div className="pt-card">
+                <DailyEntry {...entry} />
+              </div>
+              <br />
+            </li>
           )}
         </ul>
       </div>

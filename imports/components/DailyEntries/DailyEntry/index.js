@@ -4,13 +4,18 @@ import moment from 'moment';
 import styles from './styles.css';
 
 const DailyEntry = ({timeOfDay, text, mood, createdAt}) => (
-  <li className={styles.entry}>
-    Time of day: {timeOfDay} <br />
-    Text: {text} <br />
-    Mood: {mood} <br />
-    Created on: {moment(createdAt).format('dddd, MMMM Do, h:mm a')}
+  <div>
+    <h4>{moment(createdAt).format('dddd, MMMM Do, h:mm a')}</h4>
+    <span
+      style={{marginRight: '8px'}}
+      className="pt-tag pt-intent-primary"
+    >
+      {timeOfDay}
+    </span>
+    <span className="pt-tag pt-round">Mood: {mood} / 10</span>
     <hr />
-  </li>
+    {text}
+  </div>
 );
 
 export default DailyEntry;
